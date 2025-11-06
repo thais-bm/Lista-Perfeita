@@ -20,7 +20,7 @@ const Home = () =>{
 
         {/*<HomeImage/>*/}
 
-        <Box display={"flex"} sx={{gap:3, marginLeft: 5}}>
+        <Box display={"flex"} justifyContent={"center"} sx={{gap:3, marginRight:5}}>
             <HomeBox 
             color="#d200afff"
             icon = {<CardGiftcardIcon/>}
@@ -87,7 +87,7 @@ const Home = () =>{
                 borderRadius: 4,
                 textTransform: "none"
                 }}
-                color="black"
+                color="white"
                 variant="outlined" startIcon={<CardGiftcardIcon/>}>
                 Criar lista grátis agora 
             </Button>

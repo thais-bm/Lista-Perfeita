@@ -4,7 +4,8 @@ import { lighten, darken } from "@mui/material/styles";
 
 const HomeResources = ({ color, icon, title, subtitle }) => {
 
-    const gradient = `linear-gradient(135deg, ${lighten(color, 0.1)}, ${darken(color, 0.7)})`;
+    const gradient = `linear-gradient(135deg, ${lighten(color, 0.1)}, ${darken(color, 0.4)})`;
+    
     return (
     <Box
     sx={{
@@ -18,7 +19,6 @@ const HomeResources = ({ color, icon, title, subtitle }) => {
         p: 2,
     }}
     >
-      {/* Ícone dentro de um círculo com gradiente */}
     {icon && (
         <Box
         sx={{
@@ -31,10 +31,9 @@ const HomeResources = ({ color, icon, title, subtitle }) => {
             justifyContent: "center",
             mx: "auto",
             mt: 3,
-            boxShadow: "0px 4px 12px rgba(0,0,0,0.15)", // leve sombra
+            boxShadow: "0px 4px 12px rgba(0,0,0,0.15)", 
         }}
         >
-          {/* Aplica o tamanho e cor do ícone */}
         <Box sx={{ color: "white" }}>{icon}</Box>
         </Box>
     )}

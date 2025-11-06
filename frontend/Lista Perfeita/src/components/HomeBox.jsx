@@ -9,7 +9,8 @@ const HomeBox = ({color, icon, title, subtitle}) =>{
             borderRadius: 5,
             border:  `3px solid ${lighten(color, 0.7)}`,
             width: 350,
-            height: 250
+            height: 250,
+            backgroundColor: 'white'
             }}>
 
             {icon && (

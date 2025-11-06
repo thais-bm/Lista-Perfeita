@@ -3,7 +3,20 @@ import FilterVintageIcon from '@mui/icons-material/FilterVintage';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
+import { useNavigate } from 'react-router-dom';
+
+
 const Header = () =>{
+  const navigate = useNavigate();
+      
+  const navigateMinhaLista = () => {
+    navigate("/MinhaLista"); 
+  };
+
+  const navigateHome = () =>{
+    navigate('/');
+  }
+
   return(
     <Box sx={{
         width: '100%', 
@@ -32,12 +45,17 @@ const Header = () =>{
           <Box sx={{"& .MuiButton-root": {          
               color: "grey",
               textTransform: "none",
+              "&:hover": {
+              backgroundColor: "transparent", 
+              color: "#c60094ff", 
+        },
             },}}>
-          <Button>
+
+          <Button onClick={navigateHome}>
             Início
           </Button>
 
-          <Button>
+          <Button onClick={navigateMinhaLista}>
             Minha Lista
           </Button>
 
