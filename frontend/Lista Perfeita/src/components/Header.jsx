@@ -1,8 +1,7 @@
 import {Button, Box, Typography} from '@mui/material'
 import FilterVintageIcon from '@mui/icons-material/FilterVintage';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import XIcon from '@mui/icons-material/X';
+import PersonIcon from '@mui/icons-material/Person';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const Header = () =>{
   return(
@@ -23,21 +22,17 @@ const Header = () =>{
         <Box
           sx={{
             display: "flex",
-            gap: 2,
+            gap: 3,
             p: 2,
             marginLeft: 4,
-            "& .MuiButton-root": {          
-              color: "grey",
-              textTransform: "none",
-            },
           }}
         >
-          <Box sx={{marginTop: 0.6, display: 'flex', gap: 1}}>
-            <FilterVintageIcon></FilterVintageIcon>
-            <Typography> Lista Perfeita </Typography>
-          </Box>
+          <Button color="black" startIcon={<FilterVintageIcon/>} sx={{textTransform: "none"}}> Lista Perfeita </Button>
           
-
+          <Box sx={{"& .MuiButton-root": {          
+              color: "grey",
+              textTransform: "none",
+            },}}>
           <Button>
             Início
           </Button>
@@ -47,22 +42,36 @@ const Header = () =>{
           </Button>
 
           <Button>
-            Sugestão de presentes
+            Sugestões
           </Button>
+          </Box>
         </Box>
         
 
         <Box sx={{
-            opacity: "60%", 
             display: "flex",
             gap: 3,
             p: 2,
             marginTop: 1,
             marginRight: 3,
+            "& .MuiButton-root": {          
+              textTransform: "none",
+              borderRadius: 3
+            },
             }}>
-          <InstagramIcon></InstagramIcon>
-          <LinkedInIcon></LinkedInIcon>
-          <XIcon></XIcon>
+
+          <Button variant='outlined' color='black'
+            sx={{background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
+            startIcon={<FavoriteBorderOutlinedIcon />}
+          >
+            Criar Lista
+          </Button>
+
+          <Button variant='outlined' color='black'
+            startIcon={<PersonIcon/>}
+          >
+            Entrar
+          </Button>
         </Box>
         
     </Box>

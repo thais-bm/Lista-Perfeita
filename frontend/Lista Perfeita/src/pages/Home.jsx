@@ -1,149 +1,100 @@
-import { Typography, Button, Box } from "@mui/material";
+import { Box, Typography, Button} from "@mui/material";
 import Header from "../components/Header";
 import HomeImage from "../components/HomeImage";
+import HomeBox from "../components/HomeBox";
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+
+import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
+import HomeResources from "../components/HomeResources";
 
 const Home = () =>{
     return(
     <>
         <Header/>
-        {/*tem q ver a imagem desse homeImage ai dpsr*/}
+
+        <Box paddingTop={10}/>
 
         {/*<HomeImage/>*/}
 
-        <Box sx={{ paddingTop: "80px" }}>
+        <Box display={"flex"} sx={{gap:3, marginLeft: 5}}>
+            <HomeBox 
+            color="#d200afff"
+            icon = {<CardGiftcardIcon/>}
+            title= "Fácil de criar"
+            subtitle="Adicione presentes rapidamente com links automáticos para Amazon, Mercado Livre e outras lojas."
+            />
+
+            <HomeBox 
+            color="#7e009dff"
+            icon = {<AutoAwesomeOutlinedIcon/>}
+            title= "Sugestões inteligentes"
+            subtitle="IA personalizada sugere presentes baseados nos interesses e perfil da pessoa"
+            />
+
+            <HomeBox 
+            color="#0400e9ff"
+            icon = {<ShareOutlinedIcon/>}
+            title= "Compartilhamento Simples"
+            subtitle="Compartilhe com um link único. Amigos podem marcar presentes como comprados."
+            />
         </Box>
 
-        <Typography variant="h4" color="black" > Listas de presentes para Aniversários, Festas de Debutantes, Casamento e Chá de Bebês! </Typography>
+        <Typography marginTop="80px" color="black" variant="h4" sx={{fontWeight: "bold"}}> Tudo o que você precisa para o presente perfeito </Typography>
+        <Typography color="black" sx={{opacity: '70%'}}> Recursos pensados para tornar a experiência de dar e receber presentes mais especial. </Typography>
 
-        <Typography variant="body1" color="grey" paddingBottom={8}> Somos o seu parceiro, com quem você pode contar na hora de organizar a lista de presentes mais importantes na sua vida. </Typography>
+        <Box display={"flex"} sx={{gap:3}}>
+            <HomeResources
+                color="#ff83daff"
+                icon = {<SellOutlinedIcon/>}
+                title= "Links Afiliados"
+                subtitle="Encontre automaticamente os melhores preços em Amazon, Mercado Livre e outras lojas."
+            />
 
-        <Typography  variant= "h4" color="black"> Como funciona ? </Typography>
+            <HomeResources
+                color="#ab4cbeff"
+                icon = {<PeopleOutlineOutlinedIcon/>}
+                title= "Colaborativo"
+                subtitle="Amigos e família podem ver a lista e marcar presentes como reservados ou comprados."
+            />
 
-        <Box
-        sx={{
-            backgroundColor: "grey.300",
-            p: 3,
-            borderRadius: 5,
-            maxWidth: 1200,
-            marginTop: 3,
-            textAlign: "left"
-        }}>
-
-
-        <Box
-        sx={{
-            display: "flex",
-            alignItems: "flex-start", // alinha pelo topo
-            gap: 2,
-        }}>
-        <Box
-        sx={{
-            width: 15,
-            height: 15,
-            backgroundColor: "grey.600",
-            borderRadius: "50%",
-            mt: "4px", 
-        }}/>
-
-            {/* Textos à direita */}
-            <Box>
-                <Typography variant="h6" color="black">
-                    Adicione um produto à sua lista
-                </Typography>
-
-                <Typography color="grey.700">
-                    Nós compartilharemos o link do produto que você selecionou para os
-                    presentiados. Escolha qualquer item, a qualquer preço.
-                </Typography>
-            </Box>
-            </Box>
+            <HomeResources
+                color="#649ce1ff"
+                icon = {<StarBorderOutlinedIcon/>}
+                title= "Personalizado"
+                subtitle="Organize por prioridade, categoria e ocasião. Cada lista é única como você."
+            />
         </Box>
 
+        <Box sx={{
+            background: "linear-gradient(90deg, #ff5edf 0%, #845ef7 100%)",
+            gap: 5,
+            p: 4,
+            color: "white",
+            textAlign: "center",
+            borderRadius:3
+            }}>
+            <Typography variant="h4"> Pronto para criar sua primeira lista?</Typography>
+            <Typography sx={{marginTop:1 }}variant="body2"> Comece agora e torne cada ocasião mais memorável.</Typography>
 
+            <Button sx={{
+                marginTop: 2,
+                backgroundColor:'white',
+                color:'black',
+                borderRadius: 4,
+                textTransform: "none"
+                }}
+                color="black"
+                variant="outlined" startIcon={<CardGiftcardIcon/>}>
+                Criar lista grátis agora 
+            </Button>
 
-        <Box
-        sx={{
-            backgroundColor: "grey.300",
-            p: 3,
-            borderRadius: 5,
-            maxWidth: 1200,
-            marginTop: 3,
-            textAlign: "left"
-        }}>
-
-
-        <Box
-        sx={{
-            display: "flex",
-            alignItems: "flex-start", // alinha pelo topo
-            gap: 2,
-        }}>
-        <Box
-        sx={{
-            width: 15,
-            height: 15,
-            backgroundColor: "grey.600",
-            borderRadius: "50%",
-            mt: "4px", 
-        }}/>
-
-            {/* Textos à direita */}
-            <Box>
-                <Typography variant="h6" color="black">
-                    Seus convidados compram o produto
-                </Typography>
-
-                <Typography color="grey.700">
-                    Nós compartilharemos o link do produto que você selecionou para eles.
-                </Typography>
-            </Box>
-            </Box>
         </Box>
 
-
-
-        <Box
-        sx={{
-            backgroundColor: "grey.300",
-            p: 3,
-            borderRadius: 5,
-            maxWidth: 1200,
-            marginTop: 3,
-            textAlign: "left"
-        }}>
-
-
-        <Box
-        sx={{
-            display: "flex",
-            alignItems: "flex-start", // alinha pelo topo
-            gap: 2,
-        }}>
-        <Box
-        sx={{
-            width: 15,
-            height: 15,
-            backgroundColor: "grey.600",
-            borderRadius: "50%",
-            mt: "4px", 
-        }}/>
-
-            {/* Textos à direita */}
-            <Box>
-                <Typography variant="h6" color="black">
-                    Receba o produto no conforto da sua casa
-                </Typography>
-
-                <Typography color="grey.700">
-                    Ajudaremos seu convidado a enviar o presente diretamente para sua casa, sem problemas, sem intermédios.
-                </Typography>
-            </Box>
-            </Box>
-        </Box>
-
-
-        <Typography  sx= {{marginTop: 5}}variant="h4" color="black"> Relatos de quem realmente se importa! </Typography>
-        </>
+    </>
     )
 }
 

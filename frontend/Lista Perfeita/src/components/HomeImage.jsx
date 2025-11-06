@@ -25,10 +25,9 @@ const HomeImage = () =>{
         }}
     />
 
-
     <Box
     sx={{
-        position: "absolute",
+        position: "relative",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)", 
@@ -39,8 +38,8 @@ const HomeImage = () =>{
             Lista Perfeita
         </Typography>
 
-        <Typography variant="h2" sx={{ fontWeight: "bold", mb: 3 }}>
-            Seus presentes na palma da mão
+        <Typography variant="body1" sx={{ fontWeight: "bold", mb: 3 }}>
+            A maneira mais fácil de criar listas de presentes personalizadas, receber sugestões inteligentes e compartilhar com amigos e família.
         </Typography>
 
         <Box sx={{ display: "flex", gap: 2, justifyContent: "center",
