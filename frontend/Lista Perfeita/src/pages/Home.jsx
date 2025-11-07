@@ -13,12 +13,7 @@ import HomeResources from "../components/HomeResources";
 
 const Home = () => {
     return (
-        <div style={{
-            maxWidth: 1280,      // largura máxima
-            margin: '0 auto',    // centraliza horizontalmente
-            padding: '2rem',     // espaçamento interno
-            textAlign: 'center', // centraliza texto
-        }}>
+        <div className="pages">
             <Header />
 
             <Box paddingTop={10}

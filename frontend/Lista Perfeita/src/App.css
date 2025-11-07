@@ -1,0 +1,10 @@
+.pages {
+    max-width: 1280px;
+    /* largura máxima */
+    margin: 0 auto;
+    /* centraliza horizontalmente */
+    padding: 2rem;
+    /* espaçamento interno */
+    text-align: center;
+    /* centraliza texto */
+}
