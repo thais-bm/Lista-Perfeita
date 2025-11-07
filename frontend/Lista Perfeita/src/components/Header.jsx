@@ -2,6 +2,7 @@ import {Button, Box, Typography} from '@mui/material'
 import FilterVintageIcon from '@mui/icons-material/FilterVintage';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -48,7 +49,7 @@ const Header = () =>{
             marginLeft: 4,
           }}
         >
-          <Button color="black" startIcon={<FilterVintageIcon/>} sx={{textTransform: "none"}}> Lista Perfeita </Button>
+          <Button color="black" startIcon={<CardGiftcardIcon/>} sx={{textTransform: "none"}} disabled> Lista Perfeita </Button>
           
           <Box sx={{"& .MuiButton-root": {          
               color: "grey",
