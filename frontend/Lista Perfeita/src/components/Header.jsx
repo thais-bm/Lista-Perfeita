@@ -5,16 +5,23 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 
 import { useNavigate } from 'react-router-dom';
 
-
 const Header = () =>{
   const navigate = useNavigate();
       
   const navigateMinhaLista = () => {
-    navigate("/MinhaLista"); 
+    navigate("/minhaLista"); 
   };
 
   const navigateHome = () =>{
     navigate('/');
+  }
+
+  const navigateCreateList = () =>{
+    navigate("/createList")
+  }
+
+  const navigateSugestion = () =>{
+    navigate('/sugestion')
   }
 
   return(
@@ -47,8 +54,14 @@ const Header = () =>{
               textTransform: "none",
               "&:hover": {
               backgroundColor: "transparent", 
-              color: "#c60094ff", 
-        },
+              color: "#c60094ff",
+              "&:focus": {
+              outline: "none", 
+              boxShadow: "none", 
+            },},"&:active": {
+              outline: "none",
+              boxShadow: "none",
+            },
             },}}>
 
           <Button onClick={navigateHome}>
@@ -59,7 +72,7 @@ const Header = () =>{
             Minha Lista
           </Button>
 
-          <Button>
+          <Button onClick={navigateSugestion}>
             Sugestões
           </Button>
           </Box>
@@ -81,6 +94,7 @@ const Header = () =>{
           <Button variant='outlined' color='black'
             sx={{background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
             startIcon={<FavoriteBorderOutlinedIcon />}
+            onClick={navigateCreateList}
           >
             Criar Lista
           </Button>

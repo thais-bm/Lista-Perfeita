@@ -6,7 +6,14 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import MLBox from "../components/MLBox";
 
+import { useNavigate } from "react-router-dom";
+
 const MinhaLista = () =>{
+    const navigate = useNavigate();
+
+    const handleNavigateCreateList = () =>{
+        navigate("/createList")
+    }
     return(
     <>  
     <Header/>
@@ -44,6 +51,7 @@ const MinhaLista = () =>{
             borderRadius: 3,
             textTransform: 'none',
         }}
+        onClick={handleNavigateCreateList}
         >
         Nova Lista
         </Button>
