@@ -17,6 +17,14 @@ const Header = () =>{
     navigate('/');
   }
 
+  const navigateSignIn = () =>{
+    navigate('/signin');
+  }
+
+  const navigateLogin = () =>{
+    navigate('/login');
+  }
+
   return(
     <Box sx={{
         width: '100%', 
@@ -81,12 +89,14 @@ const Header = () =>{
           <Button variant='outlined' color='black'
             sx={{background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
             startIcon={<FavoriteBorderOutlinedIcon />}
+            onClick={navigateSignIn}
           >
             Criar Lista
           </Button>
 
           <Button variant='outlined' color='black'
             startIcon={<PersonIcon/>}
+            onClick={navigateLogin}
           >
             Entrar
           </Button>
