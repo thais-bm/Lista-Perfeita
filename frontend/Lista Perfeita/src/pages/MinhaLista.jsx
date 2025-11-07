@@ -8,38 +8,38 @@ import MLBox from "../components/MLBox";
 
 import { useNavigate } from "react-router-dom";
 
-const MinhaLista = () =>{
+const MinhaLista = () => {
     const navigate = useNavigate();
 
     const handleNavigateCreateList = () =>{
         navigate("/createList")
     }
-    return(
-    <>  
-    <Header/>
-    <Box paddingTop={10}/>
+    return (
+        <div className="pages">
+            <Header />
+            <Box paddingTop={10} />
 
-    <Box
-    sx={{
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-    }}
-    >
+            <Box
+                sx={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                }}
+            >
 
-    <Box
-        sx={{
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between', 
-        }}
-    >
-        <Typography color="black" variant="h4" fontWeight="bold">
-        Minhas listas
-        </Typography>
+                <Box
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <Typography color="black" variant="h4" fontWeight="bold">
+                        Minhas listas
+                    </Typography>
 
         <Button
         variant="outlined"
@@ -57,32 +57,32 @@ const MinhaLista = () =>{
         </Button>
     </Box>
 
-    <Typography color="black" variant="body2" sx={{ mt: 1 }}>
-        Gerencie suas listas de presentes e acompanhe o processo
-    </Typography>
-    </Box>
+                <Typography color="black" variant="body2" sx={{ mt: 1 }}>
+                    Gerencie suas listas de presentes e acompanhe o processo
+                </Typography>
+            </Box>
 
-    <Box display={"flex"} sx={{gap: 3, marginTop: 3}}>
-        <MLBox
-            title="Total de listas"
-            number= {3}
-            icon={<CardGiftcardIcon/>}
-        />
+            <Box display={"flex"} sx={{ gap: 3, marginTop: 3 }}>
+                <MLBox
+                    title="Total de listas"
+                    number={3}
+                    icon={<CardGiftcardIcon />}
+                />
 
-        <MLBox
-            title="Presentes totais"
-            number={35}
-            icon={<PeopleOutlineOutlinedIcon/>}
-        />
+                <MLBox
+                    title="Presentes totais"
+                    number={35}
+                    icon={<PeopleOutlineOutlinedIcon />}
+                />
 
-        <MLBox 
-            title="Presentes comprados"
-            number={14}
-            icon={<CardGiftcardIcon/>}
-        />
-    </Box>
+                <MLBox
+                    title="Presentes comprados"
+                    number={14}
+                    icon={<CardGiftcardIcon />}
+                />
+            </Box>
 
-    </>
+        </div>
     )
 }
 

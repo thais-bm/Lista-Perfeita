@@ -2,6 +2,7 @@ import {Button, Box, Typography} from '@mui/material'
 import FilterVintageIcon from '@mui/icons-material/FilterVintage';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -22,6 +23,14 @@ const Header = () =>{
 
   const navigateSugestion = () =>{
     navigate('/sugestion')
+  }
+
+  const navigateSignIn = () =>{
+    navigate('/signin');
+  }
+
+  const navigateLogin = () =>{
+    navigate('/login');
   }
 
   return(
@@ -47,7 +56,7 @@ const Header = () =>{
             marginLeft: 4,
           }}
         >
-          <Button color="black" startIcon={<FilterVintageIcon/>} sx={{textTransform: "none"}}> Lista Perfeita </Button>
+          <Button color="black" startIcon={<CardGiftcardIcon/>} sx={{textTransform: "none"}} disabled> Lista Perfeita </Button>
           
           <Box sx={{"& .MuiButton-root": {          
               color: "grey",
@@ -94,13 +103,14 @@ const Header = () =>{
           <Button variant='outlined' color='black'
             sx={{background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
             startIcon={<FavoriteBorderOutlinedIcon />}
-            onClick={navigateCreateList}
+            onClick={navigateSignIn}
           >
             Criar Lista
           </Button>
 
           <Button variant='outlined' color='black'
             startIcon={<PersonIcon/>}
+            onClick={navigateLogin}
           >
             Entrar
           </Button>
