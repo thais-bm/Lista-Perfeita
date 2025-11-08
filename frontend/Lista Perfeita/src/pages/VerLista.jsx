@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Container from '@mui/material/Container'
-import { Button, Box, Typography, Stack, LinearProgress } from '@mui/material'
+import { Button, Box, Typography, Stack, LinearProgress, Paper } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import EventIcon from '@mui/icons-material/Event';
@@ -77,65 +77,70 @@ const VerLista = () => {
             <Box marginTop={12} /> {/* Espaçamento entre o header e o conteúdo da página: 10 + DISTANCIA */}
 
             {/* informação sobre a lista */}
-            <Container maxWidth="lg" sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
+            <Container maxWidth="lg">
+                <Paper elevation={3} sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
+                    <Button
+                        color="grey"
+                        onClick={handleReturn}
+                        startIcon={<ArrowBackIcon sx={{ fontSize: 13 }} />}
+                        sx={{ mb: 1, fontSize: 13, padding: 2 }}
+                    >
+                        Voltar para as minhas listas
+                    </Button>
 
-                <Button
-                    color="grey"
-                    onClick={handleReturn}
-                    startIcon={<ArrowBackIcon sx={{ fontSize: 13 }} />}
-                    sx={{ mb: 1, fontSize: 13, padding: 2 }}
-                >
-                    Voltar para as minhas listas
-                </Button>
+                    <Box padding={3}>
+                        <Typography color="black" variant="h4" fontWeight="bold">{listaNome}</Typography>
+                        <Typography variant="body2" color="secondary" sx={{ paddingTop: 3, paddingBottom: 3 }}>{listaDescricao}</Typography>
 
-                <Box padding={3}>
-                    <Typography color="black" variant="h4" fontWeight="bold">{listaNome}</Typography>
-                    <Typography variant="body2" color="secondary" sx={{ paddingTop: 3, paddingBottom: 3 }}>{listaDescricao}</Typography>
+                        {/* Categoria - data do evento - criadora do evento */}
+                        <Stack direction="row" spacing={2} mt={1}>
 
-                    {/* Categoria - data do evento - criadora do evento */}
-                    <Stack direction="row" spacing={2} mt={1}>
+                            <Stack direction="row" spacing={1} mt={1}>
+                                <CardGiftcardIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
+                                <Typography variant="body2" color="initial">{listaCategoria}</Typography>
+                            </Stack>
 
-                        <Stack direction="row" spacing={1} mt={1}>
-                            <CardGiftcardIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                            <Typography variant="body2" color="initial">{listaCategoria}</Typography>
+                            <Stack direction="row" spacing={1} mt={1}>
+                                <EventIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
+                                <Typography variant="body2" color="initial">{listaDataEvento}</Typography>
+                            </Stack>
+
+                            <Stack direction="row" spacing={1} mt={1}>
+                                <PersonIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
+                                <Typography variant="body2" color="initial">{listaCriadora}</Typography>
+                            </Stack>
                         </Stack>
 
-                        <Stack direction="row" spacing={1} mt={1}>
-                            <EventIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                            <Typography variant="body2" color="initial">{listaDataEvento}</Typography>
-                        </Stack>
+                        <Box mt={4} mb={2} backgroundColor="#f0f0f0ff" padding={2} borderRadius={2}>
+                            <Stack direction="row" spacing={2} mt={1} paddingBottom={2} justifyContent={'space-between'} >
+                                <Typography variant="body2" color="initial">Progresso da Lista</Typography>
+                                <Typography variant="body2" color="initial">{quantidadeComprados} de {quantidadePresentes} presentes comprados</Typography>
+                            </Stack>
 
-                        <Stack direction="row" spacing={1} mt={1}>
-                            <PersonIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                            <Typography variant="body2" color="initial">{listaCriadora}</Typography>
-                        </Stack>
-                    </Stack>
+                            <LinearProgress
+                                variant="determinate"
+                                value={porcentagemComprados}
+                                sx={{
+                                    height: 10,
+                                    borderRadius: 2,
+                                    backgroundColor: '#eee', // cor do fundo (trilha)
+                                    '& .MuiLinearProgress-bar': {
+                                        backgroundColor: '#ea33bd', // cor da parte carregada
+                                    },
+                                }}
+                            />
 
-                    <Box mt={4} mb={2} backgroundColor="#f0f0f0ff" padding={2} borderRadius={2}>
-                        <Stack direction="row" spacing={2} mt={1} paddingBottom={2} justifyContent={'space-between'} >
-                            <Typography variant="body2" color="initial">Progresso da Lista</Typography>
-                            <Typography variant="body2" color="initial">{quantidadeComprados} de {quantidadePresentes} presentes comprados</Typography>
-                        </Stack>
+                            <Typography variant="body2" color="initial" paddingTop={1}>{porcentagemComprados}%</Typography>
+                        </Box>
 
-                        <LinearProgress
-                            variant="determinate"
-                            value={porcentagemComprados}
-                            sx={{
-                                height: 10,
-                                borderRadius: 2,
-                                backgroundColor: '#eee', // cor do fundo (trilha)
-                                '& .MuiLinearProgress-bar': {
-                                    backgroundColor: '#ea33bd', // cor da parte carregada
-                                },
-                            }}
-                        />
 
-                        <Typography variant="body2" color="initial" paddingTop={1}>{porcentagemComprados}%</Typography>
+
                     </Box>
 
+                </Paper>
 
 
-                </Box>
+
 
             </Container>
 
