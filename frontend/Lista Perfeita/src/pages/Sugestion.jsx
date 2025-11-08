@@ -1,4 +1,4 @@
-import { Typography, Box, TextField, MenuItem, Select, Button } from "@mui/material";
+import { Typography, Box, TextField, MenuItem, Select, Button, Grid } from "@mui/material";
 import Header from "../components/Header";
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import PersonIcon from '@mui/icons-material/Person';
@@ -15,90 +15,146 @@ const Sugestion = () =>{
     <Box paddingTop={10}/>
     
     
-    <Box>
+    <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
         <Typography variant='h4' fontWeight="bold"> Sugestões Inteligentes </Typography>
         <Typography color='grey' variant="body1"> Nossa IA analisa o perfil da pessoa e sugere presentes personalizados baseados nos interesses e ocasião.</Typography>
     </Box>
 
     <Box display={"flex"} justifyContent={"center"} sx={{gap: 3}} >
     
-    <Box sx={{
-        marginTop: 5,
-        backgroundColor: 'white',
-        width: 500,
-        height:900,
-        borderRadius: 4
-    }}> 
-        <PersonIcon/>
-        <Typography> Perfil da pessoa </Typography>
-        <Typography variant="body2"> Preencha as informações para gerar sugestões personalizadas</Typography>
+    <Box
+        sx={{
+        mt: 5,
+        backgroundColor: "white",
+        width: 550,
+        borderRadius: 4,
+        boxShadow: 2,
+        p: 4,
+        }}
+    >
 
-        <Typography ontWeight="bold" > Nome </Typography>
-        <TextField
-            id="name"
-            label="Ex: Maria"
-            variant="outlined"
-            sx={{width:400, height: 50, alignSelf: 'center', borderRadius: 40, marginBottom: 3}}
-        />
+        <Box display="flex" alignItems="center" gap={1} mb={1}>
+            <PersonIcon color="secondary" />
+            <Typography fontWeight="bold" variant="h6">
+                Perfil da Pessoa
+            </Typography>
+        </Box>
+        <Typography variant="body2" color="grey" mb={3}>
+        Preencha as informações para gerar sugestões personalizadas
+        </Typography>
 
-        <Typography ontWeight="bold" > Idade </Typography>
-        <TextField
-            id="age"
-            label="Ex: 25"
-            variant="outlined"
-            sx={{width:400, height: 50, alignSelf: 'center', borderRadius: 40, marginBottom: 3}}
-        />
+            <Grid container spacing={2} mb={2}>
+            <Grid item xs={6}>
+                <Typography fontWeight="bold" mb={0.5}>
+                    Nome
+                </Typography>
+                <TextField fullWidth label="Ex: Maria" variant="outlined" size="small" />
+            </Grid>
 
 
-        <Typography ontWeight="bold" > Gênero</Typography>
-        <Select>
-        {gender.map((option, index)=>(
-            <MenuItem key={index} value={option}>
-                {option}
-            </MenuItem>
-        ))}
-        </Select>
+            <Grid item xs={6}>
+                <Typography fontWeight="bold" mb={0.5}>
+                    Idade
+                </Typography>
+                <TextField fullWidth label="Ex: 25" variant="outlined" size="small" />
+            </Grid>
+        </Grid>
 
-        <Typography fontWeight="bold"> Ocasião * </Typography>
-        <Select
-            labelId="select-label"
-            id="ocasion"
-            sx={{width: 150, height:40}}
-        >
-            {gender.map((option, index)=>(
+        <Grid container spacing={2} mb={2}>
+            <Grid item xs={6}>    
+                <Typography fontWeight="bold" mb={0.5}>
+                    Gênero
+                </Typography>
+                <Select fullWidth defaultValue="" sx={{width:210, height: 35}}>
+                {gender.map((option, index) => (
+                    <MenuItem key={index} value={option}>
+                        {option}
+                    </MenuItem>
+                ))}
+                </Select>
+            </Grid>
+
+            <Grid item xs={6}>
+                <Typography fontWeight="bold" mb={0.5} >
+                    Ocasião
+                </Typography>
+                <Select fullWidth defaultValue="" sx={{width:210, height: 35}}>
+                    {interests.map((option, index) => (
+                    <MenuItem key={index} value={option}>
+                        {option}
+                    </MenuItem>
+                ))}
+                </Select>
+            </Grid>
+        </Grid>
+
+        <Grid item xs={12} mb={2}>
+            <Typography fontWeight="bold" mb={1}>
+                Faixa de Preço (R$)
+            </Typography>
+
+            <Grid container spacing={2}>
+            <Grid item xs={6}>
+                <Typography variant="body2" mb={0.5}>
+                    Mínimo
+                </Typography>
+                <TextField fullWidth label="50" variant="outlined" size="small" />
+            </Grid>
+            <Grid item xs={6}>
+                <Typography variant="body2" mb={0.5}>
+                    Máximo
+                </Typography>
+                <TextField fullWidth label="500" variant="outlined" size="small"/>
+            </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid item xs={12} >
+            <Typography fontWeight="bold" mb={1}>
+                Interesses
+            </Typography>
+            <Select fullWidth defaultValue="" size="small" sx={{width:200}}>
+            <MenuItem value="">Adicionar interesse</MenuItem>
+            {interests.map((option, index) => (
                 <MenuItem key={index} value={option}>
                     {option}
                 </MenuItem>
             ))}
-        </Select>
+            </Select>
+        </Grid>
 
-        <Typography fontWeight="bold" > Faixa de Preço (R$)</Typography>
-
-        <Typography fontWeight="bold" > Interesses </Typography>
-        <Select>
-            {interests.map((option, index)=>(
-                <MenuItem key={index} value={option}>
-                    {option}
-                </MenuItem>
-            ))}
-        </Select>    
-            
-        
-        <Button 
+        <Grid item xs={12} mt={5}>
+            <Button
+            fullWidth
+            variant="contained"
+            startIcon={<AutoAwesomeOutlinedIcon />}
             sx={{
-                background: "linear-gradient(90deg, #fd70daff 0%, #ad30e7ff 100%)",
-                color: 'white',
-                width: 400,
-                borderRadius:2
-            }}
-            startIcon={<AutoAwesomeOutlinedIcon/>}
-        > Gerar sugestões </Button>
-        
+                textTransform: "none",
+                fontWeight: "bold",
+                borderRadius: 4,
+                color: "white",
+                background: "linear-gradient(90deg, #fd70da 0%, #ad30e7 100%)",
+                height: 45,
+                "&:hover": {
+                    opacity: 0.9,
+            },}}
+            >
+            Gerar Sugestões
+            </Button>
+        </Grid>
     </Box>
 
-    <Box backgroundColor='white' width={400} height={250} sx={{marginTop: 5, borderRadius: 4}} >
-        <Typography fontWeight="bold"> Aguardando sugestões </Typography>
-        <Typography variant="body2" color="grey"> Preencha o formulário ao lado e clique em "Gerar Sugestões" para ver recomendações personalizadas. </Typography>
+    <Box 
+    backgroundColor='white'
+    width={520}
+    height={260}
+    justifyContent={"center"}
+    flexDirection={"column"}
+    display={"flex"}
+    sx={{marginTop: 5, borderRadius: 4}} >
+        <AutoAwesomeOutlinedIcon sx={{align: 'center', display:'flex', fontSize:"100px", color:'grey', marginLeft: 25, marginBottom: 3}}/>
+        <Typography fontWeight="bold" align={"center"}> Aguardando sugestões </Typography>
+        <Typography variant="body2" color="grey" align="center"> Preencha o formulário ao lado e clique em "Gerar Sugestões" para ver recomendações personalizadas. </Typography>
     </Box>
     </Box>
     </>

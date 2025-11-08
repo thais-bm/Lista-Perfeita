@@ -56,7 +56,7 @@ const Header = () =>{
             marginLeft: 4,
           }}
         >
-          <Button color="black" startIcon={<CardGiftcardIcon/>} sx={{textTransform: "none"}} disabled> Lista Perfeita </Button>
+          <Button color="black" startIcon={<CardGiftcardIcon/>} sx={{textTransform: "none", color:'black'}} disabled> Lista Perfeita </Button>
           
           <Box sx={{"& .MuiButton-root": {          
               color: "grey",

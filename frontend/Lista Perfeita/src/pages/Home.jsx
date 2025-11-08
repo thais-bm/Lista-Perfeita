@@ -47,7 +47,7 @@ const Home = () => {
             <Typography marginTop="80px" color="black" variant="h4" sx={{ fontWeight: "bold" }}> Tudo o que você precisa para o presente perfeito </Typography>
             <Typography color="black" sx={{ opacity: '70%' }}> Recursos pensados para tornar a experiência de dar e receber presentes mais especial. </Typography>
 
-            <Box display={"flex"} sx={{ gap: 3 }}>
+            <Box display={"flex"} sx={{ gap: 3, marginLeft: 3 }}>
                 <HomeResources
                     color="#ff83daff"
                     icon={<SellOutlinedIcon />}

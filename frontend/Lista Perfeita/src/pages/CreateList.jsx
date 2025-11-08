@@ -1,12 +1,15 @@
 import { Typography, Box, FormGroup, TextField, Select, MenuItem, Button, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import Header from "../components/Header";
 
 import CreateListBox from "../components/CreateListBox";
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import InsertLinkOutlinedIcon from '@mui/icons-material/InsertLinkOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 
 const CreateList = () =>{
@@ -14,6 +17,8 @@ const CreateList = () =>{
     const handleNavigate = ()=>{
         navigate("/minhaLista")
     }
+
+    const [privacy, setPrivacy] = useState("publica");
 
     const selectOptions = ["Natal", "Aniversário", "Dia dos Namorados", "Dia das Mães", "Dia dos Pais", "Casamento",
         "Formatura", "Chá de Bebê", "Chá de Panela", "Amigo Secreto", "Páscoa", "Dia da Mulher", "Aposentadoria", "Sem Ocasião Específica"
@@ -48,7 +53,7 @@ const CreateList = () =>{
         </Typography>
     </Box>
 
-    <Box width="600px" height="1000px"
+    <Box width="570px" height="900px"
     sx={{
     backgroundColor: "white",
     borderRadius: 4,
@@ -113,6 +118,7 @@ const CreateList = () =>{
             label="Selecione uma opção"
             size="small"
             sx={{
+                width:200,
                 borderRadius: 2,
                 marginBottom: 3,
             }}
@@ -125,34 +131,65 @@ const CreateList = () =>{
         </Select>
 
         <Typography fontWeight="bold"  variant="body2">Data do Evento</Typography>
+        <TextField
+        type="date"
+        InputLabelProps={{ shrink: true }}
+        fullWidth
+        />
 
         <Typography fontWeight="bold"  variant="body2" sx={{ marginTop: 3 }}>
                 Privacidade da Lista
         </Typography>
 
-        <CreateListBox
+        <RadioGroup value={privacy}>
+                    <CreateListBox
         icon={<LanguageOutlinedIcon sx={{color:"green"}}/>}
         title="Público"
         subtitle="Qualquer pessoa pode encontrar e ver sua lista"
+        value="public"
+        selectedValue={privacy}
+        onChange={setPrivacy}
         >
-            <RadioGroup defaultValue="publica">
-            </RadioGroup>
         </CreateListBox>
+
+        <CreateListBox
+        icon={<InsertLinkOutlinedIcon sx={{color:"blue"}}/>}
+        title="Compartilhar por Link"
+        subtitle="Apenas pessoas com este link pode ver sua lista"
+        value="shared"
+        selectedValue={privacy}
+        onChange={setPrivacy}
+        >
+        </CreateListBox>
+
+        <CreateListBox
+        icon={<LockOutlinedIcon sx={{color:"grey"}}/>}
+        title="Privado"
+        subtitle="Apenas você pode ver essa lista"
+        value="privaty"
+        selectedValue={privacy}
+        onChange={setPrivacy}
+        ></CreateListBox>
+
+        </RadioGroup>
+
 
     </FormGroup>
         
-        <Box display={"flex"} justifyContent={"center"} gap={4}>
+        <Box display={"flex"} justifyContent={"center"} gap={4} marginTop={4} marginLeft={5}>
             <Button width="100px" variant="outlined" color="grey"
                 sx={{
                 width: 220,
                 color: 'black',
                 fontWeight: 'bold',
-                textTransform:'none'
+                textTransform:'none',
+                borderRadius: 3
                 }}> Cancelar </Button>
             <Button sx={{
                 background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)",
                 color: "white",
-                width: 220
+                width: 220,
+                borderRadius: 3
                 }} startIcon={<CardGiftcardIcon/>} > 
                 Criar lista 
             </Button>
@@ -164,9 +201,10 @@ const CreateList = () =>{
             backgroundColor: '#f9e9f5f7',
             border: '1px solid pink',
             borderRadius: 5,
-            width: 550,
+            width: 570,
             height: 150,
             padding: 3,
+            marginBottom: 4
             }}>
             <Typography align="left" variant="body1" fontWeight="bold" marginTop={2} marginBottom={1}> Próximos passos </Typography>
             <Typography align="left"> • Adicione um item a sua lista </Typography>
