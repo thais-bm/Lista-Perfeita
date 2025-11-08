@@ -1,11 +1,18 @@
 import './App.css'
 import AppRoutes from './routes/AppRoutes'
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './themes/theme';
 
 function App() {
 
   return (
     <>
-      <AppRoutes/>
+
+      <ThemeProvider theme={theme}>
+
+        <AppRoutes />
+
+      </ThemeProvider>
     </>
   )
 }
