@@ -7,7 +7,7 @@ const HomeBox = ({color, icon, title, subtitle}) =>{
         <Box 
         sx={{
             borderRadius: 5,
-            border:  `3px solid ${lighten(color, 0.7)}`,
+            border:  `2px solid ${lighten(color, 0.8)}`,
             width: 350,
             height: 250,
             backgroundColor: 'white'

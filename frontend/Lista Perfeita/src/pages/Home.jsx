@@ -6,20 +6,79 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import HomeResources from "../components/HomeResources";
 
+import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
+    const navigate = useNavigate();
+    
+    const navigateSignIn = () =>{
+        navigate('/signin');
+    }
+
     return (
-        <div className="pages">
-            <Header />
+    <div className="pages">
+        <Header />
 
-            <Box paddingTop={10}
-            />
+        <Box paddingTop={10}/>
 
-            {/*<HomeImage/>*/}
+        {/*<HomeImage/>*/}
+
+        <Typography variant="h2"
+        sx={{
+            background: "linear-gradient(90deg, #f019bbff 0%, #8d00ceff 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontWeight: "bold",
+        }}
+        >
+        Crie e Compartilhe
+        </Typography>
+            
+        <Typography variant="h2"
+        sx={{
+            background: "linear-gradient(90deg, #960a9bff 0%, #c872f0ff 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontWeight: "bold",
+            mb: 2
+        }}
+        >
+        Lista de Presentes
+        </Typography>
+
+        <Typography variant="body1" color="grey"> A maneira mais fácil de criar listas de presentes personalizadas, receber sugestões</Typography>
+        <Typography variant="body1" color="grey" mb={4}> inteligentes e compartilhar com amigos e família. </Typography>
+
+            <Box gap={3} 
+                justifyContent={"center"}
+                alignItems={"center"}
+                display={"flex"} 
+                flexDirection={"row"}
+                marginBottom={7}
+            >
+                <Button variant='outlined' color='black'
+                    sx={{borderRadius: 2, textTransform:'none', background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
+                    startIcon={<FavoriteBorderOutlinedIcon />}
+                    onClick={navigateSignIn}
+                >
+                    Criar Minha Lista
+                </Button>
+
+                <Button variant='outlined' color='black'
+                    sx={{ borderRadius: 2,color: '#ff00bfff', textTransform:'none'}}
+                    startIcon={<AutoAwesomeOutlinedIcon/>}
+                    onClick={navigateSignIn}
+                >
+                    Ver Sugestões
+                </Button>
+            </Box>
+
 
             <Box display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{ gap: 3, marginRight: 5 }}>
                 <HomeBox
@@ -79,18 +138,19 @@ const Home = () => {
                 borderRadius: 3
             }}>
                 <Typography variant="h4"> Pronto para criar sua primeira lista?</Typography>
-                <Typography sx={{ marginTop: 1 }} variant="body2"> Comece agora e torne cada ocasião mais memorável.</Typography>
+                <Typography sx={{ marginTop: 1, marginBottom: 2.5}} variant="body2"> Comece agora e torne cada ocasião mais memorável.</Typography>
 
-                <Button sx={{
-                    marginTop: 2,
-                    backgroundColor: 'white',
-                    color: 'black',
-                    borderRadius: 4,
-                    textTransform: "none"
-                }}
-                    color="white"
-                    variant="outlined" startIcon={<CardGiftcardIcon />}>
-                    Criar lista grátis agora
+                <Button variant='outlined' color='black'
+                    sx={{ 
+                        borderRadius: 2,
+                        color: '#ff00bfff',
+                        textTransform:'none', 
+                        backgroundColor:'white',
+                    }}
+                    startIcon={<AutoAwesomeOutlinedIcon/>}
+                    onClick={navigateSignIn}
+                >
+                    Criar lista agora
                 </Button>
 
             </Box>

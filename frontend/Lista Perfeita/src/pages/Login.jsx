@@ -5,12 +5,7 @@ import { Box } from '@mui/material';
 
 const Login = () => {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh'
-            }}>
+        <Box>
             <Header />
             <LoginPaper />
         </Box>

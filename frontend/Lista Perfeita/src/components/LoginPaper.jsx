@@ -1,9 +1,15 @@
 import { Paper, Grid, Typography, TextField, Button, Stack } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPaper = () => {
+    const navigate = useNavigate()
+
+    const navigateRegister = () =>{
+        navigate("/signin")
+    }
     return (
-        <Grid container sx={{ minHeight: '100vh', minWidth: '100vw', display: 'flex' }}>
+        <Grid container sx={{ minHeight: '100vh', width:'100%', display: 'flex' }}>
             {/* Coluna da esquerda: Login */}
             <Grid
                 item
@@ -47,6 +53,8 @@ const LoginPaper = () => {
                     <Button type="submit" variant="contained" size="large" fullWidth>
                         Entrar
                     </Button>
+
+                    <Button onClick={navigateRegister}> Ainda não tem conta? Clique aqui para se registrar!</Button>
                 </Stack>
             </Grid>
 
@@ -57,7 +65,7 @@ const LoginPaper = () => {
                 <img
                     src="/hug_gift.jpg"
                     alt="Ilustração de login"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderTopLeftRadius: '10%' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderTopLeftRadius: '10%', display:'block' }}
                 />
             </Grid>
         </Grid >

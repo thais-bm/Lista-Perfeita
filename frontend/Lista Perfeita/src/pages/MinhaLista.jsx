@@ -57,7 +57,7 @@ const MinhaLista = () => {
         </Button>
     </Box>
 
-                <Typography color="black" variant="body2" sx={{ mt: 1 }}>
+                <Typography color="grey" variant="body2" sx={{ mt: 1 }}>
                     Gerencie suas listas de presentes e acompanhe o processo
                 </Typography>
             </Box>

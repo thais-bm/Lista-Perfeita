@@ -1,5 +1,8 @@
 import { Box, Button, Typography } from "@mui/material"
 
+//desisto de tentar fazer isso funcionar
+//essa imagem n estica de jeito nenhum
+
 const HomeImage = () =>{
     return(
     <>
@@ -10,6 +13,7 @@ const HomeImage = () =>{
         width: "100%",
         height: "80vh",           
         overflow: "hidden",
+        marginBottom: 3
     }}
     >
     {/* Imagemr do fundor, n conseguir baixar do figmar ent botei essa so pra apoio */}
@@ -18,10 +22,13 @@ const HomeImage = () =>{
         src="/background-home.png"
         alt="foto de fundo"
         style={{
+            position: "absolute",
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover", 
+            zIndex: -1,
         }}
     />
 
@@ -32,6 +39,9 @@ const HomeImage = () =>{
         left: "50%",
         transform: "translate(-50%, -50%)", 
         textAlign: "center",
+        color: "white", // texto branco pra destacar
+          zIndex: 1, // garante que fique acima da imagem
+          px: 2, // padding lateral (ajuda em telas menores)
     }}
     >
         <Typography variant="h2" sx={{ fontWeight: "bold",  mb: 2 }}>

@@ -12,7 +12,7 @@ const Sugestion = () =>{
     return(
     <>
     <Header/>
-    <Box paddingTop={10}/>
+    <Box paddingTop={13}/>
     
     
     <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
@@ -26,26 +26,27 @@ const Sugestion = () =>{
         sx={{
         mt: 5,
         backgroundColor: "white",
-        width: 550,
+        width: 450,
         borderRadius: 4,
         boxShadow: 2,
         p: 4,
+        mb: 3
         }}
     >
 
-        <Box display="flex" alignItems="center" gap={1} mb={1}>
+        <Box display="flex" alignItems="center" gap={1}>
             <PersonIcon color="secondary" />
             <Typography fontWeight="bold" variant="h6">
                 Perfil da Pessoa
             </Typography>
         </Box>
-        <Typography variant="body2" color="grey" mb={3}>
+        <Typography variant="body2" color="grey" mb={2}>
         Preencha as informações para gerar sugestões personalizadas
         </Typography>
 
             <Grid container spacing={2} mb={2}>
             <Grid item xs={6}>
-                <Typography fontWeight="bold" mb={0.5}>
+                <Typography fontWeight="bold" variant="body2" mb={0.5}>
                     Nome
                 </Typography>
                 <TextField fullWidth label="Ex: Maria" variant="outlined" size="small" />
@@ -53,7 +54,7 @@ const Sugestion = () =>{
 
 
             <Grid item xs={6}>
-                <Typography fontWeight="bold" mb={0.5}>
+                <Typography fontWeight="bold" variant="body2" mb={0.5}>
                     Idade
                 </Typography>
                 <TextField fullWidth label="Ex: 25" variant="outlined" size="small" />
@@ -62,7 +63,7 @@ const Sugestion = () =>{
 
         <Grid container spacing={2} mb={2}>
             <Grid item xs={6}>    
-                <Typography fontWeight="bold" mb={0.5}>
+                <Typography fontWeight="bold" variant="body2" mb={0.5}>
                     Gênero
                 </Typography>
                 <Select fullWidth defaultValue="" sx={{width:210, height: 35}}>
@@ -75,7 +76,7 @@ const Sugestion = () =>{
             </Grid>
 
             <Grid item xs={6}>
-                <Typography fontWeight="bold" mb={0.5} >
+                <Typography fontWeight="bold" variant="body2" mb={0.5} >
                     Ocasião
                 </Typography>
                 <Select fullWidth defaultValue="" sx={{width:210, height: 35}}>
@@ -89,7 +90,7 @@ const Sugestion = () =>{
         </Grid>
 
         <Grid item xs={12} mb={2}>
-            <Typography fontWeight="bold" mb={1}>
+            <Typography fontWeight="bold" variant="body2" mb={1}>
                 Faixa de Preço (R$)
             </Typography>
 
@@ -110,7 +111,7 @@ const Sugestion = () =>{
         </Grid>
 
         <Grid item xs={12} >
-            <Typography fontWeight="bold" mb={1}>
+            <Typography fontWeight="bold" variant="body2" >
                 Interesses
             </Typography>
             <Select fullWidth defaultValue="" size="small" sx={{width:200}}>
@@ -136,7 +137,7 @@ const Sugestion = () =>{
                 background: "linear-gradient(90deg, #fd70da 0%, #ad30e7 100%)",
                 height: 45,
                 "&:hover": {
-                    opacity: 0.9,
+                    opacity: 0.75,
             },}}
             >
             Gerar Sugestões

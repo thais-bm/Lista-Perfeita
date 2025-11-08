@@ -1,6 +1,7 @@
 import React from 'react'
 import SignInComponent from '../components/SignInComponent'
 import Header from '../components/Header'
+import { Box } from '@mui/material'
 
 /* 
 
@@ -16,10 +17,10 @@ import Header from '../components/Header'
 
 function SignIn() {
   return (
-    <div>
+    <Box sx={{overflow: 'hidden'}} >
         <Header />
         <SignInComponent />
-    </div>
+    </Box>
   )
 }
 
