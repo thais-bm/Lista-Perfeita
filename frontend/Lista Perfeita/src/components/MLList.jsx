@@ -8,7 +8,7 @@ const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts}) =>{
     const progress = totalGifts > 0 ? (boughtGifts / totalGifts) * 100 : 0;
 
     return(
-    <Box width={400} height={250}
+    <Box width={355} height={250}
         sx={{
         boxShadow: 2,
         borderRadius: 3,
@@ -75,7 +75,7 @@ const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts}) =>{
                 borderRadius: 5,
                 backgroundColor: "#f0f0f0",
                 "& .MuiLinearProgress-bar": {
-                backgroundColor: "#5b5b5b",
+                backgroundColor: "#1a1a1af9",
                 },
             }}
             />
