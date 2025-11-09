@@ -11,12 +11,13 @@ const MLBox = ({number, title, icon}) =>{
         display: 'flex',
         flexDirection: 'row',
         justifyContent:'space-between',
+        boxShadow: 2,
         p:2
         }}
         >
 
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems:'flex-start' }}>
-                <Typography variant="h6" fontSize={17} >
+                <Typography variant="body1"  fontWeight={"bold"} >
                     {title}
                 </Typography>
                 <Typography variant="h6" fontWeight="bold" sx={{marginTop:2.5}}>

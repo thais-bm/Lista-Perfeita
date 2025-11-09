@@ -7,6 +7,7 @@ import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined
 import MLBox from "../components/MLBox";
 
 import { useNavigate } from "react-router-dom";
+import MLList from "../components/MLList";
 
 const MinhaLista = () => {
     const navigate = useNavigate();
@@ -80,6 +81,19 @@ const MinhaLista = () => {
                     number={14}
                     icon={<CardGiftcardIcon />}
                 />
+            </Box>
+
+            <Box>
+                <MLList
+                title={"Meu aniversário de 25 anos"}
+                subtitle={"Lista para minha festa de aniversário"}
+                type={"Link"}
+                ocasion={"Aniversário"}
+                date={"14/12/2024"}
+                boughtGifts={3}
+                totalGifts={10}
+                />
+
             </Box>
 
         </div>

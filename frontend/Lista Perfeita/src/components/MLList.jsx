@@ -1,31 +1,137 @@
-import { Typography } from "@mui/material";
+import { Typography, Box, Button, LinearProgress, Chip} from "@mui/material";
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EventIcon from "@mui/icons-material/Event";
 
+const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts}) =>{
+    const progress = totalGifts > 0 ? (boughtGifts / totalGifts) * 100 : 0;
 
-const MLList = ({title, subtitle, type}) =>{
     return(
-    <Box width={350} height={100}
+    <Box width={400} height={250}
         sx={{
-        border: '3px solid transparent',
+        boxShadow: 2,
         borderRadius: 3,
         backgroundColor: 'white',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent:'space-between',
-        p:2
+        p:2,
+        marginTop: 4,
         }}
         >
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems:'flex-start' }}>
-                <Typography variant="h6" fontSize={17} fontWeight="bold">
-                    {title}
+            <Box
+                sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                }}
+            >
+                <Box>
+                <Typography variant="h6" fontWeight="bold">
+                    {title} 
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" color="text.secondary">
                     {subtitle}
                 </Typography>
+                </Box>
+
+                <Chip
+                label="Link"
+                size="small"
+                sx={{
+                    backgroundColor: "#f0f4ff",
+                    color: "#2b65ff",
+                    fontWeight: "bold",
+                    fontSize: "0.75rem",
+                }}
+                />
+            </Box> 
+
+            <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                <EventIcon fontSize="small" sx={{ color: "grey.600", mr: 1 }} />
+                <Typography variant="body2" color="text.secondary">
+                {ocasion} • {date}
+                </Typography>
+            </Box>
+            
+            
+        <Box sx={{ mt: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}>
+            <Typography variant="body2" fontWeight="bold">
+                Progresso
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+                {boughtGifts}/{totalGifts} presentes
+            </Typography>
             </Box>
 
-            <Typography> {type} </Typography>            
+            <LinearProgress
+            variant="determinate"
+            value={progress}
+            sx={{
+                height: 10,
+                borderRadius: 5,
+                backgroundColor: "#f0f0f0",
+                "& .MuiLinearProgress-bar": {
+                backgroundColor: "#5b5b5b",
+                },
+            }}
+            />
+            <Typography
+            variant="caption"
+            sx={{ mt: 1, display: "block", color: "text.secondary" }}
+            >
+            {Math.round(progress)}% completo {/*esse progresso é fogor*/ }
+            </Typography>
         </Box>
+        
+        <Box
+        sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap:1,
+            mt: 2,
+        }}
+        >
+            <Button
+            variant="outlined"
+            startIcon={<RemoveRedEyeOutlinedIcon />}
+            sx={{
+                borderColor: "#ddd",
+                color: "black",
+                textTransform: "none",
+                width:400,
+                borderRadius: 3
+            }}
+            >
+            Ver
+            </Button>
+
+            <Button
+            variant="outlined"
+            sx={{
+                borderColor: "#ddd",
+                color: "black",
+                borderRadius: 3
+            }}
+            startIcon={<ShareOutlinedIcon />}
+            />
+
+            <Button
+            variant="outlined"
+            sx={{
+                borderColor: "#ddd",
+                color: "red",
+                borderRadius: 3,
+                width: 20
+            }}
+            startIcon={<DeleteOutlineIcon />}
+            />
+        </Box>
+    
+    </Box>
     )
 }
 

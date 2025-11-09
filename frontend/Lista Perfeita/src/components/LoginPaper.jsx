@@ -39,6 +39,7 @@ const LoginPaper = () => {
                         type="email"
                         variant="outlined"
                         fullWidth
+                        size='small'
                     />
 
                     <TextField
@@ -48,13 +49,17 @@ const LoginPaper = () => {
                         type="password"
                         required
                         fullWidth
+                        size='small'
                     />
 
-                    <Button type="submit" variant="contained" size="large" fullWidth>
+
+                    <Button variant='outlined' color='black'
+                        sx={{borderRadius: 2, textTransform:'none', background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
+                    >
                         Entrar
                     </Button>
 
-                    <Button onClick={navigateRegister}> Ainda não tem conta? Clique aqui para se registrar!</Button>
+                    <Button variant='body2' color='pink' onClick={navigateRegister}> Ainda não tem conta? Clique aqui para se registrar!</Button>
                 </Stack>
             </Grid>
 
