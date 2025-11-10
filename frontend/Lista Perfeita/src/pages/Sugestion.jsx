@@ -152,6 +152,7 @@ const Sugestion = () =>{
     justifyContent={"center"}
     flexDirection={"column"}
     display={"flex"}
+    boxShadow={2}
     sx={{marginTop: 5, borderRadius: 4}} >
         <AutoAwesomeOutlinedIcon sx={{align: 'center', display:'flex', fontSize:"100px", color:'grey', marginLeft: 25, marginBottom: 3}}/>
         <Typography fontWeight="bold" align={"center"}> Aguardando sugestões </Typography>
