@@ -3,11 +3,11 @@ import Header from '../components/Header'
 import { Button, Box, Typography, Stack, LinearProgress, Paper, Container, Grid } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import EventIcon from '@mui/icons-material/Event';
 import PersonIcon from '@mui/icons-material/Person';
 import PresenteItem from '../components/PresenteItem';
+import AddProduct from '../components/AddProduct';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -170,8 +170,8 @@ const VerLista = () => {
                     ))}
                 </Grid>
             </Container>
-
-
+            
+        <AddProduct/>
         </div>
     )
 }
