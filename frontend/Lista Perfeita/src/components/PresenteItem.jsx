@@ -4,6 +4,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckBought from './CheckBought';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus }) => {
   const [status, setStatus] = useState(initialStatus);

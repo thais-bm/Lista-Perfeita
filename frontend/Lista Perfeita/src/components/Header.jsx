@@ -1,13 +1,16 @@
-import {Button, Box, Typography} from '@mui/material'
+import {Button, Box, Typography, Paper} from '@mui/material'
 import FilterVintageIcon from '@mui/icons-material/FilterVintage';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () =>{
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const isActive = (path) => location.pathname === path;
       
   const navigateMinhaLista = () => {
     navigate("/minhaLista"); 
@@ -34,7 +37,7 @@ const Header = () =>{
   }
 
   return(
-    <Box sx={{
+    <Paper elevation={3} sx={{
         width: '100%', 
         color: 'black',
         justifyContent: 'space-between',
@@ -52,8 +55,8 @@ const Header = () =>{
           sx={{
             display: "flex",
             gap: 3,
-            marginLeft: 4,
-            marginTop: 2,
+            marginLeft: 14,
+            marginTop: 1,
             marginBottom: 1
           }}
         >
@@ -79,37 +82,51 @@ const Header = () =>{
             > 
             Lista Perfeita 
           </Button>
-          
-          <Box sx={{"& .MuiButton-root": {          
-              color: "grey",
-              marginTop: '8px',
-              textTransform: "none",
-              "&:hover": {
-              backgroundColor: "transparent", 
-              color: "#c60094ff",
-              "&:focus": {
-              outline: "none", 
-              boxShadow: "none", 
-            },},"&:active": {
-              outline: "none",
-              boxShadow: "none",
-            },
-            },}}>
 
-            <Button onClick={navigateHome}>
-              Início
-            </Button>
-
-            <Button onClick={navigateMinhaLista}>
-              Minha Lista
-            </Button>
-
-            <Button onClick={navigateSugestion}>
-              Sugestões
-            </Button>
-          </Box>
         </Box>
-        
+          
+        <Box
+        sx={{
+          display: "flex",
+          gap: 5,
+          justifyContent: "center",
+          alignItems: "center",
+          flexGrow: 1,
+        }}
+        >
+        <Button
+          onClick={navigateHome}
+          sx={{
+            textTransform: "none",
+            color: isActive('/') ? '#b8018aff' : 'black',
+            '&:hover': { backgroundColor: 'transparent', color: '#c60094' },
+          }}
+        >
+          Início
+        </Button>
+
+        <Button
+          onClick={navigateMinhaLista}
+          sx={{
+            textTransform: "none",
+            color: isActive('/minhaLista') ? '#b8018aff': 'black',
+            '&:hover': { backgroundColor: 'transparent', color: '#c60094' },
+          }}
+        >
+          Minha Lista
+        </Button>
+
+        <Button
+          onClick={navigateSugestion}
+          sx={{
+            textTransform: "none",
+            color: isActive('/sugestion') ? '#b8018aff': 'black',
+            '&:hover': { backgroundColor: 'transparent', color: '#c60094' },
+          }}
+        >
+          Sugestões
+        </Button>
+      </Box>
 
         <Box sx={{
             display: "flex",
@@ -139,7 +156,7 @@ const Header = () =>{
           </Button>
         </Box>
         
-    </Box>
+    </Paper>
   )
 }
 

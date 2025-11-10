@@ -58,7 +58,6 @@ const VerLista = () => {
     // Renderização da página
     return (
         <div>
-
             <Header />
 
             <Box marginTop={12} /> {/* Espaçamento entre o header e o conteúdo da página: 10 + DISTANCIA */}
