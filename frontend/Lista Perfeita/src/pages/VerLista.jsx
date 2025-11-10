@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../components/Header'
 import { Button, Box, Typography, Stack, LinearProgress, Paper, Container, Grid } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import EventIcon from '@mui/icons-material/Event';
 import PersonIcon from '@mui/icons-material/Person';
@@ -63,43 +65,61 @@ const VerLista = () => {
 
             {/* informação sobre a lista */}
             <Container maxWidth="lg">
+                <Button
+                    color='grey'
+                    onClick={handleReturn}
+                    startIcon={<ArrowBackIcon sx={{ fontSize: 18 }} />}
+                    sx={{ fontSize: 15,  textTransform:'none', marginBottom: 2 }}
+                >
+                    Voltar para as minhas listas
+                </Button>
+
                 <Paper elevation={3} sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
-                    <Button
-                        color="grey"
-                        onClick={handleReturn}
-                        startIcon={<ArrowBackIcon sx={{ fontSize: 13 }} />}
-                        sx={{ mb: 1, fontSize: 13, padding: 2 }}
-                    >
-                        Voltar para as minhas listas
-                    </Button>
 
                     <Box padding={3}>
-                        <Typography color="black" variant="h4" fontWeight="bold">{listaExemplo.nome}</Typography>
-                        <Typography variant="body2" color="secondary" sx={{ paddingTop: 3, paddingBottom: 3 }}>{listaExemplo.descricao}</Typography>
+                        <Box  display= "flex" flexDirection={'row'}>
+                            <Typography color="black" variant="h4" fontWeight="bold">{listaExemplo.nome}</Typography>
+
+                            <Button variant='outlined'
+                            color='grey'
+                            startIcon={<ShareOutlinedIcon/>}
+                            sx={{
+                                marginLeft: 80,
+                                color:'black',
+                                borderRadius:4,
+                                textTransform:'none',
+                            }}> 
+                                Compartilhar
+                            </Button>
+
+                        </Box>
+                        
+                        <Typography variant="body2" color="grey" sx={{paddingBottom: 3 }}>{listaExemplo.descricao}</Typography>
+
 
                         {/* Categoria - data do evento - criadora do evento */}
-                        <Stack direction="row" spacing={2} mt={1}>
-
-                            <Stack direction="row" spacing={1} mt={1}>
+                        <Stack direction="row" spacing={2} >
+                            {/*eu tirei o "initial" das cores pq tava transparente */}
+                            <Stack direction="row" spacing={1}>
                                 <CardGiftcardIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="initial">{listaExemplo.categoria}</Typography>
+                                <Typography variant="body2" color="grey">{listaExemplo.categoria}</Typography>
                             </Stack>
 
-                            <Stack direction="row" spacing={1} mt={1}>
+                            <Stack direction="row" spacing={1}>
                                 <EventIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="initial">{listaExemplo.dataEvento}</Typography>
+                                <Typography variant="body2" color="grey">{listaExemplo.dataEvento}</Typography>
                             </Stack>
 
-                            <Stack direction="row" spacing={1} mt={1}>
+                            <Stack direction="row" spacing={1}>
                                 <PersonIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="initial">{listaExemplo.criadora}</Typography>
+                                <Typography variant="body2" color="grey">{listaExemplo.criadora}</Typography>
                             </Stack>
                         </Stack>
 
-                        <Box mt={4} mb={2} backgroundColor="#f0f0f0ff" padding={2} borderRadius={2}>
-                            <Stack direction="row" spacing={2} mt={1} paddingBottom={2} justifyContent={'space-between'} >
-                                <Typography variant="body2" color="initial">Progresso da Lista</Typography>
-                                <Typography variant="body2" color="initial">{(listaExemplo.porcentagemComprados / 100) * listaExemplo.quantidadePresentes} de {listaExemplo.quantidadePresentes} presentes comprados</Typography>
+                        <Box mt={4}  backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
+                            <Stack direction="row" spacing={2} mt={1}  justifyContent={'space-between'} >
+                                <Typography variant="body2" color="black">Progresso da Lista</Typography> {/*mudei a cor pq n dava pra ver nadakkk*/}
+                                <Typography variant="body2" color="black">{(listaExemplo.porcentagemComprados / 100) * listaExemplo.quantidadePresentes}/{listaExemplo.quantidadePresentes} presentes comprados</Typography>
                             </Stack>
 
                             <LinearProgress
@@ -110,12 +130,12 @@ const VerLista = () => {
                                     borderRadius: 2,
                                     backgroundColor: '#eee', // cor do fundo (trilha)
                                     '& .MuiLinearProgress-bar': {
-                                        backgroundColor: '#ea33bd', // cor da parte carregada
+                                        backgroundColor: '#000000ff', // cor da parte carregada
                                     },
                                 }}
                             />
 
-                            <Typography variant="body2" color="initial" paddingTop={1}>{listaExemplo.porcentagemComprados}%</Typography>
+                            <Typography variant="body2" color="black" paddingTop={1}>{listaExemplo.porcentagemComprados}% completo</Typography>
                         </Box>
 
 
@@ -133,7 +153,7 @@ const VerLista = () => {
 
             {/* Se for a criadora da lista -> botões para editar ou excluir a lista e adicionar presentes */}
 
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Container  sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={2}>
                     {listaExemplo.presentes.map((presente) => (
                         <Grid item xs={12} sm={6} md={4} key={presente.id}>
