@@ -16,10 +16,28 @@ import { Box } from '@mui/material'
 */
 
 function SignIn() {
+  const [nome, setNome] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [senha, setSenha] = React.useState('')
+  const [confirmarSenha, setConfirmarSenha] = React.useState('')
+  const [cpf, setCpf] = React.useState('')
+
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState('');
+
+  const handleCheckPasswords = () => {
+    if (senha !== confirmarSenha) {
+      setErro('As senhas não coincidem.');
+      return false;
+    }
+
+
+
+
   return (
-    <Box sx={{overflow: 'hidden'}} >
-        <Header />
-        <SignInComponent />
+    <Box sx={{ overflow: 'hidden' }} >
+      <Header />
+      <SignInComponent nome={nome} cpf={cpf} email={email}0/>
     </Box>
   )
 }

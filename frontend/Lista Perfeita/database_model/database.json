@@ -1,0 +1,71 @@
+{
+    "listas_presente": {
+        "nome": "Exemplo de Lista",
+        "descricao": "Esta é uma descrição de exemplo para a lista de presentes.",
+        "categoria": "Aniversário",
+        "dataEvento": "2023-12-25",
+        "idCriadora": 1,
+        "criadora": "Joana Silva",
+        "porcentagemComprados": 60,
+        "quantidadePresentes": 10,
+        "presentes": [
+            {
+                "id": 1,
+                "nome": "Fone Bluetooth Legal",
+                "descricao": "Fones sem fio com cancelamento de ruído ativo",
+                "preco": 299.99,
+                "imagem": "https://m.media-amazon.com/images/I/51xuDWMXfRL._AC_UF1000,1000_QL80_.jpg",
+                "link": [
+                    "#",
+                    "##"
+                ],
+                "status": "disponível"
+            },
+            {
+                "id": 2,
+                "nome": "Smartphone XYZ",
+                "descricao": "Smartphone com câmera de alta resolução",
+                "preco": 1999.99,
+                "imagem": "https://s2-techtudo.glbimg.com/UtPQgyuHfZrGtYH77LHDjxEnM8I=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/W/m/PJ6zOcTBeXSApdBnoRIw/2016-06-29-1iphone-2g.jpg",
+                "link": [
+                    "#",
+                    "##"
+                ],
+                "status": "comprado"
+            },
+            {
+                "id": 3,
+                "nome": "Computador Gamer",
+                "descricao": "Camiseta de algodão com estampa moderna",
+                "preco": 79.99,
+                "imagem": "https://cdn.dooca.store/559/products/c1_640x640+fill_ffffff.png",
+                "link": [
+                    "#",
+                    "##"
+                ],
+                "status": "disponível"
+            }
+        ]
+    },
+
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Joana Silva",
+            "email": "joana@gmail.com",
+            "CPF": "123.456.789-00",
+            "senha": "senhaSegura123"
+        },
+        {
+            "id": 2,
+            "nome": "Carlos Pereira",
+            "email": "carlos@gmail.com",
+            "CPF": "987.654.321-00",
+            "senha": "outraSenha456"
+        }
+    ]
+}
+
+
+
+
