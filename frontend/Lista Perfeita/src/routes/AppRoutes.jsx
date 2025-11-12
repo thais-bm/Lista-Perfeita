@@ -7,7 +7,7 @@ import SignIn from '../pages/SignIn';
 import CreateList from '../pages/CreateList';
 import Sugestion from '../pages/Sugestion';
 import VerLista from '../pages/VerLista';
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoutes";
 
 
 const AppRoutes = () => {

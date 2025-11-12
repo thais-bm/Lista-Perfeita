@@ -5,6 +5,7 @@ import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const API = "http://localhost:8000";
 
@@ -16,6 +17,8 @@ const SignInComponent = () => {
   const [confirmSenha, setConfirmSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [mensagem, setMensagem] = useState("");
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -46,7 +49,6 @@ const SignInComponent = () => {
         throw new Error(err.detail || "Erro no cadastro");
       }
       const data = await res.json();
-      setMensagem(`Cadastro realizado: ${data.name} (${data.email})`);
       navigate("/login")
     } catch (err) {
       toast.error(err.message);
