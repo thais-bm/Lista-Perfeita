@@ -6,3 +6,7 @@ uvicorn main:app --reload
 iniciar frontend
 cd frontend\"Lista Perfeita"
 npm run dev
+
+
+
+venv\Scripts\Activate
