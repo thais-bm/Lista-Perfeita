@@ -1,15 +1,49 @@
 import { Paper, Grid, Typography, TextField, Button, Stack } from '@mui/material'
-import React from 'react'
+import React, {useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 const LoginPaper = () => {
     const navigate = useNavigate()
 
-    const navigateRegister = () =>{
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [mensagem, setMensagem] = useState("")
+
+    const API = "http://localhost:8000"
+
+    const navigateRegister = () => {
         navigate("/signin")
     }
+
+    async function handleLogin(e) {
+        e.preventDefault()
+
+        try {
+            const res = await fetch(`${API}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email, password: senha })
+            })
+
+            if (!res.ok) {
+                const err = await res.json()
+                throw new Error(err.detail || "Erro no login")
+            }
+
+            const data = await res.json()
+            localStorage.setItem("token", data.access_token)
+            toast.success("Login realizado com sucesso!")
+
+            // PAGINA PROTEGIDA AQUI
+            navigate("/minhaLista")
+        } catch (err) {
+            toast.error(err.message)
+        }
+    }
+
     return (
-        <Grid container sx={{ minHeight: '100vh', width:'100%', display: 'flex' }}>
+        <Grid container sx={{ minHeight: '100vh', width: '100%', display: 'flex' }}>
             {/* Coluna da esquerda: Login */}
             <Grid
                 item
@@ -31,46 +65,60 @@ const LoginPaper = () => {
                     Insira seu e-mail e senha para acessar suas listas perfeitas!
                 </Typography>
 
-                <Stack spacing={3} sx={{ width: '100%', maxWidth: 400 }}>
-                    <TextField
-                        required
-                        id='email'
-                        label='Email'
-                        type="email"
-                        variant="outlined"
-                        fullWidth
-                        size='small'
-                    />
+                {mensagem && (
+                    <Typography variant="body2" color="error" align="center" mb={2}>
+                        {mensagem}
+                    </Typography>
+                )}
 
-                    <TextField
-                        variant="outlined"
-                        id='senha'
-                        label="Senha"
-                        type="password"
-                        required
-                        fullWidth
-                        size='small'
-                    />
+                <form onSubmit={handleLogin} style={{ width: '100%', maxWidth: 400 }}>
+                    <Stack spacing={3}>
+                        <TextField
+                            required
+                            id='email'
+                            label='Email'
+                            type="email"
+                            variant="outlined"
+                            fullWidth
+                            size='small'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
+                        <TextField
+                            variant="outlined"
+                            id='senha'
+                            label="Senha"
+                            type="password"
+                            required
+                            fullWidth
+                            size='small'
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                        />
 
-                    <Button variant='outlined' color='black'
-                        sx={{borderRadius: 2, textTransform:'none', background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
-                    >
-                        Entrar
-                    </Button>
+                        <Button
+                            type="submit"
+                            variant='outlined'
+                            color='black'
+                            sx={{ borderRadius: 2, textTransform: 'none', background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white' }}
+                        >
+                            Entrar
+                        </Button>
 
-                    <Button variant='body2' color='pink' onClick={navigateRegister}> Ainda não tem conta? Clique aqui para se registrar!</Button>
-                </Stack>
+                        <Button variant='body2' color='pink' onClick={navigateRegister}>
+                            Ainda não tem conta? Clique aqui para se registrar!
+                        </Button>
+                    </Stack>
+                </form>
             </Grid>
 
             {/* Coluna da direita: Imagem */}
-            <Grid item xs={12} md={6} sx={{
-                width: '50%',
-            }}>
+            <Grid item xs={12} md={6} sx={{ width: '50%' }}>
                 <img
                     src="/hug_gift.jpg"
                     alt="Ilustração de login"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderTopLeftRadius: '10%', display:'block' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderTopLeftRadius: '10%', display: 'block' }}
                 />
             </Grid>
         </Grid >

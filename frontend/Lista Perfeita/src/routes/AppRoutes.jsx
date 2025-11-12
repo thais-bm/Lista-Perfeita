@@ -7,17 +7,24 @@ import SignIn from '../pages/SignIn';
 import CreateList from '../pages/CreateList';
 import Sugestion from '../pages/Sugestion';
 import VerLista from '../pages/VerLista';
+import ProtectedRoute from "./ProtectedRoute";
 
-const AppRoutes = () =>{
-    return(
+
+const AppRoutes = () => {
+    return (
         <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<MinhaLista />} path="/minhaLista"/>
-            <Route element={<CreateList/>} path="/createList" />
-            <Route element={<Sugestion/>} path="/sugestion" />
-            <Route element={<NotFound />} path="*" /> 
-            <Route element={<Login />} path="/login"/>
-            <Route element={<SignIn />} path="/signin"/>
+            <Route element={
+                <ProtectedRoute>
+                    <MinhaLista />
+                </ProtectedRoute>
+
+            } path="/minhaLista" />
+            <Route element={<CreateList />} path="/createList" />
+            <Route element={<Sugestion />} path="/sugestion" />
+            <Route element={<NotFound />} path="*" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<SignIn />} path="/signin" />
             <Route element={<NotFound />} path="*" />
             <Route element={<VerLista />} path="/verLista" />
         </Routes>

@@ -3,7 +3,7 @@ import React from 'react'
 import FormControlLabel from '@mui/material/FormControlLabel';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 
-const LoginPaper = ( {nome, email, cpf, senha}) => {
+const SignInComponent = ( {nome, email, cpf, senha}) => {
     return (
         <Grid container sx={{ minHeight: '100vh', width:'100%', display: 'flex', backgroundColor: 'white' }}>
             {/* Coluna da esquerda: Login */}
@@ -107,4 +107,4 @@ const LoginPaper = ( {nome, email, cpf, senha}) => {
     )
 }
 
-export default LoginPaper
+export default SignInComponent;

@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "f7cecd42-7f82-4051-8f3b-d2dfa6c1e800",
+      "name": "thais",
+      "email": "fulano@email.com",
+      "CPF": "12312312323",
+      "created_at": "2025-11-12T13:25:17.497305",
+      "updated_at": "2025-11-12T13:25:17.497305",
+      "password": "123"
+    }
+  ]
+}
