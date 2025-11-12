@@ -1,6 +1,6 @@
 python-jose[cryptography]
 passlib[bcrypt]
-pydatic[email]
+pydantic[email]
 alembic==1.17.1
 annotated-doc==0.0.4
 annotated-types==0.7.0
