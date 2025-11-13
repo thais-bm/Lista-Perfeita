@@ -14,6 +14,7 @@ def buscar_zoom(termo):
     url = f"https://www.zoom.com.br/search?q={termo_q}"
 
     with sync_playwright() as p:
+        # browser = p.firefox.launch(headless=HEADLESS)
         browser = p.chromium.launch(headless=HEADLESS)
         page = browser.new_page()
         page.set_extra_http_headers({
@@ -38,7 +39,7 @@ def buscar_zoom(termo):
             title_elem = el.query_selector("[data-testid='product-title']") or el.query_selector("h2") or el.query_selector("h3") or el.query_selector("a[title]")
             title = title_elem.inner_text().strip() if title_elem else None
 
-            price_elem = el.query_selector_all("[data-testid*='price'], .price, .product-price, .price-value, span")
+            price_elem = el.query_selector_all("[data-testid*='price'], .price, .product-price, .price-value")
             price = None
             for pc in price_elem:
                 text = pc.inner_text().strip()
@@ -68,6 +69,7 @@ def buscar_zoom(termo):
 
 if __name__ == "__main__":
     termo = input("Digite o termo de busca: ").strip()
+    # termo = "notebook ryzen 5"
     itens = buscar_zoom(termo)
     if not itens:
         print("Nenhum item extraído (veja zoom_debug.html / zoom_debug.png para inspeção).")
