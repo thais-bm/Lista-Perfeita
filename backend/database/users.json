@@ -26,6 +26,24 @@
       "created_at": "2025-11-12T15:24:21.468535",
       "updated_at": "2025-11-12T15:24:21.468535",
       "password": "123"
+    },
+    {
+      "id": "01fe1e21-927a-4b5c-b50a-a0e7518a3a3c",
+      "name": "Oi usei seu numero",
+      "email": "admin@admin.com",
+      "cpf": "123.456.789-53",
+      "password": "thaisamiga1",
+      "created_at": "2025-11-14T13:44:37.317895",
+      "updated_at": "2025-11-14T13:44:37.317895"
+    },
+    {
+      "id": "8cdb5164-4844-4fd3-ab0c-9d18462493e4",
+      "name": "Oi usei seu numero",
+      "email": "admiaaan@admin.com",
+      "cpf": "123.456.789-99",
+      "password": "123",
+      "created_at": "2025-11-14T13:44:57.959647",
+      "updated_at": "2025-11-14T13:44:57.959647"
     }
   ]
 }

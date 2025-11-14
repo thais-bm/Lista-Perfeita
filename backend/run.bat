@@ -40,7 +40,7 @@ ECHO  Iniciando Uvicorn com auto-reload...
 ECHO  (Pressione CTRL+C para parar o servidor)
 ECHO ------------------------------------------------------
 REM 4. Inicia o Uvicorn
-uvicorn main:app --reload
+uvicorn main:app --reload --port 8000
 
 REM Mantem a janela aberta se o uvicorn falhar imediatamente
 PAUSE

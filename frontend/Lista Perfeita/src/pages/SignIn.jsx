@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const API = "http://localhost:8000";
+const API = "http://localhost:8000/users";
 
 const SignInComponent = () => {
   const [nome, setNome] = useState("");
@@ -49,7 +49,10 @@ const SignInComponent = () => {
         throw new Error(err.detail || "Erro no cadastro");
       }
       const data = await res.json();
-      navigate("/login")
+      toast.success("Cadastro realizado com sucesso!");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); // espera 2 segundos
     } catch (err) {
       toast.error(err.message);
     }
