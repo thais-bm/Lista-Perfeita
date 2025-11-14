@@ -4,10 +4,12 @@ from pathlib import Path
 from typing import Optional, Dict, List
 from datetime import datetime
 import uuid
+import dotenv
 
-DB_FILE = Path("database/users.json")
 
-class User:
+class organizador_evento:
+    dotenv.load_dotenv()
+    DB_FILE = Path(os.getenv("USER_FILE"))
     def __init__(self, id: str, name: str, email: str, cpf: str, password: str,
                  created_at: Optional[str] = None, updated_at: Optional[str] = None):
         self.id = id

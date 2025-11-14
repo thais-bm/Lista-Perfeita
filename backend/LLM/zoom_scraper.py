@@ -80,3 +80,5 @@ if __name__ == "__main__":
             print(f"   Preço: {it['price']}")
             print(f"   Link: {it['link']}")
             print(f"   Imagem: {it['image']}\n")
+            
+    
