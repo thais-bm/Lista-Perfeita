@@ -9,10 +9,19 @@ import os
 
 from models.organizador_evento import organizador_evento as User
 
-
-
 # Define o roteador para as rotas de usuário
 router = APIRouter(prefix="/giftlist", tags=["giftlist"])
+
+"""
+ATENCAO
+NADA AQUI ESTA IMPLEMENTADO AINDA, APENAS OS ENDPOINTS FORAM CRIADOS
+PORQUE EU TENHO QUE PENSAR MELHOR NA LOGICA DE CADA UM DELES
+ELES SAO SUGESTOES INICIAIS DO QUE PODE SER FEITO
+
+E EU TO DE SACO CHEIO DESSE TRABALHO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+"""
+
 
 # Rotas da lista de presentes
 @router.post("/createList")
@@ -128,5 +137,3 @@ async def visualizar_lista_compartilhada(share_token: str):
     # Buscar a lista associada ao token
     # Retornar a lista encontrada ou uma mensagem de erro
 
-# Note: The actual implementation of the above endpoints would require
-# database interactions and business logic which are not included here.
