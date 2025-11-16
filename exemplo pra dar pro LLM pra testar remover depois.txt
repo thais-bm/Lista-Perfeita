@@ -1,0 +1,1 @@
+{ "idade": 14, "gosta": [ "video games", "comida", "gatos", "meias", "ciencia" ], "não gosta": [ "altura", "sapatos" ], "relação com o presenteador": "amigo", "ocasião": "aniversário", }

@@ -1,0 +1,13 @@
+{
+  "skip_summarization": null,
+  "state_delta": {},
+  "artifact_delta": {},
+  "transfer_to_agent": null,
+  "escalate": null,
+  "requested_auth_configs": {},
+  "requested_tool_confirmations": {},
+  "compaction": null,
+  "end_of_agent": null,
+  "agent_state": null,
+  "rewind_before_invocation_id": null
+}

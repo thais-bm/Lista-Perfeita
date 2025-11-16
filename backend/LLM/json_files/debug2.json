@@ -1,0 +1,144 @@
+{
+  "id": "ab65938d-6da0-46b4-98a2-41d0baf41c85",
+  "app_name": "LLM",
+  "user_id": "user",
+  "state": {},
+  "events": [
+    {
+      "model_version": null,
+      "content": {
+        "parts": [
+          {
+            "function_call": null,
+            "code_execution_result": null,
+            "executable_code": null,
+            "file_data": null,
+            "function_response": null,
+            "inline_data": null,
+            "text": "{ \"idade\": 14, \"gosta\": [ \"video games\", \"comida\", \"gatos\", \"meias\", \"ciencia\" ], \"não gosta\": [ \"altura\", \"sapatos\" ], \"relação com o presenteador\": \"amigo\", \"ocasião\": \"aniversário\", }",
+            "thought": null,
+            "thought_signature": null,
+            "video_metadata": null
+          }
+        ],
+        "role": "user"
+      },
+      "grounding_metadata": null,
+      "partial": null,
+      "turn_complete": null,
+      "finish_reason": null,
+      "error_code": null,
+      "error_message": null,
+      "interrupted": null,
+      "custom_metadata": null,
+      "usage_metadata": null,
+      "live_session_resumption_update": null,
+      "input_transcription": null,
+      "output_transcription": null,
+      "avg_logprobs": null,
+      "logprobs_result": null,
+      "cache_metadata": null,
+      "citation_metadata": null,
+      "invocation_id": "e-4c4bbd00-92d2-4c46-82f5-2e9cd53a05e1",
+      "author": "user",
+      "actions": {
+        "skip_summarization": null,
+        "state_delta": {},
+        "artifact_delta": {},
+        "transfer_to_agent": null,
+        "escalate": null,
+        "requested_auth_configs": {},
+        "requested_tool_confirmations": {},
+        "compaction": null,
+        "end_of_agent": null,
+        "agent_state": null,
+        "rewind_before_invocation_id": null
+      },
+      "long_running_tool_ids": null,
+      "branch": null,
+      "id": "f72c2b3e-991e-49fa-a342-672ae8c0a63f",
+      "timestamp": 1763278044.06166
+    },
+    {
+      "model_version": "ollama/gemma3:12b",
+      "content": {
+        "parts": [
+          {
+            "function_call": {
+              "id": "call_6e07bb8b-e4f4-43ee-8b48-f56baf47e332",
+              "args": {
+                "reflection": "Considerando que a pessoa tem 14 anos e gosta de video games, comida, gatos, meias e ciência, e que o presenteador é um amigo, podemos pensar em presentes que combinem esses interesses. A aversão à altura e sapatos pode ser utilizada para evitar sugestões relacionadas a esses temas. O aniversário é uma ocasião especial, então podemos optar por algo que seja divertido e memorável.",
+                "items": {
+                  "Jogo de videogame": "considerando que a pessoa tem 14 anos e gosta de video games, um novo jogo pode ser uma ótima opção de presente, especialmente se for um jogo que combine com os gostos dela.",
+                  "Livro de ciência": "a pessoa demonstra interesse em ciência, então um livro sobre o assunto pode ser uma forma de incentivar ainda mais essa paixão e proporcionar conhecimento de maneira divertida.",
+                  "Meias temáticas de gatos": "combinando o gosto por gatos e meias, um par de meias com estampas de gatos pode ser um presente criativo e útil.",
+                  "Caneca de gato": "a pessoa demonstra gostar de gatos, uma caneca com tema de gatos pode ser uma forma divertida de aproveitar o presente.",
+                  "Kit de culinária para iniciantes": "considerando que a pessoa gosta de comida, um kit de culinária pode ser uma forma de incentivá-la a experimentar novas receitas e se divertir na cozinha."
+                }
+              },
+              "name": "searchlist_add"
+            },
+            "code_execution_result": null,
+            "executable_code": null,
+            "file_data": null,
+            "function_response": null,
+            "inline_data": null,
+            "text": null,
+            "thought": null,
+            "thought_signature": null,
+            "video_metadata": null
+          }
+        ],
+        "role": "model"
+      },
+      "grounding_metadata": null,
+      "partial": false,
+      "turn_complete": null,
+      "finish_reason": "STOP",
+      "error_code": null,
+      "error_message": null,
+      "interrupted": null,
+      "custom_metadata": null,
+      "usage_metadata": {
+        "cache_tokens_details": null,
+        "cached_content_token_count": 0,
+        "candidates_token_count": 308,
+        "candidates_tokens_details": null,
+        "prompt_token_count": 1217,
+        "prompt_tokens_details": null,
+        "thoughts_token_count": null,
+        "tool_use_prompt_token_count": null,
+        "tool_use_prompt_tokens_details": null,
+        "total_token_count": 1525,
+        "traffic_type": null
+      },
+      "live_session_resumption_update": null,
+      "input_transcription": null,
+      "output_transcription": null,
+      "avg_logprobs": null,
+      "logprobs_result": null,
+      "cache_metadata": null,
+      "citation_metadata": null,
+      "invocation_id": "e-4c4bbd00-92d2-4c46-82f5-2e9cd53a05e1",
+      "author": "Samuel",
+      "actions": {
+        "skip_summarization": null,
+        "state_delta": {},
+        "artifact_delta": {},
+        "transfer_to_agent": null,
+        "escalate": null,
+        "requested_auth_configs": {},
+        "requested_tool_confirmations": {},
+        "compaction": null,
+        "end_of_agent": null,
+        "agent_state": null,
+        "rewind_before_invocation_id": null
+      },
+      "long_running_tool_ids": [],
+      "branch": null,
+      "id": "f0042297-0dbd-4a2e-94c4-a9a4136b87be",
+      "timestamp": 1763278044.066933
+    }
+  ],
+  "last_update_time": 1763278044.066933
+}

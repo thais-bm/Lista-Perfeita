@@ -1,13 +1,16 @@
-from google.adk.agents.llm_agent import Agent
-from LLM.custom_agent_wrapper_function import build_agent
+import sys
+from pathlib import Path
 
-check_agent = build_agent(name="useless_agent",
-                          desc="does nothing",
-                          instr_file_path="LLM/agent_instructions/sub.txt")
+sys.path.append(str(Path(__file__).resolve().parent))
+
+from google.adk.agents.llm_agent import Agent
+import tools
+from custom_agent_wrapper_function import build_agent
+from os.path import dirname
 
 root_agent = build_agent(llm="ollama/gemma3:12b",
-                         name="manager",
-                         desc="manages interactions between agents of the sub-agent system",
-                         instr_file_path="LLM/agent_instructions/root.txt",
-                         customtools=[],
-                         subagents=[])
+                         name="Samuel",
+                         desc="Agent with the ability to suggest gifts, adds gift suggestions to a list that will later automatically be converted into store links offering those suggestions.",
+                         instr_file_path=str(dirname(__file__)) + "/agent_instructions/root.txt",
+                         customtools=[tools.add_tool, tools.stop_tool],
+                         before_tool_call=[tools.stopcallback, tools.suggestion_search_callback])
