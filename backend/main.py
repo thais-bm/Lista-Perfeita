@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from controllers.user_controller import router as user_router # controller do usuario
+from controllers.organizador_controller import router as user_router # controller do organizador
 
 app = FastAPI()
 

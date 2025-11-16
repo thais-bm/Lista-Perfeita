@@ -3,13 +3,17 @@ import json, os
 from pathlib import Path
 from typing import Optional, Dict, List
 from datetime import datetime
-import uuid
+import bcrypt
 import dotenv
 
+dotenv.load_dotenv()
+db_path_str = os.getenv("USER_FILE")
+if db_path_str is None:
+    raise ValueError("A variável de ambiente 'USER_FILE' não foi definida.")
+
+DB_FILE = Path(db_path_str)
 
 class organizador_evento:
-    dotenv.load_dotenv()
-    DB_FILE = Path(os.getenv("USER_FILE"))
     def __init__(self, id: str, name: str, email: str, cpf: str, password: str,
                  created_at: Optional[str] = None, updated_at: Optional[str] = None):
         self.id = id
@@ -46,7 +50,7 @@ class organizador_evento:
         db = cls.read_db()
         for u in db["users"]:
             if u["email"].lower() == email.lower():
-                return u
+                return cls(**u) # instancia de organizador_evento
         return None
 
     @classmethod
@@ -54,11 +58,40 @@ class organizador_evento:
         db = cls.read_db()
         for u in db["users"]:
             if u["id"] == user_id:
-                return u
+                return cls(**u) # instancia de organizador_evento
         return None
     
     def salvar(self):
+        self.encript_password() # Encrypt the password before saving
         db = self.read_db()
         db["users"].append(self.to_dict())
         self.write_db(db)
 
+    def encript_password(self):
+        salt = bcrypt.gensalt()
+        hash_bytes = bcrypt.hashpw(self.password.encode('utf-8'), salt)
+        self.password = hash_bytes.decode('utf-8')
+
+    def verify_password(self, plain_password: str) -> bool:
+        plain_bytes = plain_password.encode('utf-8')
+        hash_bytes = self.password.encode('utf-8') 
+        return bcrypt.checkpw(plain_bytes, hash_bytes)
+
+    def is_cpf_valid(self) -> bool:
+        num = [int(digit) for digit in self.cpf if digit.isdigit()]
+
+        # CPF precisa ter 11 digitos e não pode ter todos os dígitos iguais
+        if len(num) != 11 or len(set(num)) == 1:
+            return False
+        
+        # Primeiro dígito verificador
+        sum_1 = sum((10 - i) * num[i] for i in range(9))
+        if (sum_1 * 10 % 11) % 10 != num[9]:
+            return False
+        
+        # Segundo dígito verificador
+        sum_2 = sum((11 - i) * num[i] for i in range(10))
+        if (sum_2 * 10 % 11) % 10 != num[10]:
+            return False
+        
+        return True

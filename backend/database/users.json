@@ -1,49 +1,22 @@
 {
   "users": [
     {
-      "id": "f7cecd42-7f82-4051-8f3b-d2dfa6c1e800",
-      "name": "thais",
-      "email": "fulano@email.com",
-      "CPF": "12312312323",
-      "created_at": "2025-11-12T13:25:17.497305",
-      "updated_at": "2025-11-12T13:25:17.497305",
-      "password": "123"
+      "id": "0dec0812-c54c-4cda-98cc-e875f511f9fb",
+      "name": "testando 123",
+      "email": "lindo@linda.com",
+      "cpf": "123.456.789-00",
+      "password": "$2b$12$PRbGSXBA0WW3jPnJveI.F.Mj6llJAVDGEplJayyofVMom.wLkDHTm",
+      "created_at": "2025-11-16T13:50:28.117228",
+      "updated_at": "2025-11-16T13:50:28.117260"
     },
     {
-      "id": "d1bdb922-ac71-4023-b96e-6b9ff3534192",
-      "name": "tako",
-      "email": "cozinha@gmail.com",
-      "CPF": "123.456.789-99",
-      "created_at": "2025-11-12T13:46:01.103230",
-      "updated_at": "2025-11-12T13:46:01.103230",
-      "password": "123"
-    },
-    {
-      "id": "cb1d233e-7b30-4d25-b38a-61a83e85e218",
-      "name": "007941012-08",
-      "email": "jptpa.snf24@uea.edu.br",
-      "CPF": "joao pedro telles",
-      "created_at": "2025-11-12T15:24:21.468535",
-      "updated_at": "2025-11-12T15:24:21.468535",
-      "password": "123"
-    },
-    {
-      "id": "01fe1e21-927a-4b5c-b50a-a0e7518a3a3c",
-      "name": "Oi usei seu numero",
-      "email": "admin@admin.com",
-      "cpf": "123.456.789-53",
-      "password": "thaisamiga1",
-      "created_at": "2025-11-14T13:44:37.317895",
-      "updated_at": "2025-11-14T13:44:37.317895"
-    },
-    {
-      "id": "8cdb5164-4844-4fd3-ab0c-9d18462493e4",
-      "name": "Oi usei seu numero",
-      "email": "admiaaan@admin.com",
-      "cpf": "123.456.789-99",
-      "password": "123",
-      "created_at": "2025-11-14T13:44:57.959647",
-      "updated_at": "2025-11-14T13:44:57.959647"
+      "id": "cad994eb-77d1-4337-8e39-cd1387990c7a",
+      "name": "Thais",
+      "email": "thais@email.com",
+      "cpf": "06911576261",
+      "password": "$2b$12$il0SgKdznPuOw.vzFDLiEOtR1jxHAkUEPgxPxWgBH.N0FXolhkrcy",
+      "created_at": "2025-11-16T14:10:10.828022",
+      "updated_at": "2025-11-16T14:10:10.828058"
     }
   ]
 }
