@@ -12,9 +12,9 @@ import InsertLinkOutlinedIcon from '@mui/icons-material/InsertLinkOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 
-const CreateList = () =>{
+const CreateList = () => {
     const navigate = useNavigate()
-    const handleNavigate = ()=>{
+    const handleNavigate = () => {
         navigate("/minhaLista")
     }
 
@@ -24,196 +24,186 @@ const CreateList = () =>{
         "Formatura", "Chá de Bebê", "Chá de Panela", "Amigo Secreto", "Páscoa", "Dia da Mulher", "Aposentadoria", "Sem Ocasião Específica"
     ]
 
-    return(
-    <>
-    <Header/>
-    <Box marginTop={10}/>
-        
-    <Box display="flex" justifyContent="center"alignItems="center" flexDirection="column" >
-    <Box sx={{
-        width: 600, 
-        textAlign: "left",
-        }}
-    >
-        <Button 
-            color="grey"
-            onClick={handleNavigate} 
-            startIcon={<ArrowBackIcon sx={{fontSize: 13}} />} 
-            sx={{ mb: 1, fontSize: 13}} 
-        >
-            Voltar para as minhas listas
-        </Button>
+    return (
+        <>
+            <Header />
+            <Box marginTop={10} />
 
-        <Typography color="black" variant="h4" fontWeight="bold">
-            Criar Nova Lista
-        </Typography>
+            <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" >
+                <Box sx={{
+                    width: 600,
+                    textAlign: "left",
+                }}
+                >
+                    <Button
+                        color="grey"
+                        onClick={handleNavigate}
+                        startIcon={<ArrowBackIcon sx={{ fontSize: 13 }} />}
+                        sx={{ mb: 1, fontSize: 13 }}
+                    >
+                        Voltar para as minhas listas
+                    </Button>
 
-        <Typography color="grey" variant="body2" sx={{ mb: 2 }}>
-            Preencha as informações para criar sua lista de presentes
-        </Typography>
-    </Box>
+                    <Typography color="black" variant="h4" fontWeight="bold">
+                        Criar Nova Lista
+                    </Typography>
 
-    <Box width="570px" height="900px"
-    sx={{
-    backgroundColor: "white",
-    borderRadius: 4,
-    boxShadow: 3,
-    marginTop: 3,
-    marginBottom: 3,
-    p: 3, 
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    }}
-    >
+                    <Typography color="grey" variant="body2" sx={{ mb: 2 }}>
+                        Preencha as informações para criar sua lista de presentes
+                    </Typography>
+                </Box>
 
-    <Box display="flex" alignItems="center" sx={{ marginBottom: 1 }}>
-        <CardGiftcardIcon sx={{ marginRight: 1, color: "#eb56afff" }} />
-        <Typography fontWeight="bold" variant="h6">
-            Informações da lista
-        </Typography>
-    </Box>
+                <Box width="570px" height="800px"
+                    sx={{
+                        backgroundColor: "white",
+                        borderRadius: 4,
+                        boxShadow: 3,
+                        marginTop: 3,
+                        marginBottom: 3,
+                        p: 3,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                    }}
+                >
 
-    <Typography variant="body2" color="grey" sx={{ marginBottom: 3}}>
-        Configure os detalhes básicos da lista de presente
-    </Typography>
+                    <Box display="flex" alignItems="center" sx={{ marginBottom: 1 }}>
+                        <CardGiftcardIcon sx={{ marginRight: 1, color: "#eb56afff" }} />
+                        <Typography fontWeight="bold" variant="h6">
+                            Informações da lista
+                        </Typography>
+                    </Box>
 
-    <FormGroup  sx={{
-        width: "100%", 
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start", 
-    }}>
+                    <Typography variant="body2" color="grey" sx={{ marginBottom: 3 }}>
+                        Configure os detalhes básicos da lista de presente
+                    </Typography>
 
-        <Typography fontWeight="bold" variant="body2">Título da lista *</Typography>
-        <TextField
-            id="title"
-            label="Ex: Meu Aniversário de 25 anos"
-            variant="outlined"
-            size="small"
-            sx={{
-            width: "100%",
-            borderRadius: 2,
-            marginBottom: 3,
-            }}
-        />
+                    <FormGroup sx={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                    }}>
 
-        <Typography fontWeight="bold" variant="body2">Descrição</Typography>
-        <TextField
-            id="description"
-            label="Descreva sua lista de presentes (opcional)"
-            variant="outlined"
-            size="medium"
-            sx={{
-                width: "100%",
-                borderRadius: 2,
-                marginBottom: 3,
-            }}
-        />
+                        <Typography fontWeight="bold" variant="body2">Título da lista *</Typography>
+                        <TextField
+                            id="title"
+                            label="Ex: Meu Aniversário de 25 anos"
+                            variant="outlined"
+                            size="small"
+                            sx={{
+                                width: "100%",
+                                borderRadius: 2,
+                                marginBottom: 3,
+                            }}
+                        />
 
-        <Typography fontWeight="bold"  variant="body2">Ocasião *</Typography>
-        <Select
-            labelId="select-label"
-            id="ocasion"
-            label="Selecione uma opção"
-            size="small"
-            sx={{
-                width:200,
-                borderRadius: 2,
-                marginBottom: 3,
-            }}
-        >
-        {selectOptions.map((option, index) => (
-            <MenuItem key={index} value={option}>
-                {option}
-            </MenuItem>
-        ))}
-        </Select>
+                        <Typography fontWeight="bold" variant="body2">Descrição</Typography>
+                        <TextField
+                            id="description"
+                            label="Descreva sua lista de presentes (opcional)"
+                            variant="outlined"
+                            size="medium"
+                            sx={{
+                                width: "100%",
+                                borderRadius: 2,
+                                marginBottom: 3,
+                            }}
+                        />
 
-        <Typography fontWeight="bold"  variant="body2">Data do Evento</Typography>
-        <TextField
-        type="date"
-        InputLabelProps={{ shrink: true }}
-        fullWidth
-        />
+                        <Typography fontWeight="bold" variant="body2">Ocasião *</Typography>
+                        <Select
+                            labelId="select-label"
+                            id="ocasion"
+                            label="Selecione uma opção"
+                            size="small"
+                            sx={{
+                                width: 200,
+                                borderRadius: 2,
+                                marginBottom: 3,
+                            }}
+                        >
+                            {selectOptions.map((option, index) => (
+                                <MenuItem key={index} value={option}>
+                                    {option}
+                                </MenuItem>
+                            ))}
+                        </Select>
 
-        <Typography fontWeight="bold"  variant="body2" sx={{ marginTop: 3 }}>
-                Privacidade da Lista
-        </Typography>
+                        <Typography fontWeight="bold" variant="body2">Data do Evento</Typography>
+                        <TextField
+                            type="date"
+                            InputLabelProps={{ shrink: true }}
+                            fullWidth
+                        />
 
-        <RadioGroup value={privacy}>
-                    <CreateListBox
-        icon={<LanguageOutlinedIcon sx={{color:"green"}}/>}
-        title="Público"
-        subtitle="Qualquer pessoa pode encontrar e ver sua lista"
-        value="public"
-        selectedValue={privacy}
-        onChange={setPrivacy}
-        >
-        </CreateListBox>
+                        <Typography fontWeight="bold" variant="body2" sx={{ marginTop: 3 }}>
+                            Privacidade da Lista
+                        </Typography>
 
-        <CreateListBox
-        icon={<InsertLinkOutlinedIcon sx={{color:"blue"}}/>}
-        title="Compartilhar por Link"
-        subtitle="Apenas pessoas com este link pode ver sua lista"
-        value="shared"
-        selectedValue={privacy}
-        onChange={setPrivacy}
-        >
-        </CreateListBox>
+                        <RadioGroup value={privacy}>
+                            <CreateListBox
+                                icon={<InsertLinkOutlinedIcon sx={{ color: "blue" }} />}
+                                title="Compartilhar por Link"
+                                subtitle="Apenas pessoas com este link pode ver sua lista"
+                                value="shared"
+                                selectedValue={privacy}
+                                onChange={setPrivacy}
+                            >
+                            </CreateListBox>
 
-        <CreateListBox
-        icon={<LockOutlinedIcon sx={{color:"grey"}}/>}
-        title="Privado"
-        subtitle="Apenas você pode ver essa lista"
-        value="privaty"
-        selectedValue={privacy}
-        onChange={setPrivacy}
-        ></CreateListBox>
+                            <CreateListBox
+                                icon={<LockOutlinedIcon sx={{ color: "grey" }} />}
+                                title="Privado"
+                                subtitle="Apenas você pode ver essa lista"
+                                value="privaty"
+                                selectedValue={privacy}
+                                onChange={setPrivacy}
+                            ></CreateListBox>
 
-        </RadioGroup>
+                        </RadioGroup>
 
 
-    </FormGroup>
-        
-        <Box display={"flex"} justifyContent={"center"} gap={4} marginTop={4} marginLeft={5}>
-            <Button width="100px" variant="outlined" color="grey"
-                sx={{
-                width: 220,
-                color: 'black',
-                fontWeight: 'bold',
-                textTransform:'none',
-                borderRadius: 3
-                }}> Cancelar </Button>
-            <Button sx={{
-                background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)",
-                color: "white",
-                width: 220,
-                borderRadius: 3
-                }} startIcon={<CardGiftcardIcon/>} > 
-                Criar lista 
-            </Button>
-        </Box>
-    
-    </Box>
+                    </FormGroup>
 
-        <Box sx={{
-            backgroundColor: '#f9e9f5f7',
-            border: '1px solid pink',
-            borderRadius: 5,
-            width: 570,
-            height: 150,
-            padding: 3,
-            marginBottom: 4
-            }}>
-            <Typography align="left" variant="body1" fontWeight="bold" marginTop={2} marginBottom={1}> Próximos passos </Typography>
-            <Typography align="left"> • Adicione um item a sua lista </Typography>
-            <Typography align="left"> • Use nossas sugestões inteligentes baseadas em IA </Typography>
-            <Typography align="left"> • Compartilhe com amigos e família </Typography>
-            <Typography align="left"> • Acompanhe o progresso dos presentes comprados </Typography>
-        </Box>
-    </Box>
-    </>
+                    <Box display={"flex"} justifyContent={"center"} gap={4} marginTop={4} marginLeft={5}>
+                        <Button width="100px" variant="outlined" color="grey"
+                            sx={{
+                                width: 220,
+                                color: 'black',
+                                fontWeight: 'bold',
+                                textTransform: 'none',
+                                borderRadius: 3
+                            }}> Cancelar </Button>
+                        <Button sx={{
+                            background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)",
+                            color: "white",
+                            width: 220,
+                            borderRadius: 3
+                        }} startIcon={<CardGiftcardIcon />} >
+                            Criar lista
+                        </Button>
+                    </Box>
+
+                </Box>
+
+                <Box sx={{
+                    backgroundColor: '#f9e9f5f7',
+                    border: '1px solid pink',
+                    borderRadius: 5,
+                    width: 570,
+                    height: 150,
+                    padding: 3,
+                    marginBottom: 4
+                }}>
+                    <Typography align="left" variant="body1" fontWeight="bold" marginTop={2} marginBottom={1}> Próximos passos </Typography>
+                    <Typography align="left"> • Adicione um item a sua lista </Typography>
+                    <Typography align="left"> • Use nossas sugestões inteligentes baseadas em IA </Typography>
+                    <Typography align="left"> • Compartilhe com amigos e família </Typography>
+                    <Typography align="left"> • Acompanhe o progresso dos presentes comprados </Typography>
+                </Box>
+            </Box>
+        </>
     )
 }
 
