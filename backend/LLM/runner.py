@@ -5,13 +5,19 @@ from google.adk.sessions import InMemorySessionService
 from google.genai.types import Content, Part
 import asyncio
 
-async def sugerir(conteudo):
-    session = InMemorySessionService()
-    await session.create_session(app_name="sugeridor", user_id="oi", session_id="ola")
-    runner = Runner(agent=root_agent, session_service=session, app_name="sugeridor")
-    run = runner.run_async(user_id="oi", session_id="ola", new_message=Content(parts=[Part(text=conteudo)]))
-    async for event in run:
-        for element in event:
-            print(element)
+async def sugerir_async(conteudo):
+    try:
+        session = InMemorySessionService()
+        await session.create_session(app_name="agents", user_id="sugestor", session_id="ola")
+        runner = Runner(agent=root_agent, session_service=session, app_name="agents")
+        run = runner.run_async(user_id="sugestor", session_id="ola", new_message=Content(parts=[Part(text=conteudo)]))
+        async for event in run:
+            """for element in event:
+                print(element)"""
+            pass
+    except StopFlag:
+        print("deu tudo certo e o processo foi finalizado com a captura de uma exceção lançada de propósito no fim da busca agora olha pra backend/LLM/json_files./links.json la que ta o resultado disso tudo")
+        pass
 
-asyncio.run(sugerir('{ "idade": 14, "gosta": [ "video games", "comida", "gatos", "meias", "ciencia" ], "não gosta": [ "altura", "sapatos" ], "relação com o presenteador": "amigo", "ocasião": "aniversário", }'))
+def sugerir(conteudo):
+    asyncio.run(sugerir_async(conteudo=conteudo))

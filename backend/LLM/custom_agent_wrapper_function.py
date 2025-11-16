@@ -18,6 +18,7 @@ def build_agent(agent_type = LlmAgent,
                 after_agent_call = None,
                 after_tool_call = None,
                 after_model_call = None,
+                temp = 0.7
                 ):
 
     #FILE FORMATTING
@@ -45,7 +46,7 @@ def build_agent(agent_type = LlmAgent,
     #CALL
 
     return agent_type(
-        model=LiteLlm(llm),
+        model=LiteLlm(model=llm, temperature = temp),
         name=name,
         description=desc,
         instruction=instr,

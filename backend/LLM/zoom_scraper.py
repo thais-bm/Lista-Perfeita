@@ -1,7 +1,8 @@
 from playwright.sync_api import sync_playwright
+import asyncio
 import urllib.parse
 
-HEADLESS = False
+HEADLESS = True
 MAX_RESULTS = 3
 WAIT_TIMEOUT_MS = 20000
 
@@ -14,8 +15,8 @@ def buscar_zoom(termo):
     url = f"https://www.zoom.com.br/search?q={termo_q}"
 
     with sync_playwright() as p:
-        # browser = p.firefox.launch(headless=HEADLESS)
-        browser = p.chromium.launch(headless=HEADLESS)
+        browser = p.firefox.launch(headless=HEADLESS)
+        #browser = p.chromium.launch(headless=HEADLESS)
         page = browser.new_page()
         page.set_extra_http_headers({
             "Accept-Language": "pt-BR,pt;q=0.9"
@@ -30,7 +31,6 @@ def buscar_zoom(termo):
             elems = page.query_selector_all(selector)[:MAX_RESULTS]
         except Exception:
             print("Nenhum produto carregou dentro do timeout.")
-            page.screenshot(path="zoom_debug.png", full_page=True)
             browser.close()
             return [{"status": "Nenhum produto encontrado ou ocorreu erro de timeout"}]
 
@@ -80,5 +80,6 @@ if __name__ == "__main__":
             print(f"   Preço: {it['price']}")
             print(f"   Link: {it['link']}")
             print(f"   Imagem: {it['image']}\n")
-            
-    
+
+async def buscar_zoom_async(termo: str):
+    return await asyncio.to_thread(buscar_zoom, termo)

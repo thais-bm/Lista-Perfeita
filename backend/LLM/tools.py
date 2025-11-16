@@ -9,7 +9,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-from zoom_scraper import buscar_zoom
+from zoom_scraper import buscar_zoom_async as buscar_zoom
 
 def searchlist_add(reflection: str, items: dict[str, str]) -> dict:
     """
@@ -20,11 +20,14 @@ def searchlist_add(reflection: str, items: dict[str, str]) -> dict:
         "reflection" (str):
             str object that holds a paragraph where you reflect on the data received about the person you're suggesting presents for.
             treat it like a sketch/brainstorm of what type of gift the person might enjoy the most, noting down every possibility.
+            use your creativity, go all out, don't be afraid to think too much, and even try to come up with a few examples yourself during the reflection phase that you may call back to in the more formalized step that is the next argument.
+
         "items" (dict[str, str]):
             dict object that contains each individual search query.
             each element of "items" (str:str):
                 The first value of the element (str) must be the name of the product itself, and it's what'll be put in the search query later.
                 The second value of the element (str) must be a well thought-out reasoning behind your choice of product for the person receiving the gift.
+                
     Example usage (HYPOTHETICAL SITUATION):
         below is an example of a hypothetical situation, of a child who's described to like animals, clothes, swimming, the color pink and is celebrating their birthday.
         like this: {"Briquedos para piscina": "julgando pela idade de criança, o aniversariante pode apreciar brinquedos, e tendo em consideração que essa pessoa gosta de nadar, brinquedos de piscina podem ser uma sugestão boa.": ,
@@ -59,7 +62,6 @@ class StopFlag(Exception):
 def stopcallback(tool, args, tool_context: CallbackContext):
     if tool.name == "stop":
         tool_context._event_actions.end_of_agent = True
-        tool_context.session.model_dump_json
 
     filepath = BASE_DIR / "json_files" / "debug.json"
     with filepath.open("w", encoding="utf-8") as file:
@@ -69,19 +71,31 @@ def stopcallback(tool, args, tool_context: CallbackContext):
         file.write(tool_context.session.model_dump_json(indent=2, ensure_ascii=False))
     return
 
-def suggestion_search_callback(tool, args, tool_context: CallbackContext):
+async def suggestion_search_callback(tool, args, tool_context: CallbackContext):
     if tool.name == "searchlist_add":
         resultlist = []
+        
         for item in args["items"]:
-            itemdict = {"reasoning":item[1], "searchquery":item[0]}
-            results = buscar_zoom(itemdict["searchquery"])
-            for key, value in results:
-                itemdict[key] = value
-            resultlist.append(itemdict)         
+            resultlist.append(
+                {"search query": item,
+                 "ai reasoning": args["items"][item],
+                 "search results": await buscar_zoom(item)}
+            )
+
+        finaldict = {"brainstorm":args["reflection"],  "searches":resultlist}
+        
+        filepath = BASE_DIR / "json_files" / "links.json"
+        with filepath.open("w", encoding="utf-8") as file:
+            json.dump(finaldict, file, indent=2)
+
         filepath = BASE_DIR / "json_files" / "debug2.json"
         with filepath.open("w", encoding="utf-8") as file:
             file.write(tool_context.session.model_dump_json(indent=2, ensure_ascii=False))
-            return {"status":"success", "message":"Good job! The list was saved to the files and the web serch for those products will occour shortly. You must not use this tool again, since your job is finished and you've successfully accomplished your goal."}
+
+        if tool_context.session.user_id == "sugestor":
+            raise StopFlag("capturar essa excecao no runner programatico desse LLM")
+        
+        return {"status":"success", "message":"Good job! The list was saved to the files and the web serch for those products will occour shortly. You must not use this tool again, since your job is finished and you've successfully accomplished your goal."}
     return None
 
 
