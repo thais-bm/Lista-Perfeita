@@ -10,3 +10,6 @@ from models.presenteado import presenteado as presente
 
 # Define o roteador para as rotas da sugestao
 router = APIRouter(prefix="/sugestions", tags=["sugestions"])
+
+@router.post("/perfil")
+
