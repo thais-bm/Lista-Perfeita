@@ -9,3 +9,28 @@ class Presenteado:
         self.min_preco: float = min_preco
         self.max_preco: float = max_preco
         self.interesses: List[str] = interesses if interesses is not None else []
+
+    def to_dict(self) -> Dict:
+        return {
+            "nome": self.nome,
+            "idade": self.idade,
+            "genero": self.genero,
+            "ocasiao": self.ocasiao,
+            "min_preco": self.min_preco,
+            "max_preco": self.max_preco,
+            "interesses": self.interesses
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict) -> 'Presenteado':
+        return cls(
+            nome=data.get("nome", ""),
+            idade=data.get("idade", 0),
+            genero=data.get("genero", ""),
+            ocasiao=data.get("ocasiao", ""),
+            min_preco=data.get("min_preco", 0.0),
+            max_preco=data.get("max_preco", 0.0),
+            interesses=data.get("interesses", [])
+        )
+    
+    
