@@ -7,15 +7,10 @@ import time
 import dotenv
 import os
 
-"""
-    TO DO: Criptografia de senhas (ta salvando em texto plano) e validação de tokens JWT
-"""
-
 from models.organizador_evento import organizador_evento as User
 
 # Configurações do JWT 
 dotenv.load_dotenv()
-
 SECRET_KEY = str(os.getenv("USER_FILE"))
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_SECONDS = int(os.getenv("ACCESS_TOKEN_EXPIRE_SECONDS", "3600"))

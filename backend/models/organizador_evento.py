@@ -76,22 +76,3 @@ class organizador_evento:
         plain_bytes = plain_password.encode('utf-8')
         hash_bytes = self.password.encode('utf-8') 
         return bcrypt.checkpw(plain_bytes, hash_bytes)
-
-    def is_cpf_valid(self) -> bool:
-        num = [int(digit) for digit in self.cpf if digit.isdigit()]
-
-        # CPF precisa ter 11 digitos e não pode ter todos os dígitos iguais
-        if len(num) != 11 or len(set(num)) == 1:
-            return False
-        
-        # Primeiro dígito verificador
-        sum_1 = sum((10 - i) * num[i] for i in range(9))
-        if (sum_1 * 10 % 11) % 10 != num[9]:
-            return False
-        
-        # Segundo dígito verificador
-        sum_2 = sum((11 - i) * num[i] for i in range(10))
-        if (sum_2 * 10 % 11) % 10 != num[10]:
-            return False
-        
-        return True
