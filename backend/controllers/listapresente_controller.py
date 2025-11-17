@@ -99,7 +99,7 @@ async def deletar_lista_presente(list_id: str, request: Request):
     if not sucesso:
         raise HTTPException(status_code=500, detail="Erro ao deletar lista.")
 
-    return {"status": "ok", "message": "Lista deletada com sucesso."}
+    return {"status": "ok", "message": "Lista deletada com sucesso.", "id": list_id}
 
 
 # Falta o exibirLista
