@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "0d403ee1-ff8b-40d4-a0f1-b35b5f0a30b9",
+      "name": "eu",
+      "email": "admin@gmail.com",
+      "cpf": "036.216.802-41",
+      "password": "$2b$12$F7/NVRImAZ.UU1dV1BNCx.VhJFHGsMFFrpww1RqC9hdfQaiu16/w2",
+      "created_at": "2025-11-17T17:32:45.913981",
+      "updated_at": "2025-11-17T17:32:45.913981"
+    }
+  ]
+}

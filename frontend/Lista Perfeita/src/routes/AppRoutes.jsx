@@ -8,6 +8,7 @@ import CreateList from '../pages/CreateList';
 import Sugestion from '../pages/Sugestion';
 import VerLista from '../pages/VerLista';
 import ProtectedRoute from "./ProtectedRoutes";
+import ChooseProducts from '../pages/ChooseProducts';
 
 
 const AppRoutes = () => {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
             <Route element={<SignIn />} path="/signin" />
             <Route element={<NotFound />} path="*" />
             <Route element={<VerLista />} path="/verLista" />
+            <Route element={<ChooseProducts />} path="/products" />
         </Routes>
     )
 }

@@ -1,8 +1,14 @@
 import { Box, Stack, Typography, Button, Container } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useState } from "react";
+import ChooseProducts from "../pages/ChooseProducts";
 
 const AddProduct = () =>{
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
     return(
     <Container maxWidth="lg">
         <Box
@@ -24,6 +30,7 @@ const AddProduct = () =>{
                 <Typography variant="body1" color="grey" > Adicione mais presentes à sua lista </Typography>
 
                 <Button
+                    onClick={handleOpen}
                     variant="outlined"
                     fullWidth
                     sx={{
@@ -37,6 +44,7 @@ const AddProduct = () =>{
                 </Button>
             </Stack>
         </Box>
+        <ChooseProducts open={openModal} onClose={handleClose} />
     </Container>
     )
 }

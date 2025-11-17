@@ -59,7 +59,11 @@ const Header = () => {
       </Box>
 
       {/* Menu central */}
-      <Box sx={{ display: "flex", gap: 5, justifyContent: "center", alignItems: "center", flexGrow: 1 }}>
+      <Box  
+      position="absolute" 
+      left={600}
+      bottom={10}
+      sx={{ display: "flex", gap: 5, justifyContent: "center", alignItems: "center", flexGrow: 1 }}>
         <Button
           onClick={navigateHome}
           sx={{

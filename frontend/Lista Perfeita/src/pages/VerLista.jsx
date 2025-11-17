@@ -8,6 +8,7 @@ import EventIcon from '@mui/icons-material/Event';
 import PersonIcon from '@mui/icons-material/Person';
 import PresenteItem from '../components/PresenteItem';
 import AddProduct from '../components/AddProduct';
+import ChooseProducts from './ChooseProducts';
 
 import { useNavigate } from 'react-router-dom';
 
