@@ -12,17 +12,53 @@ import InsertLinkOutlinedIcon from '@mui/icons-material/InsertLinkOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 
+
+
 const CreateList = () => {
+
+
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [occasion, setOccasion] = useState("");
+    const [dateEvent, setDateEvent] = useState("");
+    const [privacy, setPrivacy] = useState("publica");
+    const selectOptions = ["Natal", "Aniversário", "Dia dos Namorados", "Dia das Mães", "Dia dos Pais", "Casamento",
+        "Formatura", "Chá de Bebê", "Chá de Panela", "Amigo Secreto", "Páscoa", "Dia da Mulher", "Aposentadoria", "Sem Ocasião Específica"
+    ]
+
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate("/minhaLista")
     }
 
-    const [privacy, setPrivacy] = useState("publica");
+    const API = "http://localhost:8000"
 
-    const selectOptions = ["Natal", "Aniversário", "Dia dos Namorados", "Dia das Mães", "Dia dos Pais", "Casamento",
-        "Formatura", "Chá de Bebê", "Chá de Panela", "Amigo Secreto", "Páscoa", "Dia da Mulher", "Aposentadoria", "Sem Ocasião Específica"
-    ]
+    const criarLista = async () => {
+        const token = localStorage.getItem("token"); // Pegando o token do localStorage
+
+        // Corpo da requisição
+        const body = {
+            nome_lista: title,
+            descricao_lista: description,
+            ocasiao: occasion,
+            data_evento: dateEvent,
+            privacidade_lista: privacy,
+        };
+
+        const response = await fetch(`${API}/giftlist/createList`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "token": token
+            },
+            body: JSON.stringify(body)
+        });
+
+        console.log("TOKEN ENVIADO:", localStorage.getItem("token"))
+
+        const data = await response.json();
+        console.log(data);
+    };
 
     return (
         <>
@@ -91,11 +127,14 @@ const CreateList = () => {
                             label="Ex: Meu Aniversário de 25 anos"
                             variant="outlined"
                             size="small"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                             sx={{
                                 width: "100%",
                                 borderRadius: 2,
                                 marginBottom: 3,
                             }}
+
                         />
 
                         <Typography fontWeight="bold" variant="body2">Descrição</Typography>
@@ -104,6 +143,8 @@ const CreateList = () => {
                             label="Descreva sua lista de presentes (opcional)"
                             variant="outlined"
                             size="medium"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             sx={{
                                 width: "100%",
                                 borderRadius: 2,
@@ -117,6 +158,8 @@ const CreateList = () => {
                             id="ocasion"
                             label="Selecione uma opção"
                             size="small"
+                            value={occasion}
+                            onChange={(e) => setOccasion(e.target.value)}
                             sx={{
                                 width: 200,
                                 borderRadius: 2,
@@ -133,6 +176,8 @@ const CreateList = () => {
                         <Typography fontWeight="bold" variant="body2">Data do Evento</Typography>
                         <TextField
                             type="date"
+                            value={dateEvent}
+                            onChange={(e) => setDateEvent(e.target.value)}
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                         />
@@ -156,7 +201,7 @@ const CreateList = () => {
                                 icon={<LockOutlinedIcon sx={{ color: "grey" }} />}
                                 title="Privado"
                                 subtitle="Apenas você pode ver essa lista"
-                                value="privaty"
+                                value="private"
                                 selectedValue={privacy}
                                 onChange={setPrivacy}
                             ></CreateListBox>
@@ -175,11 +220,13 @@ const CreateList = () => {
                                 textTransform: 'none',
                                 borderRadius: 3
                             }}> Cancelar </Button>
-                        <Button sx={{
+                        <Button 
+                            onClick={criarLista}
+                        sx={{
                             background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)",
                             color: "white",
                             width: 220,
-                            borderRadius: 3
+                            borderRadius: 3,
                         }} startIcon={<CardGiftcardIcon />} >
                             Criar lista
                         </Button>

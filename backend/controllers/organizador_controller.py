@@ -11,7 +11,7 @@ from models.organizador_evento import organizador_evento as User
 
 # Configurações do JWT 
 dotenv.load_dotenv()
-SECRET_KEY = str(os.getenv("USER_FILE"))
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_SECONDS = int(os.getenv("ACCESS_TOKEN_EXPIRE_SECONDS", "3600"))
 
@@ -102,5 +102,5 @@ def login(data: LoginInput):
         raise HTTPException(status_code=401, detail="Email ou senha incorretos.")
     
     # Cria o token JWT e retorna
-    token = create_access_token({"sub": user.email})
+    token = create_access_token({"id": user.id, "email": user.email})
     return {"access_token": token, "token_type": "bearer"}

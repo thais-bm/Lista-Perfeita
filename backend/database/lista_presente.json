@@ -1,6 +1,15 @@
 {
-    "lista_presente": 
+  "lista": [
     {
-
+      "id_lista_presente": "af90643e-0795-4166-9860-f1e3c04c1f8c",
+      "nome_lista": "aniversario guanabara",
+      "descricao_lista": "lista",
+      "ocasiao": "Aniversário",
+      "data_evento": "2025-11-29",
+      "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
+      "privacidade_lista": "private",
+      "url_lista": null,
+      "convidados": []
     }
+  ]
 }

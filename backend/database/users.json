@@ -17,6 +17,15 @@
       "password": "$2b$12$il0SgKdznPuOw.vzFDLiEOtR1jxHAkUEPgxPxWgBH.N0FXolhkrcy",
       "created_at": "2025-11-16T14:10:10.828022",
       "updated_at": "2025-11-16T14:10:10.828058"
+    },
+    {
+      "id": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
+      "name": "Thais",
+      "email": "admin@ad.com",
+      "cpf": "06911576261",
+      "password": "$2b$12$o//XpcbYCWCzzgBrw.7Ox.b2PMYaja6PsCv0Bb3iXt6xtD3ghi2r.",
+      "created_at": "2025-11-17T09:57:26.760430",
+      "updated_at": "2025-11-17T09:57:26.760430"
     }
   ]
 }
