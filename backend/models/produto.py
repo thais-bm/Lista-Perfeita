@@ -1,40 +1,37 @@
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
-"""
-    Modelo de Produto
-    
-    -> adicionar o processo de scrapping
-    por exemplo
-    -> receber um termo de busca e devolver uma lista de produtos?
-
-"""
-
-class produto:
-    def __init__(self, id: int, nome: str, preco: float, descricao: str, loja: Optional[str] = None):
+class Produto:
+    def __init__( self, id: int, nome: str, descricao: str, preco: float, 
+                imagem: str, link: List[str],
+                status: str, isComprado: Optional[bool] = False
+    ):  
         self.id = id
         self.nome = nome
-        self.preco = preco
         self.descricao = descricao
-        self.loja = loja # Atributo para armazenar a loja do produto
-        isComprado = False  # Atributo para indicar se o produto foi comprado
-        
+        self.preco = preco
+        self.imagem = imagem
+        self.link = link
+        self.status = status
+
     def to_dict(self) -> Dict:
         return {
             "id": self.id,
             "nome": self.nome,
             "preco": self.preco,
             "descricao": self.descricao,
-            "loja": self.loja,
-            "isComprado": self.isComprado
+            "imagem": self.imagem,
+            "link": self.link,
+            "status": self.status,
         }
-        
+
     @classmethod
-    def from_dict(cls, data: Dict) -> 'produto':
+    def from_dict(cls, data: Dict) -> 'Produto':
         return cls(
             id=data["id"],
             nome=data["nome"],
             preco=data["preco"],
             descricao=data["descricao"],
-            loja=data.get("loja")
-            isComprado=data.get("isComprado")
+            imagem=data.get("imagem", ""),
+            link=data.get("link", []),
+            status=data.get("status", "indefinido"),
         )

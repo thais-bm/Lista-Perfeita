@@ -122,6 +122,11 @@ class lista_presente:
         db = cls.read_db()
         listas = db.get("listas")
         return [l for l in listas if l.get("id_organizador") == id_organizador]
+    
+    @classmethod
+    def get_lista_by_id(cls, id_lista):
+        db = cls.read_db()
+        return next((l for l in db["listas"] if l["id_lista_presente"] == id_lista), None)
 
     
 

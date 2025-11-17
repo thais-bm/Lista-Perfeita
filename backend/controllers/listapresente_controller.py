@@ -34,8 +34,6 @@ def get_organizador_id(request: Request):
 
 
 # Rotas da lista de presentes
-
-# Criacao de nova lista
 @router.post("/createList")
 async def criar_nova_lista(request: Request):
     data = await request.json()
@@ -63,7 +61,6 @@ async def criar_nova_lista(request: Request):
     }
 
 
-
 @router.get("/getLists")
 async def obter_listas_presentes(request: Request):
     # Primeiro, identificar quem é o usuario chamando esse endpoint
@@ -78,7 +75,6 @@ async def obter_listas_presentes(request: Request):
         "listas": listas
         }
     
-
 
 @router.delete("/deleteList/{list_id}")
 async def deletar_lista_presente(list_id: str, request: Request):
@@ -103,6 +99,20 @@ async def deletar_lista_presente(list_id: str, request: Request):
 
 
 # Falta o exibirLista
+@router.get("/getList/{list_id}")
+async def obter_lista_por_id(list_id: str, request: Request):
+    id_organizador = get_organizador_id(request)
+
+    # verifica se a lista é do usuário
+    lista = lista_presente.get_lista_by_id(list_id)
+
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Acesso negado")
+
+    return {"lista": lista}
     
 """
 @router.put("/updateLista/{list_id}")

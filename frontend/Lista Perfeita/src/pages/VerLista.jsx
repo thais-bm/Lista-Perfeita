@@ -25,18 +25,62 @@ Exemplo de conteúdo
     - Cada presente pode ter: nome, imagem, descrição, preço, link para compra, status (disponível ou comprado)
 
     - Se for a criadora da lista, pode ter botões para editar ou excluir a lista e adicionar presentes
+
+    AVISO: COMPRADO OU DISPONIVEL
                 
 */
 
 
 
 const VerLista = () => {
-
+    const { id } = useParams(); // pega o ID da URL
     const navigate = useNavigate();
 
     const handleReturn = () => {
         navigate("/minhaLista");
     }
+
+
+
+    const [lista, setLista] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchLista = async () => {
+            try {
+                const token = localStorage.getItem("token");
+
+                const res = await fetch(`http://localhost:8000/giftlist/getList/${id}`, {
+                    headers: { "token": token }
+                });
+
+                if (!res.ok) throw new Error("Erro ao carregar lista");
+
+                const data = await res.json();
+                setLista(data.lista);
+
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLista();
+    }, [id]);
+
+    if (loading) return (
+        <Box sx={{ mt: 10, display: "flex", justifyContent: "center" }}>
+            <CircularProgress size={50} />
+        </Box>
+    );
+
+    if (!lista) return <Typography>Lista não encontrada</Typography>;
+
+    const total = lista.presentes.length;
+    const comprados = lista.presentes.filter(p => p.status === "comprado").length;
+
+    const porcentagem = total === 0 ? 0 : (comprados / total) * 100;
 
     const listaExemplo = {
         nome: "Exemplo de Lista",
@@ -68,7 +112,7 @@ const VerLista = () => {
                     color='grey'
                     onClick={handleReturn}
                     startIcon={<ArrowBackIcon sx={{ fontSize: 18 }} />}
-                    sx={{ fontSize: 15,  textTransform:'none', marginBottom: 2 }}
+                    sx={{ fontSize: 15, textTransform: 'none', marginBottom: 2 }}
                 >
                     Voltar para as minhas listas
                 </Button>
@@ -76,24 +120,24 @@ const VerLista = () => {
                 <Paper elevation={3} sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
 
                     <Box padding={3}>
-                        <Box  display= "flex" flexDirection={'row'}>
+                        <Box display="flex" flexDirection={'row'}>
                             <Typography color="black" variant="h4" fontWeight="bold">{listaExemplo.nome}</Typography>
 
                             <Button variant='outlined'
-                            color='grey'
-                            startIcon={<ShareOutlinedIcon/>}
-                            sx={{
-                                marginLeft: 80,
-                                color:'black',
-                                borderRadius:4,
-                                textTransform:'none',
-                            }}> 
+                                color='grey'
+                                startIcon={<ShareOutlinedIcon />}
+                                sx={{
+                                    marginLeft: 80,
+                                    color: 'black',
+                                    borderRadius: 4,
+                                    textTransform: 'none',
+                                }}>
                                 Compartilhar
                             </Button>
 
                         </Box>
-                        
-                        <Typography variant="body2" color="grey" sx={{paddingBottom: 3 }}>{listaExemplo.descricao}</Typography>
+
+                        <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>{listaExemplo.descricao}</Typography>
 
 
                         {/* Categoria - data do evento - criadora do evento */}
@@ -115,15 +159,15 @@ const VerLista = () => {
                             </Stack>
                         </Stack>
 
-                        <Box mt={4}  backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
-                            <Stack direction="row" spacing={2} mt={1}  justifyContent={'space-between'} >
+                        <Box mt={4} backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
+                            <Stack direction="row" spacing={2} mt={1} justifyContent={'space-between'} >
                                 <Typography variant="body2" color="black">Progresso da Lista</Typography> {/*mudei a cor pq n dava pra ver nadakkk*/}
-                                <Typography variant="body2" color="black">{(listaExemplo.porcentagemComprados / 100) * listaExemplo.quantidadePresentes}/{listaExemplo.quantidadePresentes} presentes comprados</Typography>
+                                <Typography variant="body2" color="black">{comprados} presentes comprados</Typography>
                             </Stack>
 
                             <LinearProgress
                                 variant="determinate"
-                                value={listaExemplo.porcentagemComprados}
+                                value={porcentagem}
                                 sx={{
                                     height: 10,
                                     borderRadius: 2,
@@ -134,27 +178,19 @@ const VerLista = () => {
                                 }}
                             />
 
-                            <Typography variant="body2" color="black" paddingTop={1}>{listaExemplo.porcentagemComprados}% completo</Typography>
+                            <Typography variant="body2" color="black" paddingTop={1}>{porcentagem}% completo</Typography>
                         </Box>
-
-
-
                     </Box>
-
                 </Paper>
-
-
-
-
             </Container>
 
             {/* Todos os presentes organizados em box lado a lado */}
 
             {/* Se for a criadora da lista -> botões para editar ou excluir a lista e adicionar presentes */}
 
-            <Container  sx={{ mt: 4, mb: 4 }}>
+            <Container sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={2}>
-                    {listaExemplo.presentes.map((presente) => (
+                    {lista.presentes.map((presente) => (
                         <Grid item xs={12} sm={6} md={4} key={presente.id}>
                             <PresenteItem
                                 id={presente.id}
@@ -169,8 +205,8 @@ const VerLista = () => {
                     ))}
                 </Grid>
             </Container>
-            
-        <AddProduct/>
+
+            <AddProduct />
         </div>
     )
 }
