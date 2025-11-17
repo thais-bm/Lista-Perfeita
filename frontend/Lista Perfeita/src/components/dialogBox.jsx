@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, CircularProgress } from '@mui/material'
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, CircularProgress, DialogContentText } from '@mui/material'
 
 const DialogBox = ({ open, onClose, onConfirm, loading }) => {
     return (
@@ -7,7 +7,9 @@ const DialogBox = ({ open, onClose, onConfirm, loading }) => {
             <DialogTitle>Excluir lista</DialogTitle>
 
             <DialogContent>
-                Tem certeza que deseja apagar esta lista? Esta ação não pode ser desfeita.
+                <DialogContentText color="grey" variant="body2">
+                    Tem certeza que deseja apagar esta lista? Esta ação não pode ser desfeita.
+                </DialogContentText>
             </DialogContent>
 
             <DialogActions>
