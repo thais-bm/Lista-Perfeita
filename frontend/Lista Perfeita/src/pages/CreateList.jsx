@@ -54,10 +54,9 @@ const CreateList = () => {
             body: JSON.stringify(body)
         });
 
-        console.log("TOKEN ENVIADO:", localStorage.getItem("token"))
-
         const data = await response.json();
         console.log(data);
+        navigate("/minhaLista");
     };
 
     return (

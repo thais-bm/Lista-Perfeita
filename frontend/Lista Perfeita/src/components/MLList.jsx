@@ -4,7 +4,7 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EventIcon from "@mui/icons-material/Event";
 
-const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts}) =>{
+const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts, privacidade}) =>{
     const progress = totalGifts > 0 ? (boughtGifts / totalGifts) * 100 : 0;
 
     return(
@@ -38,7 +38,7 @@ const MLList = ({title, subtitle, ocasion, date, totalGifts, boughtGifts}) =>{
                 </Box>
 
                 <Chip
-                label="Link"
+                label={privacidade}
                 size="small"
                 sx={{
                     backgroundColor: "#f0f4ff",

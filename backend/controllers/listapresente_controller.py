@@ -62,21 +62,25 @@ async def criar_nova_lista(request: Request):
         "lista": lista.to_dict()
     }
 
-"""
 
-@router.get("/getListsAll")
+
+@router.get("/getLists")
 async def obter_listas_presentes(request: Request):
     # Primeiro, identificar quem é o usuario chamando esse endpoint
 
     # Depois, buscar todas as listas associadas a esse usuario
     # Retornar as listas encontradas
-
-@router.get("/getLists")
-async def obter_listas_presentes(request: Request):
     id_organizador = get_organizador_id(request)
-    listas = lista_presente.get_listas_by_user(id_organizador)
-    return {"listas": listas}
+    
+    listas = lista_presente.get_listas_by_organizador(id_organizador)
+    
+    return {
+        "listas": listas
+        }
+    
+ 
 
+"""
 @router.delete("/deleteList/{list_id}")
 async def deletar_lista_presente(list_id: str, request: Request):
     # Primeiro, identificar quem é o usuario chamando esse endpoint

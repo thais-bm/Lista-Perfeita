@@ -15,6 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# registra o controller do usuario
+# registra o controller do usuarioa
 app.include_router(user_router)
 app.include_router(giftlist_router)

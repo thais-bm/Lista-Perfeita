@@ -87,7 +87,7 @@ class lista_presente:
     @classmethod
     def salvar_lista(cls, lista: dict):
         db = cls.read_db()
-        db["lista"].append(lista)
+        db["listas"].append(lista)
         cls.write_db(db)
 
     @classmethod
@@ -116,4 +116,12 @@ class lista_presente:
         db["listas"] = novas_listas
         cls.write_db(db)
         return True
+    
+    @classmethod
+    def get_listas_by_organizador(cls, id_organizador: str):
+        db = cls.read_db()
+        listas = db.get("listas")
+        return [l for l in listas if l.get("id_organizador") == id_organizador]
+
+    
 
