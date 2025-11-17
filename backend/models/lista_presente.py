@@ -4,6 +4,8 @@ import pydantic
 from typing import Optional, List
 from datetime import date
 from enum import Enum
+import json, os, dotenv
+from pathlib import Path
 
 """
 Titulo da lista
@@ -15,6 +17,12 @@ ID do organizador (quem criou a lista)
 
 
 """
+dotenv.load_dotenv()
+db_path_str = os.getenv("LIST_FILE")
+if db_path_str is None:
+    raise ValueError("A variável de ambiente 'LIST_FILE' não foi definida.")
+
+DB_FILE = Path(db_path_str)
 
 class PrivacidadeLista(str, Enum):
     COMPARTILHADA = "shared"
@@ -56,4 +64,54 @@ class lista_presente:
         lista.convidados = data.get("convidados", [])
         return lista
     
+    @classmethod
+    def init_db(cls):
+        if not DB_FILE.exists():
+            DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+            with open(DB_FILE, "w", encoding="utf-8") as f:
+                json.dump({"listas": []}, f)
+
+    @classmethod
+    def read_db(cls) -> Dict[str, List]:
+        cls.init_db()
+        with open(DB_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    @classmethod
+    def write_db(cls, data: Dict):
+        with open(DB_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    @classmethod
+    def salvar_lista(cls, lista: dict):
+        db = cls.read_db()
+        db["listas"].append(lista)
+        cls.write_db(db)
+
+    @classmethod
+    def get_listas_by_user(cls, user_id: str):
+        db = cls.read_db()
+        return [l for l in db["listas"] if l["id_organizador"] == user_id]
+    
+    @classmethod
+    def atualizar_lista(cls, lista_id: str, novos_dados: dict):
+        db = cls.read_db()
+        for i, lista in enumerate(db["listas"]):
+            if lista["id_lista_presente"] == lista_id:
+                db["listas"][i].update(novos_dados)
+                cls.write_db(db)
+                return db["listas"][i]
+        return None
+    
+    @classmethod
+    def deletar_lista(cls, lista_id: str):
+        db = cls.read_db()
+        novas_listas = [l for l in db["listas"] if l["id_lista_presente"] != lista_id]
+
+        if len(novas_listas) == len(db["listas"]):
+            return False  # nada foi removido
+
+        db["listas"] = novas_listas
+        cls.write_db(db)
+        return True
 
