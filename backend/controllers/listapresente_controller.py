@@ -78,16 +78,33 @@ async def obter_listas_presentes(request: Request):
         "listas": listas
         }
     
- 
 
-"""
+
 @router.delete("/deleteList/{list_id}")
 async def deletar_lista_presente(list_id: str, request: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, deletar a lista
-    # Retornar uma mensagem de sucesso ou erro
+    
+    id_organizador = get_organizador_id(request)
+    listas_usuario = lista_presente.get_listas_by_organizador(id_organizador)
 
+    lista_encontrada = next((l for l in listas_usuario if l["id_lista_presente"] == list_id), None)
+
+    if not lista_encontrada:
+        raise HTTPException(
+            status_code=404,
+            detail="Lista não encontrada ou não pertence ao usuário."
+        )
+
+    sucesso = lista_presente.deletar_lista(list_id)
+
+    if not sucesso:
+        raise HTTPException(status_code=500, detail="Erro ao deletar lista.")
+
+    return {"status": "ok", "message": "Lista deletada com sucesso."}
+
+
+# Falta o exibirLista
+    
+"""
 @router.put("/updateLista/{list_id}")
 async def atualizar_lista_presente(list_id: str, lista_data: Request):
     # Primeiro, identificar quem é o usuario chamando esse endpoint
@@ -128,27 +145,8 @@ async def atualizar_lista_presente(list_id: str, request: Request):
         "lista": lista_atualizada
     }
 
-@router.delete("/deleteList/{list_id}")
-async def deletar_lista_presente(list_id: str, request: Request):
 
-    # 1. Verificar usuário autenticado
-    id_organizador = get_organizador_id(request)
 
-    # 2. Buscar a lista
-    lista_original = lista_presente.get_lista_by_id(list_id)
-    if not lista_original:
-        raise HTTPException(status_code=404, detail="Lista não encontrada")
-
-    # 3. Garantir que pertence ao organizador
-    if lista_original["id_organizador"] != id_organizador:
-        raise HTTPException(status_code=403, detail="Você não tem permissão para deletar esta lista")
-
-    # 4. Remover do banco
-    sucesso = lista_presente.deletar_lista(list_id)
-    if not sucesso:
-        raise HTTPException(status_code=500, detail="Erro ao deletar lista")
-
-    return {"message": "Lista deletada com sucesso", "id": list_id}
 
 
 @router.post("/addItem/{list_id}")

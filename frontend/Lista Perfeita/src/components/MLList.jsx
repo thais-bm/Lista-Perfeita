@@ -4,8 +4,32 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EventIcon from "@mui/icons-material/Event";
 
+
 const MLList = ({ title, subtitle, ocasion, date, totalGifts, boughtGifts, privacidade }) => {
     const progress = totalGifts > 0 ? (boughtGifts / totalGifts) * 100 : 0;
+
+    const API = "http://localhost:8000"
+
+    const handleApagar = async () => {
+        const token = localStorage.getItem("token"); // Pegando o token do localStorage
+
+        const response = await fetch(`${API}/giftlist/deleteList`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "token": token,
+                "delete": "yes"
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+    };
+
+
+
+
+        
 
     return (
         <Box width={355} height={250}
