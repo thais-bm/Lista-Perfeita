@@ -4,7 +4,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import { useState } from "react";
 import ChooseProducts from "../pages/ChooseProducts";
 
-const AddProduct = () =>{
+const AddProduct = ( {id} ) =>{
     const [openModal, setOpenModal] = useState(false);
 
     const handleOpen = () => setOpenModal(true);

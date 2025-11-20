@@ -47,9 +47,6 @@ const MinhaLista = () => {
         fetchListas();
     }, []);
 
-
-
-
     // QUANDO CLICA EM APAGAR
     const handleDeleteClick = (id) => {
         setListToDelete(id);
@@ -161,8 +158,8 @@ const MinhaLista = () => {
                         subtitle={lista.descricao_lista}
                         ocasion={lista.ocasiao}
                         date={lista.data_evento}
-                        boughtGifts={lista.comprados || 0}
-                        totalGifts={lista.total || 0}
+                        boughtGifts={lista.presentes.filter(p => p.status === "comprado").length || 0}
+                        totalGifts={lista.presentes.length || 0}
                         privacidade={lista.privacidade_lista === "private" ? "Privada" : "Compartilhada"}
                         onDelete={handleDeleteClick}
                     />

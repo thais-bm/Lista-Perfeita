@@ -3,10 +3,18 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EventIcon from "@mui/icons-material/Event";
-
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, privacidade, onDelete }) => {
+
     const progress = totalGifts > 0 ? (boughtGifts / totalGifts) * 100 : 0;
+    const navigate = useNavigate();
+
+    const handleView = () => {
+        navigate(`/verLista/${id}`);
+    };
+
+    console.log("ID DA LISTA: " + id)
 
     return (
         <Box width={355} height={250}
@@ -99,12 +107,13 @@ const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, p
                 <Button
                     variant="outlined"
                     startIcon={<RemoveRedEyeOutlinedIcon />}
+                    onClick={handleView}
                     sx={{
                         borderColor: "#ddd",
                         color: "black",
                         textTransform: "none",
                         width: 400,
-                        borderRadius: 3
+                        borderRadius: 3,
                     }}
                 >
                     Ver

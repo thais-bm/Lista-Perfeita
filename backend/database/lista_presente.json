@@ -48,17 +48,6 @@
           "status": "disponível"
         }
       ]
-    },
-    {
-      "id_lista_presente": "2dc5eb98-aa65-42a7-811e-79ce60d96153",
-      "nome_lista": "Meu aniversario lindo 2.0",
-      "descricao_lista": "Aniversario da Isa",
-      "ocasiao": "Aniversário",
-      "data_evento": "2026-04-01",
-      "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
-      "privacidade_lista": "shared",
-      "url_lista": null,
-      "convidados": []
     }
   ]
 }

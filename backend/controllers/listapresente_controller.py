@@ -8,6 +8,7 @@ import os
 from jose import jwt
 
 from models.lista_presente import lista_presente
+from models.organizador_evento import organizador_evento as Organizador # so pra pegar a funcao de pegar o nome do organizador 
 
 # Carregar variáveis de ambiente
 dotenv.load_dotenv()
@@ -30,6 +31,7 @@ def get_organizador_id(request: Request):
         return payload["id"]
     except Exception as e:
         raise HTTPException(status_code=401, detail="Token inválido")
+
 
 
 
@@ -98,19 +100,18 @@ async def deletar_lista_presente(list_id: str, request: Request):
     return {"status": "ok", "message": "Lista deletada com sucesso.", "id": list_id}
 
 
-# Falta o exibirLista
 @router.get("/getList/{list_id}")
-async def obter_lista_por_id(list_id: str, request: Request):
-    id_organizador = get_organizador_id(request)
-
-    # verifica se a lista é do usuário
+async def obter_lista_por_id(list_id: str):
     lista = lista_presente.get_lista_by_id(list_id)
 
     if not lista:
         raise HTTPException(status_code=404, detail="Lista não encontrada")
+    
+    organizador = Organizador.get_by_id(lista["id_organizador"])
+    nome_organizador = organizador.name if organizador else "Desconhecido"
 
-    if lista["id_organizador"] != id_organizador:
-        raise HTTPException(status_code=403, detail="Acesso negado")
+    # Adiciona o nome do organizador da lista
+    lista["organizador"] = nome_organizador
 
     return {"lista": lista}
     

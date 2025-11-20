@@ -15,19 +15,14 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={
-                <ProtectedRoute>
-                    <MinhaLista />
-                </ProtectedRoute>
-
-            } path="/minhaLista" />
+            <Route element={    <ProtectedRoute><MinhaLista /></ProtectedRoute>     } path="/minhaLista" />
             <Route element={<CreateList />} path="/createList" />
             <Route element={<Sugestion />} path="/sugestion" />
             <Route element={<NotFound />} path="*" />
             <Route element={<Login />} path="/login" />
             <Route element={<SignIn />} path="/signin" />
             <Route element={<NotFound />} path="*" />
-            <Route element={<VerLista />} path="/verLista" />
+            <Route path="/verLista/:id" element={<VerLista />} />
             <Route element={<ChooseProducts />} path="/products" />
         </Routes>
     )

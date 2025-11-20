@@ -1,5 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header'
@@ -13,64 +12,57 @@ import PresenteItem from '../components/PresenteItem';
 import AddProduct from '../components/AddProduct';
 import ChooseProducts from './ChooseProducts';
 
-import { useNavigate } from 'react-router-dom';
-
-/* 
-Conteúdo da página VerLista vai aqui 
-Exemplo de conteúdo
-    - Nome da lista
-    - Descrição
-    - Categoria - data do evento - criadora do evento
-    - Botão de compartilhar
-    
-    - Barra de progresso - quantos presentes foram comprados/quantos exisstem no total
-    
-    - Box com os presentes da lista (pode ser um grid ou uma lista)
-    - Cada presente pode ter: nome, imagem, descrição, preço, link para compra, status (disponível ou comprado)
-
-    - Se for a criadora da lista, pode ter botões para editar ou excluir a lista e adicionar presentes
-
-    AVISO: COMPRADO OU DISPONIVEL
-                
-*/
-
-
+import { useNavigate, useParams } from 'react-router-dom';
 
 const VerLista = () => {
     const { id } = useParams(); // pega o ID da URL
+    console.log("ID do useParams:", id);
     const navigate = useNavigate();
 
     const handleReturn = () => {
         navigate("/minhaLista");
     }
 
-
-
     const [lista, setLista] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isDono, setIsDono] = useState(false);
+
+    const getUserIdFromToken = () => {
+        const token = localStorage.getItem("token");
+        if (!token) return null;
+
+        try {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            return payload.id; // campo que você usa no JWT
+        } catch {
+            return null;
+        }
+    };
 
     useEffect(() => {
-        const fetchLista = async () => {
+        async function carregar() {
             try {
                 const token = localStorage.getItem("token");
 
-                const res = await fetch(`http://localhost:8000/giftlist/getList/${id}`, {
-                    headers: { "token": token }
+                const resp = await fetch(`http://localhost:8000/giftlist/getList/${id}`, {
+                    headers: token ? { "token": token } : {}
                 });
 
-                if (!res.ok) throw new Error("Erro ao carregar lista");
-
-                const data = await res.json();
+                const data = await resp.json();
                 setLista(data.lista);
 
+                const userId = getUserIdFromToken();
+                if (userId && userId === data.lista.id_organizador) {
+                    setIsDono(true);   // AGORA FUNCIONA
+                }
             } catch (err) {
                 console.error(err);
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
-        fetchLista();
+        carregar();
     }, [id]);
 
     if (loading) return (
@@ -83,25 +75,7 @@ const VerLista = () => {
 
     const total = lista.presentes.length;
     const comprados = lista.presentes.filter(p => p.status === "comprado").length;
-
-    const porcentagem = total === 0 ? 0 : (comprados / total) * 100;
-
-    const listaExemplo = {
-        nome: "Exemplo de Lista",
-        descricao: "Esta é uma descrição de exemplo para a lista de presentes.",
-        categoria: "Aniversário",
-        dataEvento: "2023-12-25",
-        criadora: "Joana Silva",
-        porcentagemComprados: 60,
-        quantidadePresentes: 10,
-
-        presentes: [
-            { id: 1, nome: "Fone Bluetooth Legal", descricao: "Fones sem fio com cancelamento de ruído ativo", preco: 299.99, imagem: "https://m.media-amazon.com/images/I/51xuDWMXfRL._AC_UF1000,1000_QL80_.jpg", link: ["#", "##"], status: "disponível" },
-            { id: 2, nome: "Smartphone XYZ", descricao: "Smartphone com câmera de alta resolução", preco: 1999.99, imagem: "https://s2-techtudo.glbimg.com/UtPQgyuHfZrGtYH77LHDjxEnM8I=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/W/m/PJ6zOcTBeXSApdBnoRIw/2016-06-29-1iphone-2g.jpg", link: ["#", "##"], status: "comprado" },
-            { id: 3, nome: "Computador Gamer", descricao: "Camiseta de algodão com estampa moderna", preco: 79.99, imagem: "https://cdn.dooca.store/559/products/c1_640x640+fill_ffffff.png", link: ["#", "##"], status: "disponível" }
-        ]
-    }
-
+    const porcentagem = total === 0 ? 0 : Math.round((comprados / total) * 100);
 
     // Renderização da página
     return (
@@ -125,7 +99,7 @@ const VerLista = () => {
 
                     <Box padding={3}>
                         <Box display="flex" flexDirection={'row'}>
-                            <Typography color="black" variant="h4" fontWeight="bold">{listaExemplo.nome}</Typography>
+                            <Typography color="black" variant="h4" fontWeight="bold">{lista.nome_lista}</Typography>
 
                             <Button variant='outlined'
                                 color='grey'
@@ -141,7 +115,7 @@ const VerLista = () => {
 
                         </Box>
 
-                        <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>{listaExemplo.descricao}</Typography>
+                        <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>{lista.descricao_lista}</Typography>
 
 
                         {/* Categoria - data do evento - criadora do evento */}
@@ -149,17 +123,17 @@ const VerLista = () => {
                             {/*eu tirei o "initial" das cores pq tava transparente */}
                             <Stack direction="row" spacing={1}>
                                 <CardGiftcardIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="grey">{listaExemplo.categoria}</Typography>
+                                <Typography variant="body2" color="grey">{lista.ocasiao}</Typography>
                             </Stack>
 
                             <Stack direction="row" spacing={1}>
                                 <EventIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="grey">{listaExemplo.dataEvento}</Typography>
+                                <Typography variant="body2" color="grey">{lista.data_evento}</Typography>
                             </Stack>
 
                             <Stack direction="row" spacing={1}>
                                 <PersonIcon sx={{ fontSize: 16, alignSelf: 'center' }} />
-                                <Typography variant="body2" color="grey">{listaExemplo.criadora}</Typography>
+                                <Typography variant="body2" color="grey">{lista.organizador}</Typography>
                             </Stack>
                         </Stack>
 
@@ -210,7 +184,11 @@ const VerLista = () => {
                 </Grid>
             </Container>
 
-            <AddProduct />
+
+            {/* Adicionar produto condicional -> apenas se o organizador verdadeiro estiver logadoe o add produto tem que receber o id da lista pra sber que lista mexer*/}
+            {isDono && (
+                <AddProduct listaId={lista.id} />
+            )}
         </div>
     )
 }
