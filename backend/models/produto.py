@@ -1,5 +1,10 @@
 from typing import Optional, Dict, List
 
+"""
+ Duvidas: A IA é um serviço ou uma entidade ou um controlador?
+ na hora de salvar os produtos pesquisados -> CHAMAR O MODELO PRODUTO.PY PARA ISSO. SÓ ELE SALVA
+"""
+
 class Produto:
     def __init__( self, id: int, nome: str, descricao: str, preco: float, 
                 imagem: str, link: List[str],
