@@ -39,7 +39,6 @@ class lista_presente:
         self.privacidade_lista = privacidade_lista
 
         self.url_lista = None
-        self.convidados = []
 
     def to_dict(self):
         return self.__dict__
@@ -62,7 +61,6 @@ class lista_presente:
             privacidade_lista=data.get("privacidade_lista")
         )
         lista.url_lista = data.get("url_lista")
-        lista.convidados = data.get("convidados", [])
         
         return lista
     
@@ -137,4 +135,29 @@ class lista_presente:
                 cls.write_db(db)
                 return True
         return False
+    
+    # Adicionar presente
+    @classmethod
+    def adicionar_produto(cls, lista_id: str, produto: dict):
+        """
+        Adiciona um produto (dict) à lista encontrada e persiste no DB.
+        """
+        db = cls.read_db()
+        for i, lista in enumerate(db["listas"]):
+            if lista["id_lista_presente"] == lista_id:
+                if "presentes" not in db["listas"][i]:
+                    db["listas"][i]["presentes"] = []
+                # gerar id numérico incremental se necessário
+                next_id = 1
+                if db["listas"][i]["presentes"]:
+                    try:
+                        next_id = max(p.get("id", 0) for p in db["listas"][i]["presentes"]) + 1
+                    except Exception:
+                        next_id = len(db["listas"][i]["presentes"]) + 1
+                produto["id"] = produto.get("id", next_id)
+                db["listas"][i]["presentes"].append(produto)
+                cls.write_db(db)
+                return db["listas"][i]
+        return None
+    # Remover presente
 

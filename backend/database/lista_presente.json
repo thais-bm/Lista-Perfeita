@@ -9,7 +9,6 @@
       "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
       "privacidade_lista": "private",
       "url_lista": null,
-      "convidados": [],
       "presentes": [
         {
           "id": 1,
@@ -34,8 +33,8 @@
             "#",
             "##"
           ],
-          "status": "disponível",
-          "comprado_por": ""
+          "status": "comprado",
+          "comprado_por": "Ninguém"
         },
         {
           "id": 3,

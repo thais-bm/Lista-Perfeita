@@ -1,15 +1,9 @@
 from typing import Optional, Dict, List
-
-"""
- Duvidas: A IA é um serviço ou uma entidade ou um controlador?
- na hora de salvar os produtos pesquisados -> CHAMAR O MODELO PRODUTO.PY PARA ISSO. SÓ ELE SALVA
-"""
+import uuid
 
 class Produto:
     def __init__( self, id: int, nome: str, descricao: str, preco: float, 
-                imagem: str, link: List[str],
-                status: str, isComprado: Optional[bool] = False
-    ):  
+                  imagem: str, link: List[str], status: str):
         self.id = id
         self.nome = nome
         self.descricao = descricao
@@ -18,25 +12,37 @@ class Produto:
         self.link = link
         self.status = status
 
-    def to_dict(self) -> Dict:
+    def to_dict(self):
         return {
             "id": self.id,
             "nome": self.nome,
-            "preco": self.preco,
             "descricao": self.descricao,
+            "preco": self.preco,
             "imagem": self.imagem,
             "link": self.link,
             "status": self.status,
         }
 
     @classmethod
-    def from_dict(cls, data: Dict) -> 'Produto':
+    def from_dict(cls, data):
         return cls(
             id=data["id"],
             nome=data["nome"],
-            preco=data["preco"],
-            descricao=data["descricao"],
+            descricao=data.get("descricao", ""),
+            preco=data.get("preco", 0.0),
             imagem=data.get("imagem", ""),
             link=data.get("link", []),
-            status=data.get("status", "indefinido"),
+            status=data.get("status", "disponível"),
+        )
+    
+    @classmethod
+    def from_scraped(cls, data: Dict) -> 'Produto':
+        return cls(
+            id=uuid.uuid4().hex,          # gera ID único
+            nome=data.get("title", "Sem nome"),
+            descricao=data.get("title", "Sem descrição"),
+            preco=data.get("price"),
+            imagem=data.get("image", ""),
+            link=[data.get("link")] if data.get("link") else [],
+            status="disponível",
         )

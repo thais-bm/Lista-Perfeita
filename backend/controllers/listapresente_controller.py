@@ -9,6 +9,8 @@ from jose import jwt
 
 from models.lista_presente import lista_presente
 from models.organizador_evento import organizador_evento as Organizador # so pra pegar a funcao de pegar o nome do organizador 
+from models.produto import Produto
+from services.zoom_scraper import buscar_zoom_async
 
 # Carregar variáveis de ambiente
 dotenv.load_dotenv()
@@ -158,7 +160,25 @@ async def desmarcar_comprado(list_id: str, produto_id: int):
             return {"status": "ok"}
 
     raise HTTPException(status_code=404, detail="Presente não encontrado")
-    
+
+class BuscaRequest(BaseModel):
+    termo: str
+
+@router.post("/search")
+async def search_products(body: BuscaRequest):
+    termo = body.termo.strip()
+
+    # executa scraper (retorna lista de dicts)
+    resultados_raw = await buscar_zoom_async(termo)
+
+    # converte dict → Produto
+    produtos = [
+        Produto.from_scraped(item).to_dict()
+        for item in resultados_raw
+    ]
+
+    return produtos
+  
 """
 @router.put("/updateLista/{list_id}")
 async def atualizar_lista_presente(list_id: str, lista_data: Request):
