@@ -178,6 +178,8 @@ async def search_products(body: BuscaRequest):
     ]
 
     return produtos
+
+@router.post("/adicionarPresente/{list_id}/{produto_id}")
   
 """
 @router.put("/updateLista/{list_id}")

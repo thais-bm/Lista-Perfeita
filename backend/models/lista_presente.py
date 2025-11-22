@@ -136,7 +136,7 @@ class lista_presente:
                 return True
         return False
     
-    # Adicionar presente
+    # Adicionar presente NAO TA PEGANDO AINDA
     @classmethod
     def adicionar_produto(cls, lista_id: str, produto: dict):
         """
