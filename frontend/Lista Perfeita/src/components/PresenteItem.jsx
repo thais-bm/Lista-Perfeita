@@ -82,7 +82,7 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
           {nome}
         </Typography>
         <Typography variant="subtitle1" color="green" fontWeight="bold">
-          R$ {preco}
+          {preco}
         </Typography>
       </Stack>
 
