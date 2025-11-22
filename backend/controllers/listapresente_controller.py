@@ -118,6 +118,46 @@ async def obter_lista_por_id(list_id: str, request: Request):
     lista["organizador"] = nome_organizador
 
     return {"lista": lista}
+
+@router.patch("/marcar/{list_id}/{produto_id}")
+async def marcar_comprado(list_id: str, produto_id: int, body: dict):
+    nome = body.get("comprado_por", "").strip()
+
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    for presente in lista["presentes"]:
+        if presente["id"] == produto_id:
+            if presente["status"] != "disponível":
+                raise HTTPException(status_code=403, detail="Presente já comprado")
+
+            presente["status"] = "comprado"
+            presente["comprado_por"] = nome
+
+            lista_presente.atualizar_presentes(list_id, lista)
+
+            return {"status": "ok"}
+
+    raise HTTPException(status_code=404, detail="Presente não encontrado")
+
+@router.patch("/desmarcar/{list_id}/{produto_id}")
+async def desmarcar_comprado(list_id: str, produto_id: int):
+    lista = lista_presente.get_lista_by_id(list_id)
+
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    for presente in lista["presentes"]:
+        if presente["id"] == produto_id:
+            presente["status"] = "disponível"
+            presente["comprado_por"] = ""
+
+            lista_presente.atualizar_presentes(list_id, lista)
+
+            return {"status": "ok"}
+
+    raise HTTPException(status_code=404, detail="Presente não encontrado")
     
 """
 @router.put("/updateLista/{list_id}")

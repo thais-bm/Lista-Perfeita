@@ -128,5 +128,13 @@ class lista_presente:
         db = cls.read_db()
         return next((l for l in db["listas"] if l["id_lista_presente"] == id_lista), None)
 
-    
+    @classmethod
+    def atualizar_presentes(cls, lista_id: str, lista_atualizada: dict):
+        db = cls.read_db()
+        for i, lista in enumerate(db["listas"]):
+            if lista["id_lista_presente"] == lista_id:
+                db["listas"][i] = lista_atualizada
+                cls.write_db(db)
+                return True
+        return False
 

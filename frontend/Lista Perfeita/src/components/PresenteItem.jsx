@@ -1,32 +1,68 @@
 import { React, useState } from 'react';
-import {Stack, Typography, Box, Paper, Button, Chip} from '@mui/material';
+import { Stack, Typography, Box, Paper, Button, Chip } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckBought from './CheckBought';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus }) => {
+const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, listaId }) => {
   const [status, setStatus] = useState(initialStatus);
   const [bought, setBought] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
 
-  const handleChecked = () => {
-    setStatus(prev => (prev === "disponível" ? "comprado" : "disponível"));
+  // Desmarcador
+  const handleChecked = async () => {
+    try {
+      const resp = await fetch(`http://localhost:8000/giftlist/desmarcar/${listaId}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      if (resp.ok) {
+        setStatus("disponível");
+        setBought("");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
+  // Marcador de comprado
+  const handleCheckBought = async (nameBought) => {
+    try {
+      const resp = await fetch(`http://localhost:8000/giftlist/marcar/${listaId}/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ comprado_por: nameBought })
+      });
+
+      if (resp.ok) {
+        setStatus("comprado");
+        setBought(nameBought);
+        setOpenDialog(false);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
-  <Paper elevation={3}
-    sx={{
-      borderRadius: 4,
-      p: 3,
-      width: 320,
-      backgroundColor: '#fff',
-      boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
-    }}
+    <Paper elevation={3}
+      sx={{
+        borderRadius: 4,
+        p: 3,
+        width: 320,
+        backgroundColor: '#fff',
+        boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
+      }}
     >
 
-      <Box sx={{ 
+      <Box sx={{
         width: '100%',
         height: 240,
         backgroundColor: '#f8f8f8',
@@ -38,7 +74,7 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
         mb: 2,
       }}
       >
-        <img src={imagem} alt={nome} style={{ width: '100%', height: '100%', objectFit: 'contain',}}/>
+        <img src={imagem} alt={nome} style={{ width: '100%', height: '100%', objectFit: 'contain', }} />
       </Box>
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -60,26 +96,26 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
       </Typography>
 
       <Stack spacing={2} mt={3} direction="row">
-          {links && links.map((link, index) => (
-            <Button
-              key={index}
-              variant="text"
-              color="rosa.dark"
-              startIcon={<LaunchIcon color="rosa.dark"/>}
-              component="a"              // transforma o botão em <a>
-              href={link}                // destino do link
-              target="_blank"            // abre em nova aba
-              rel="noopener noreferrer"  // segurança
-              sx={{
-                '&:hover .MuiSvgIcon-root': { color: 'rosa.dark', },
-              }}>
+        {links && links.map((link, index) => (
+          <Button
+            key={index}
+            variant="text"
+            color="rosa.dark"
+            startIcon={<LaunchIcon color="rosa.dark" />}
+            component="a"              // transforma o botão em <a>
+            href={link}                // destino do link
+            target="_blank"            // abre em nova aba
+            rel="noopener noreferrer"  // segurança
+            sx={{
+              '&:hover .MuiSvgIcon-root': { color: 'rosa.dark', },
+            }}>
 
-              <Typography variant="body2" color="black">
-                Link {index + 1}
-              </Typography>
-            </Button>
-          ))}
-        </Stack>
+            <Typography variant="body2" color="black">
+              Link {index + 1}
+            </Typography>
+          </Button>
+        ))}
+      </Stack>
 
       {status === "comprado" && (
         <Box
@@ -107,7 +143,7 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
         {status === "disponível" ? (
           <Button
             fullWidth
-            onClick={() => setOpenDialog(true)} 
+            onClick={() => setOpenDialog(true)}
             sx={{
               background: "linear-gradient(90deg, #ea33bd 0%, #ad30e7 100%)",
               color: 'white',
@@ -143,12 +179,8 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
       <CheckBought
         open={openDialog}
         onClose={() => setOpenDialog(false)}
-        onConfirm={(nameBought) => {
-          setStatus("comprado");
-          setOpenDialog(false);
-          setBought(nameBought);
-        }}
-        organizer="Maria"
+        onConfirm={handleCheckBought}
+        organizer={organizador}
       />
 
     </Paper>

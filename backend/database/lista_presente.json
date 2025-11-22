@@ -21,7 +21,8 @@
             "#",
             "##"
           ],
-          "status": "disponível"
+          "status": "disponível",
+          "comprado_por": ""
         },
         {
           "id": 2,
@@ -33,7 +34,8 @@
             "#",
             "##"
           ],
-          "status": "comprado"
+          "status": "disponível",
+          "comprado_por": ""
         },
         {
           "id": 3,
@@ -45,7 +47,8 @@
             "#",
             "##"
           ],
-          "status": "disponível"
+          "status": "disponível",
+          "comprado_por": ""
         }
       ]
     }

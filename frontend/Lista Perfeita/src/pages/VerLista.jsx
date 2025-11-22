@@ -189,6 +189,8 @@ const VerLista = () => {
                                 imagem={presente.imagem}
                                 links={presente.link}
                                 status={presente.status}
+                                organizador={lista.organizador}
+                                listaId={lista.id_lista_presente}
                             />
                         </Grid>
                     ))}
