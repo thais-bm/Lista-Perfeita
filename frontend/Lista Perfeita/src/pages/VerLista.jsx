@@ -16,7 +16,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const VerLista = () => {
     const { id } = useParams(); // pega o ID da URL
-    console.log("ID do useParams:", id);
     const navigate = useNavigate();
 
     const handleReturn = () => {
@@ -48,13 +47,25 @@ const VerLista = () => {
                     headers: token ? { "token": token } : {}
                 });
 
+                if (!resp.ok) {
+                    setLista(null);
+                    return;
+                }
+
                 const data = await resp.json();
+
+                if (!data.lista) {
+                    setLista(null);
+                    return;
+                }
+
                 setLista(data.lista);
 
                 const userId = getUserIdFromToken();
                 if (userId && userId === data.lista.id_organizador) {
-                    setIsDono(true);   // AGORA FUNCIONA
+                    setIsDono(true);
                 }
+
             } catch (err) {
                 console.error(err);
             } finally {
@@ -64,6 +75,7 @@ const VerLista = () => {
 
         carregar();
     }, [id]);
+
 
     if (loading) return (
         <Box sx={{ mt: 10, display: "flex", justifyContent: "center" }}>
@@ -165,7 +177,6 @@ const VerLista = () => {
             {/* Todos os presentes organizados em box lado a lado */}
 
             {/* Se for a criadora da lista -> botões para editar ou excluir a lista e adicionar presentes */}
-
             <Container sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={2}>
                     {lista.presentes.map((presente) => (
@@ -183,7 +194,6 @@ const VerLista = () => {
                     ))}
                 </Grid>
             </Container>
-
 
             {/* Adicionar produto condicional -> apenas se o organizador verdadeiro estiver logadoe o add produto tem que receber o id da lista pra sber que lista mexer*/}
             {isDono && (

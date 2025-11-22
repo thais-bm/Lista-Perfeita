@@ -32,9 +32,6 @@ def get_organizador_id(request: Request):
     except Exception as e:
         raise HTTPException(status_code=401, detail="Token inválido")
 
-
-
-
 # Rotas da lista de presentes
 @router.post("/createList")
 async def criar_nova_lista(request: Request):
@@ -101,16 +98,23 @@ async def deletar_lista_presente(list_id: str, request: Request):
 
 
 @router.get("/getList/{list_id}")
-async def obter_lista_por_id(list_id: str):
+async def obter_lista_por_id(list_id: str, request: Request):
     lista = lista_presente.get_lista_by_id(list_id)
 
     if not lista:
         raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    # pegar id do usuário logado a partir do token
+    id_usuariologado = get_organizador_id(request)
+    is_owner = (id_usuariologado == lista["id_organizador"])
+
+    # Verificar se a lista é privada
+    if lista["privacidade_lista"] != "shared" and not is_owner:
+        raise HTTPException(status_code=403, detail="Lista é privada")
     
+    # Extrair nome do organizador e adicionar na lista
     organizador = Organizador.get_by_id(lista["id_organizador"])
     nome_organizador = organizador.name if organizador else "Desconhecido"
-
-    # Adiciona o nome do organizador da lista
     lista["organizador"] = nome_organizador
 
     return {"lista": lista}
@@ -203,13 +207,5 @@ async def compartilhar_lista(list_id: str, request: Request):
     # Se pertencer, gerar um link compartilhável para a lista
     # Opcao de disparar mensagem para os convidados via numero de telefone (whatsapp) ou email
     # Retornar o link ou uma mensagem de erro
-
-@router.get("/viewSharedList/{share_token}")
-async def visualizar_lista_compartilhada(share_token: str):
-
-    # Verificar a validade do token de compartilhamento
-    # Buscar a lista associada ao token
-    # Retornar a lista encontrada ou uma mensagem de erro
-
 
 """
