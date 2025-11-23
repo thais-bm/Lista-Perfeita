@@ -35,6 +35,15 @@
       "password": "$2b$12$pDGScrPfEGW7mtQ2QiKBIOgcxAYP1W4MaCRM7LCOzWQiKlOaxRUUu",
       "created_at": "2025-11-17T11:00:55.461975",
       "updated_at": "2025-11-17T11:00:55.461975"
+    },
+    {
+      "id": "14e258b8-534d-4f49-844b-5ced056c8b6e",
+      "name": "adm123",
+      "email": "bellebd@hotmail.com",
+      "cpf": "03621680241",
+      "password": "$2b$12$GRUZstL17WqOHCz8YVm4kOMEyXj1BpbrROlK7DKWUfkDpsNj1RLJy",
+      "created_at": "2025-11-23T18:09:07.172289",
+      "updated_at": "2025-11-23T18:09:07.172295"
     }
   ]
 }

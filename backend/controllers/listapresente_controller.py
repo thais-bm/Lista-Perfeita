@@ -72,6 +72,10 @@ async def obter_listas_presentes(request: Request):
     
     listas = lista_presente.get_listas_by_organizador(id_organizador)
     
+    for lista in listas:
+        if "presentes" not in lista:
+            lista["presentes"] = []
+            
     return {
         "listas": listas
         }
