@@ -3,13 +3,11 @@ import { Stack, Typography, Box, Paper, Button, Chip } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CheckBought from './CheckBought';
+import ConfirmAdd from './ConfirmAdd';
 
-const ProdutoItem = ({ id, nome, descricao, preco, imagem, links, status: initialStatus }) => {
+const ProdutoItem = ({id, nome, descricao, preco, imagem, links, status: initialStatus }) => {
     const [status, setStatus] = useState(initialStatus);
-
     const [openDialog, setOpenDialog] = useState(false);
-
 
     return (
         <Paper
@@ -33,18 +31,16 @@ const ProdutoItem = ({ id, nome, descricao, preco, imagem, links, status: initia
         <Box sx={{ flexGrow: 1 }}>
             <Typography variant="subtitle1" fontWeight="bold">{nome}</Typography>
             <Stack direction="row" spacing={1} mt={0.5}>
-            <Chip label="Tecnologia" size="small" />
-            <Chip label="Alta" size="small" color="error" />
             </Stack>
             <Typography variant="body2" color="text.secondary" mt={1}>{descricao}</Typography>
         </Box>
 
         {/* Preço e ações */}
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1, minWidth: 150 }}>
-            <Typography variant="h6" fontWeight="bold" color="#066e30ff">{`R$ ${preco}`}</Typography>
-            <Stack spacing={1} width="100%">
+            <Typography variant="h6" fontWeight="bold" color="#066e30ff">{`${preco}`}</Typography>
+            <Stack spacing={1} >
                 <Button
-                fullWidth
+                width={400}
                 onClick={() => setOpenDialog(true)}
                 sx={{
                     background: "linear-gradient(90deg, #ea33bd 0%, #ad30e7 100%)",
@@ -61,15 +57,14 @@ const ProdutoItem = ({ id, nome, descricao, preco, imagem, links, status: initia
         </Box>
 
         {/* Dialog */}
-        <CheckBought
+        <ConfirmAdd
             open={openDialog}
             onClose={() => setOpenDialog(false)}
-            onConfirm={(nameBought) => {
-            setStatus("comprado");
-            setOpenDialog(false);
-            setBought(nameBought);
-            }}
-            organizer="Maria"
+            onConfirm={() => {
+            console.log("Produto confirmado:", nome);
+            setOpenDialog(false); 
+        }}
+
         />
         </Paper>
     );

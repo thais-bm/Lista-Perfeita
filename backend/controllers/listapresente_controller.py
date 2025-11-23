@@ -75,7 +75,6 @@ async def obter_listas_presentes(request: Request):
     for lista in listas:
         if "presentes" not in lista:
             lista["presentes"] = []
-            
     return {
         "listas": listas
         }

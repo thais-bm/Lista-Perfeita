@@ -85,8 +85,9 @@ const VerLista = () => {
 
     if (!lista) return <Typography>Lista não encontrada</Typography>;
 
-    const total = lista.presentes.length;
-    const comprados = lista.presentes.filter(p => p.status === "comprado").length;
+    const presentes = lista.presentes || [];
+    const total = presentes.length;
+    const comprados = presentes.filter(p => p.status === "comprado").length;
     const porcentagem = total === 0 ? 0 : Math.round((comprados / total) * 100);
 
     // Renderização da página
@@ -179,7 +180,7 @@ const VerLista = () => {
             {/* Se for a criadora da lista -> botões para editar ou excluir a lista e adicionar presentes */}
             <Container sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={2}>
-                    {lista.presentes.map((presente) => (
+                   {(lista.presentes || []).map((presente) => (
                         <Grid item xs={12} sm={6} md={4} key={presente.id}>
                             <PresenteItem
                                 id={presente.id}
