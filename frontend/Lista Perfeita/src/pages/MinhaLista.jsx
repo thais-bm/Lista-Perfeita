@@ -35,7 +35,6 @@ const MinhaLista = () => {
 
                 const data = await res.json();
                 setListas(data.listas || []);
-                console.log("API respondeu:", data);
 
             } catch (error) {
                 console.error("Erro ao buscar listas:", error);

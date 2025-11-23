@@ -1,36 +1,24 @@
-from typing import Optional, Dict, List
-class Presenteado:
-    def __init__(self, nome: str = "", idade: int = 0, genero: str = "", ocasiao: str = "",
-                 min_preco: float = 0.0, max_preco: float = 0.0, interesses: Optional[List[str]] = None):
-        self.nome: str= nome
-        self.idade: int = idade
-        self.genero: str = genero
-        self.ocasiao: str = ocasiao
-        self.min_preco: float = min_preco
-        self.max_preco: float = max_preco
-        self.interesses: List[str] = interesses if interesses is not None else []
+from pydantic import BaseModel, Field, field_validator
+from typing import List, Optional
 
-    def to_dict(self) -> Dict:
-        return {
-            "nome": self.nome,
-            "idade": self.idade,
-            "genero": self.genero,
-            "ocasiao": self.ocasiao,
-            "min_preco": self.min_preco,
-            "max_preco": self.max_preco,
-            "interesses": self.interesses
-        }
-    
+class Presenteado(BaseModel):
+    nome: str = Field(..., description="Nome da pessoa a ser presenteada", min_length=1)
+    idade: int = Field(..., gt=0, description="Idade deve ser maior que 0")
+    genero: str = Field(..., description="Gênero selecionado no formulário")
+    ocasiao: str = Field(..., description="Ocasião do presente (ex: Aniversário, Natal)")
+    min_preco: float = Field(..., ge=0, description="Preço mínimo, não pode ser negativo")
+    max_preco: float = Field(..., ge=0, description="Preço máximo, não pode ser negativo")
+    interesses: List[str] = Field(default_factory=list, description="Lista de interesses")
+
+    # Método auxiliar para exportar como dicionário (o Pydantic já tem .model_dump(), 
+    def to_dict(self):
+        return self.model_dump()
+
+    # Validação extra: Garante que o preço máximo seja maior que o mínimo
+    @field_validator('max_preco')
     @classmethod
-    def from_dict(cls, data: Dict) -> 'Presenteado':
-        return cls(
-            nome=data.get("nome", ""),
-            idade=data.get("idade", 0),
-            genero=data.get("genero", ""),
-            ocasiao=data.get("ocasiao", ""),
-            min_preco=data.get("min_preco", 0.0),
-            max_preco=data.get("max_preco", 0.0),
-            interesses=data.get("interesses", [])
-        )
-    
-    
+    def validar_faixa_preco(cls, v: float, info):
+        values = info.data
+        if 'min_preco' in values and v < values['min_preco']:
+            raise ValueError('O preço máximo deve ser maior ou igual ao preço mínimo')
+        return v

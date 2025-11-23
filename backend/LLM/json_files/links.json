@@ -1,111 +1,75 @@
 {
-  "brainstorm": "Considerando que a pessoa tem 17 anos, demonstra interesse por video games, comida, gatos, meias e ci\u00eancia, e a rela\u00e7\u00e3o \u00e9 familiar para um amigo oculto, as sugest\u00f5es devem ser algo divertido, \u00fatil e que se encaixe no or\u00e7amento. Video games s\u00e3o um ponto central, mas tamb\u00e9m podemos explorar algo relacionado \u00e0 comida (talvez um kit de culin\u00e1ria simples), algo fofo como um gato de pel\u00facia, meias confort\u00e1veis e at\u00e9 mesmo algo educativo sobre ci\u00eancia. A avers\u00e3o \u00e0 altura e sapatos limita as op\u00e7\u00f5es, mas n\u00e3o de forma cr\u00edtica.",
+  "brainstorm": "Considerando que o aniversariante tem 34 anos, gosta de fotografia e est\u00e1 celebrando seu aniversario, sugestao para presentear: um quadro da sua obra fotografia favorita ou uma c\u00e2mera reflex para capturar momentos especiais.",
   "searches": [
     {
-      "search query": "Jogo de videogame",
-      "ai reasoning": "considerando o grande interesse por video games, um jogo novo ou um acess\u00f3rio para o console pode ser uma \u00f3tima op\u00e7\u00e3o de presente. Pode ser um jogo que ele ainda n\u00e3o tem ou um acess\u00f3rio que melhore a experi\u00eancia de jogo.",
+      "search query": "Quadro de fotografia",
+      "ai reasoning": "uma op\u00e7\u00e3o cl\u00e1ssica e s\u00advel, que combina perfeitamente com o interesse pela fotografia",
       "search results": [
         {
-          "title": "Hasbro Gaming Jogo de Tabuleiro Monopoly Junior Super Mario, com Efeitos Sonoros de Videogame - F4817 -, Cores diversas",
-          "price": "R$ 279,90",
-          "link": "https://www.zoom.com.br/lead?oid=859347852&channel=86&index=1&searchterm=Jogo%20de%20videogame",
-          "image": "https://i.zst.com.br/thumbs/51/1f/19/-843603502.jpg"
+          "title": "Quadro Decorativo Fotografia Surfista 45X34Cm",
+          "price": "R$ 72,45",
+          "link": "https://www.zoom.com.br/quadros/quadro-decorativo-fotografia-surfista-45x34cm?_lc=88&searchterm=Quadro%20de%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/45/2/34/1972433167.jpg"
         },
         {
-          "title": "Gatwick Games Racekart Riot - Seus Videogames De Corrida Favoritos Transformados Em Jogos De Tabuleiro, \u00d3timo Complemento Para Seus Jogos De Fam\u00edlia E Jogos Para Adultos, 2 A 4 Jogadores (Cinza)",
-          "price": "R$ 154,70",
-          "link": "https://www.zoom.com.br/lead?oid=1521078991&channel=86&index=1&searchterm=Jogo%20de%20videogame",
-          "image": "https://i.zst.com.br/thumbs/51/39/15/-1586321809.jpg"
+          "title": "Quadro Decorativo Fotografia Sapatilha de Ballet 45x34cm",
+          "price": "R$ 72,45",
+          "link": "https://www.zoom.com.br/quadros/quadro-decorativo-fotografia-sapatilha-de-ballet-45x34cm?_lc=88&searchterm=Quadro%20de%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/45/29/1d/2012618179.jpg"
         },
         {
-          "title": "Jogo de tabuleiro Super Hazard Quest Retro Pixel Estilo de videogame",
-          "price": "R$ 367,20",
-          "link": "https://www.zoom.com.br/lead?oid=1456692989&channel=86&index=2&searchterm=Jogo%20de%20videogame",
-          "image": "https://i.zst.com.br/thumbs/51/20/1b/-1476278440.jpg"
+          "title": "Quadro Decorativo Fotografia Cavalo e 45x34cm",
+          "price": "R$ 111,49",
+          "link": "https://www.zoom.com.br/quadros/quadro-decorativo-fotografia-cavalo-e-45x34cm?_lc=88&searchterm=Quadro%20de%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/45/2b/15/2012489052.jpg"
         }
       ]
     },
     {
-      "search query": "Caneca tem\u00e1tica de gato",
-      "ai reasoning": "a pessoa demonstra gostar de gatos, ent\u00e3o uma caneca tem\u00e1tica pode ser um presente divertido e \u00fatil. Pode ser uma caneca com um desenho fofo de gato ou com uma frase engra\u00e7ada.",
+      "search query": "C\u00e2mera reflex",
+      "ai reasoning": "para ajudar a capturar momentos especiais durante seu anivers\u00e1rio, uma c\u00e2mera reflex seria uma op\u00e7\u00e3o excelente",
       "search results": [
         {
-          "title": "DOTAIN Caneca de caf\u00e9 engra\u00e7ada dizendo n\u00e3o \u00e9 pelo de gato, \u00e9 gatinho, com glitter, 325 ml, caneca de cer\u00e2mica impressa em dois lados, caneca tem\u00e1tica de gato preto engra\u00e7ada, presente para gato,",
-          "price": "R$ 140,73",
-          "link": "https://www.zoom.com.br/lead?oid=1404670999&channel=86&index=1&searchterm=Caneca%20tem%C3%A1tica%20de%20gato",
-          "image": "https://i.zst.com.br/thumbs/51/3e/14/-1407634192.jpg"
+          "title": "Estabilizador de c\u00e2mera Gimbal Reflex para suporte de c\u00e2mera AY-49U 2",
+          "price": "R$ 251,92",
+          "link": "https://www.zoom.com.br/lead?oid=1520324485&channel=86&index=1&searchterm=C%C3%A2mera%20reflex",
+          "image": "https://i.zst.com.br/thumbs/51/28/15/-1584560797.jpg"
+        },
+        {
+          "title": "Be In Your Mind 10 pe\u00e7as de c\u00e2mera de filme CS-Mount CCD capa contra poeira 29 mm para c\u00e2meras de seguran\u00e7a H8 Reflex CCTV",
+          "price": "R$ 82,41",
+          "link": "https://www.zoom.com.br/lead?oid=1519844342&channel=86&index=1&searchterm=C%C3%A2mera%20reflex",
+          "image": "https://i.zst.com.br/thumbs/51/e/11/-1582543160.jpg"
+        },
+        {
+          "title": "Suporte de janela apenas para c\u00e2mera litokam Windows, inclina\u00e7\u00e3o de \u00e2ngulo ajust\u00e1vel (para cima/baixo/esquerda/direita), sem parafusos, sem reflexos, suporte sem danos para monitoramento externo",
+          "price": "R$ 95,22",
+          "link": "https://www.zoom.com.br/lead?oid=1540443687&channel=86&index=2&searchterm=C%C3%A2mera%20reflex",
+          "image": "https://i.zst.com.br/thumbs/51/2d/32/-1624974411.jpg"
         }
       ]
     },
     {
-      "search query": "Kit de culin\u00e1ria para iniciantes",
-      "ai reasoning": "a pessoa demonstra interesse por comida, ent\u00e3o um kit de culin\u00e1ria para iniciantes pode ser uma \u00f3tima maneira de incentivar a explora\u00e7\u00e3o na cozinha. Pode incluir ingredientes b\u00e1sicos, utens\u00edlios simples e receitas f\u00e1ceis.",
+      "search query": "Kit de viagem para fotografia",
+      "ai reasoning": "como complemento ao seu interesse em fotografia, um kit de viagem pode ser uma op\u00e7\u00e3o pr\u00e1tica e \u00fatil",
       "search results": [
         {
-          "title": "Kit Culin\u00e1ria 12pcs. Forminha De Silicone, 1 Pincel, 1 Esp\u00e1tula De Silicone",
-          "price": "R$ 40,83",
-          "link": "https://www.zoom.com.br/utensilios-cozinha/kit-culinaria-12pcs-forminha-de-silicone-1-pincel-1-espatula-de-silicone?_lc=88&searchterm=Kit%20de%20culin%C3%A1ria%20para%20iniciantes",
-          "image": "https://i.zst.com.br/thumbs/45/a/36/1973039020.jpg"
+          "title": "Glamcor O Kit De Ilumina\u00e7\u00e3o LED Port\u00e1til Ultra X Para Maquiadores, Esteticistas E V\u00eddeo E Fotografia Inclui Trip\u00e9 E Bolsa De Viagem",
+          "price": "R$ 3.570,60",
+          "link": "https://www.zoom.com.br/lead?oid=587534969&channel=86&index=1&searchterm=Kit%20de%20viagem%20para%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/51/1f/3c/-537859092.jpg"
         },
         {
-          "title": "Kit de Utens\u00edlios de Bambu com 5 Pe\u00e7as Kehome",
-          "price": "R$ 17,59",
-          "link": "https://www.zoom.com.br/utensilios-cozinha/kit-de-utensilios-de-bambu-com-5-pecas-kehome?_lc=88&searchterm=Kit%20de%20culin%C3%A1ria%20para%20iniciantes",
-          "image": "https://i.zst.com.br/thumbs/45/24/12/2012398866.jpg"
+          "title": "Kit de Clipes Reflex\u00e3o para C\u00e2mera Smartphone Port\u00e1til com Clip Ajust\u00e1vel Bolsa Transporte e Pano Limpeza Fotografia Viagem Momentos Incr\u00edveis Resultados Profissionais Instala\u00e7\u00e3o F\u00e1cil Uso Flex\u00edvel Ac",
+          "price": "R$ 128,97",
+          "link": "https://www.zoom.com.br/lead?oid=1539236872&channel=86&index=1&searchterm=Kit%20de%20viagem%20para%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/51/10/19/-1622182426.jpg"
         },
         {
-          "title": "Kit 4 Esp\u00e1tulas de Inox Para Cozinha Esp\u00e1tula Perfurada Culin\u00e1ria Brinox",
-          "price": "R$ 60,25",
-          "link": "https://www.zoom.com.br/utensilios-cozinha/kit-4-espatulas-de-inox-para-cozinha-espatula-perfurada-culinaria-brinox?_lc=88&searchterm=Kit%20de%20culin%C3%A1ria%20para%20iniciantes",
-          "image": "https://i.zst.com.br/thumbs/45/c/35/-22775462.jpg"
-        }
-      ]
-    },
-    {
-      "search query": "Meias confort\u00e1veis com tema geek",
-      "ai reasoning": "a pessoa parece gostar de coisas confort\u00e1veis e, considerando o interesse por video games, meias com tema geek podem ser um presente divertido e \u00fatil.",
-      "search results": [
-        {
-          "title": "arricraft 1 bandana de cachorro com tema de Natal, meia de \u00e1rvore de Natal, padr\u00e3o de presente tri\u00e2ngulo ajust\u00e1vel, confort\u00e1vel, babadores para animais de estima\u00e7\u00e3o, len\u00e7o de algod\u00e3o lav\u00e1vel, len\u00e7o",
-          "price": "R$ 92,39",
-          "link": "https://www.zoom.com.br/lead?oid=1503573768&channel=86&index=1&searchterm=Meias%20confort%C3%A1veis%20com%20tema%20geek",
-          "image": "https://i.zst.com.br/thumbs/51/b/17/-1550293621.jpg"
-        },
-        {
-          "title": "La\u00e7o De Cabelo Para Beb\u00ea Com Meia Tema P\u00e1scoa Confort\u00e1vel (Lil\u00e1s, M)",
-          "price": "R$ 29,90",
-          "link": "https://www.zoom.com.br/lead?oid=1458261157&channel=86&index=1&searchterm=Meias%20confort%C3%A1veis%20com%20tema%20geek",
-          "image": "https://i.zst.com.br/thumbs/51/e/3c/-1478481275.jpg"
-        },
-        {
-          "title": "La\u00e7o De Cabelo Para Beb\u00ea Com Meia Tema P\u00e1scoa Confort\u00e1vel (Rosa, M)",
-          "price": "R$ 29,90",
-          "link": "https://www.zoom.com.br/lead?oid=1458261094&channel=86&index=2&searchterm=Meias%20confort%C3%A1veis%20com%20tema%20geek",
-          "image": "https://i.zst.com.br/thumbs/51/16/3c/-1478481181.jpg"
-        }
-      ]
-    },
-    {
-      "search query": "Livro de ci\u00eancia para jovens",
-      "ai reasoning": "a pessoa demonstra interesse por ci\u00eancia, ent\u00e3o um livro de ci\u00eancia para jovens pode ser uma \u00f3tima maneira de incentivar a explora\u00e7\u00e3o do tema.",
-      "search results": [
-        {
-          "title": "Os Jovens e a Leitura - Petit, Michele - 9788573263978",
-          "price": "R$ 57,85",
-          "link": "https://www.zoom.com.br/livros/os-jovens-e-a-leitura-petit-michele-9788573263978?_lc=88&searchterm=Livro%20de%20ci%C3%AAncia%20para%20jovens",
-          "image": "https://i.zst.com.br/thumbs/45/b/2b/1456171878.jpg"
-        },
-        {
-          "title": "Educa\u00e7\u00e3o de Jovens e Adultos - Teoria, Pr\u00e1tica e Proposta - 12\u00aa Ed. - Gadotti, Moacir; Romao, Jose Eustaquio - 9788524917127",
-          "price": "R$ 35,51",
-          "link": "https://www.zoom.com.br/livros/educacao-de-jovens-e-adultos-teoria-pratica-e-proposta-12-ed-gadotti-moacir-romao-jose-eustaquio-9788524917127?_lc=88&searchterm=Livro%20de%20ci%C3%AAncia%20para%20jovens",
-          "image": "https://i.zst.com.br/thumbs/45/e/16/1456116369.jpg"
-        },
-        {
-          "title": "Educa\u00e7\u00e3o Matem\u00e1tica de Jovens e Adultos - Especifica\u00e7\u00e3o, Desafios e Contribui\u00e7\u00f5es - Fonseca, Maria Da Concei\u00e7\u00e3o Ferreira Reis - 9788575260562",
-          "price": "R$ 68,73",
-          "link": "https://www.zoom.com.br/livros/educacao-matematica-de-jovens-e-adultos-especificacao-desafios-e-contribuicoes-fonseca-maria-da-conceicao-ferreira-reis-9788575260562?_lc=88&searchterm=Livro%20de%20ci%C3%AAncia%20para%20jovens",
-          "image": "https://i.zst.com.br/thumbs/45/17/30/1456220700.jpg"
+          "title": "Godox V1 O U Flash para Olympus e Panasonic, GODOX V1-O U HSS TTL Speedlight de cabe\u00e7a redonda com kit de acess\u00f3rios para retrato, evento, viagem, fotografia de casamento",
+          "price": "R$ 2.835,78",
+          "link": "https://www.zoom.com.br/lead?oid=1535669332&channel=86&index=2&searchterm=Kit%20de%20viagem%20para%20fotografia",
+          "image": "https://i.zst.com.br/thumbs/51/28/33/-1615202155.jpg"
         }
       ]
     }
