@@ -73,7 +73,9 @@ const VerLista = () => {
 
     useEffect(() => {
         carregarLista();
-    }, [id]); 
+    }, [id]);
+
+    
 
     const adicionarProduto = async (produto) => {
         const token = localStorage.getItem("token");
@@ -102,6 +104,77 @@ const VerLista = () => {
             alert("Erro de conexão ao tentar adicionar o produto.");
         }
     };
+
+    const marcarItem = async (itemId, nomeComprador) => {
+        const token = localStorage.getItem("token");
+
+        try {
+        const resp = await fetch(`http://localhost:8000/giftlist/markItem/${id}/${itemId}`, {
+            method: "POST",
+            headers: { 
+                "token": token,
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({ comprado_por: nomeComprador })
+        });
+
+            if (resp.ok) {
+                alert("Item marcado como comprado!");
+                await carregarLista();
+            } else {
+                const errorData = await resp.json();
+                alert(`Erro ao marcar item: ${errorData.detail || 'Falha na comunicação.'}`);
+            }
+        } catch (err) {
+            console.error("Erro ao marcar item:", err);
+            alert("Erro de rede.");
+        }
+    };
+
+    const desmarcarItem = async (itemId) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            const resp = await fetch(`http://localhost:8000/giftlist/unmarkItem/${id}/${itemId}`, {
+                method: "POST",
+                headers: { "token": token }
+            });
+
+            if (resp.ok) {
+                alert("Item desmarcado!");
+                await carregarLista();
+            } else {
+                const errorData = await resp.json();
+                alert(`Erro ao desmarcar item: ${errorData.detail || 'Falha na comunicação.'}`);
+            }
+        } catch (err) {
+            console.error("Erro ao desmarcar item:", err);
+            alert("Erro de rede.");
+        }
+    };
+
+    const compartilharLista = async () => {
+        const token = localStorage.getItem("token");
+        
+        try {
+            const resp = await fetch(`http://localhost:8000/giftlist/shareList/${id}`, {
+                method: "GET",
+                headers: { "token": token }
+            });
+
+            if (resp.ok) {
+                const data = await resp.json();
+                prompt("Link de Compartilhamento:", data.share_link);
+            } else {
+                const errorData = await resp.json();
+                alert(`Erro ao compartilhar: ${errorData.detail || 'Falha ao gerar link.'}`);
+            }
+        } catch (err) {
+            console.error("Erro ao compartilhar lista:", err);
+            alert("Erro de rede ao compartilhar.");
+        }
+    };
+
 
     if (loading) return (
         <Box sx={{ mt: 10, display: "flex", justifyContent: "center" }}>
@@ -146,6 +219,7 @@ const VerLista = () => {
 
                                 <Button
                                     variant='outlined'
+                                    onClick={compartilharLista}
                                     color='grey'
                                     startIcon={<ShareOutlinedIcon />}
                                     sx={{
@@ -218,6 +292,8 @@ const VerLista = () => {
                                     links={presente.link}
                                     status={presente.status}
                                     organizador={lista.organizador}
+                                    onMark={isDono ? marcarItem : null}
+                                    onUnmark={isDono ? desmarcarItem : null}
                                 />
                             </Grid>
                         ))}

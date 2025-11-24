@@ -4,6 +4,7 @@ from datetime import date
 from enum import Enum
 import json, os, dotenv
 from pathlib import Path
+from pydantic import BaseModel
 
 dotenv.load_dotenv()
 db_path_str = os.getenv("LIST_FILE")
@@ -16,6 +17,9 @@ class PrivacidadeLista(str, Enum):
     COMPARTILHADA = "shared"
     PRIVADA = "private"
 
+class ItemMarkData(BaseModel):
+    comprado_por: str
+    
 class lista_presente:
     def __init__(self, id_lista_presente=None, nome_lista=None, descricao_lista=None, ocasiao=None, data_evento=None, id_organizador=None, privacidade_lista=None):
         self.id_lista_presente = id_lista_presente

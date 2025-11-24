@@ -10,8 +10,9 @@ from jose import jwt
 from models.lista_presente import lista_presente
 from models.organizador_evento import organizador_evento as Organizador # so pra pegar a funcao de pegar o nome do organizador 
 from models.produto import Produto
+from models.lista_presente import ItemMarkData
 from services.zoom_scraper import buscar_zoom_async
-
+    
 # Carregar variáveis de ambiente
 dotenv.load_dotenv()
 
@@ -277,28 +278,102 @@ async def obter_itens_lista(list_id: str, request: Request):
         "items": lista.get("presentes", [])
     }
 
-"""
 @router.post("/markItem/{list_id}/{item_id}")
-async def marcar_item_comprado(list_id: str, item_id: str, request: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, marcar o item como comprado
-    # Retornar a lista atualizada ou uma mensagem de erro
+async def marcar_item_comprado(list_id: str, item_id: str,mark_data: ItemMarkData, request: Request):
+    """Marca um item como 'comprado' se for o organizador da lista."""
+    id_organizador = get_organizador_id(request)
+
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não tem permissão para editar esta lista")
+
+    # Procurar e marcar o item
+    presentes = lista.get("presentes", [])
+    item_encontrado = next((p for p in presentes if str(p.get("id")) == item_id), None)
+
+    if not item_encontrado:
+        raise HTTPException(status_code=404, detail="Presente não encontrado")
+    
+    if item_encontrado["status"] != "disponivel":
+        raise HTTPException(status_code=403, detail="Presente já está marcado")
+
+
+    item_encontrado["status"] = "comprado"
+    item_encontrado["comprado_por"] = mark_data.comprado_por 
+
+    lista_presente.atualizar_presentes(list_id, lista)
+
+    return {
+        "message": "Item marcado como comprado",
+        "lista": lista
+    }
 
 @router.post("/unmarkItem/{list_id}/{item_id}")
 async def desmarcar_item_comprado(list_id: str, item_id: str, request: Request):
+    """Desmarca um item como 'disponível' se for o organizador da lista."""
+    id_organizador = get_organizador_id(request)
 
-     # Primeiro, identificar quem é o usuario chamando esse endpoint
-     # Depois, verificar se a lista pertence a esse usuario
-     # Se pertencer, desmarcar o item como comprado
-     # Retornar a lista atualizada ou uma mensagem de erro
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não tem permissão para editar esta lista")
+
+    # Procurar e desmarcar o item
+    presentes = lista.get("presentes", [])
+    item_encontrado = next((p for p in presentes if str(p.get("id")) == item_id), None)
+
+    if not item_encontrado:
+        raise HTTPException(status_code=404, detail="Presente não encontrado")
+    
+    if item_encontrado["status"] != "comprado":
+         raise HTTPException(status_code=403, detail="Presente já está desmarcado")
+
+
+    item_encontrado["status"] = "disponivel"
+    item_encontrado["comprado_por"] = ""
+
+    # Chamar a função de atualização no modelo
+    lista_presente.atualizar_presentes(list_id, lista)
+
+    return {
+        "message": "Item desmarcado como disponível",
+        "lista": lista
+    }
+
+# --- Rota de Compartilhamento ---
 
 @router.get("/shareList/{list_id}")
 async def compartilhar_lista(list_id: str, request: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, gerar um link compartilhável para a lista
-    # Opcao de disparar mensagem para os convidados via numero de telefone (whatsapp) ou email
-    # Retornar o link ou uma mensagem de erro
+    """Gera o link de compartilhamento da lista."""
+    id_organizador = get_organizador_id(request)
+    
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
 
-"""
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não tem permissão para compartilhar esta lista")
+        
+    if lista["privacidade_lista"] == "private":
+        raise HTTPException(status_code=403, detail="Lista privada não pode ser compartilhada")
+
+    # 1. Gerar link (Assumindo que o frontend tem uma rota para listas compartilhadas)
+    # Exemplo: http://seusite.com/listas/list_id
+    base_url_frontend = os.getenv("FRONTEND_URL", "http://localhost:3000") # 💡 Use variável de ambiente
+    share_link = f"{base_url_frontend}/listas/publica/{list_id}"
+    
+    # 2. (OPCIONAL) Salvar o link gerado no banco de dados se o campo url_lista existir
+    # lista_presente.atualizar_lista(list_id, {"url_lista": share_link})
+    
+    # 3. Retornar
+    return {
+        "message": "Link de compartilhamento gerado com sucesso",
+        "share_link": share_link,
+        "lista_id": list_id
+        # Não implementei envio por WhatsApp/Email aqui, pois requer serviços externos.
+    }

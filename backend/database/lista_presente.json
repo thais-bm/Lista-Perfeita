@@ -68,7 +68,8 @@
           "preco": "R$ 146,40",
           "imagem": "https://i.zst.com.br/thumbs/45/1d/18/-1321185979.jpg",
           "link": [],
-          "status": "disponivel"
+          "status": "disponivel",
+          "comprado_por": ""
         },
         {
           "id": "0c8cbff2-2925-4673-be02-ad101ea5124e",
@@ -76,6 +77,16 @@
           "descricao": "Boutique Berenguer Unicornio",
           "preco": "R$ 199,99",
           "imagem": "https://i.zst.com.br/thumbs/45/30/13/1971883930.jpg",
+          "link": [],
+          "status": "comprado",
+          "comprado_por": "wdada dawd awdawd wa"
+        },
+        {
+          "id": "24ac6b82-94e2-4aa4-850a-8a8d6cf89144",
+          "nome": "Boneco Senhor Cabeça De Batata Com 13 Peças Hasbro",
+          "descricao": "Boneco Senhor Cabeça De Batata Com 13 Peças Hasbro",
+          "preco": "R$ 74,96",
+          "imagem": "https://i.zst.com.br/thumbs/45/3a/10/-1361982809.jpg",
           "link": [],
           "status": "disponivel"
         }

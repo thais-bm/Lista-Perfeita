@@ -5,8 +5,10 @@ const CheckBought = ({ open, onClose, onConfirm, organizer }) => {
     const [nome, setNome] = useState("");
 
     const handleConfirm = () => {
-    if (nome.trim()) {
-        onConfirm(nome);
+        if (nome.trim()) {
+            onConfirm(nome.trim());
+            onClose(); 
+            setNome("");
         }
     };
 
@@ -25,7 +27,7 @@ const CheckBought = ({ open, onClose, onConfirm, organizer }) => {
             </Typography>
 
             <Typography sx={{ color: 'grey.700', mb: 2 }}>
-            Informe seu nome para que {organizer} saiba quem comprou este presente.
+                Informe seu nome para que {organizer} saiba quem comprou este presente.
             </Typography>
 
             <TextField
@@ -33,7 +35,8 @@ const CheckBought = ({ open, onClose, onConfirm, organizer }) => {
             variant="outlined"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            sx={{ mb: 3, width: 540,
+            fullWidth 
+            sx={{ mb: 3, 
                 '& .MuiOutlinedInput-root': {
                 borderRadius: 2, 
             },}}
@@ -52,6 +55,7 @@ const CheckBought = ({ open, onClose, onConfirm, organizer }) => {
             <Button
                 onClick={handleConfirm}
                 variant="contained"
+                disabled={!nome.trim()} 
                 sx={{
                 textTransform: 'none',
                 width: 300, 
