@@ -4,6 +4,8 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EventIcon from "@mui/icons-material/Event";
 import { useNavigate, useParams } from 'react-router-dom';
+import React from "react";
+import ShareDialog from "./ShareDialog";
 
 const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, privacidade, onDelete }) => {
 
@@ -14,7 +16,7 @@ const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, p
         navigate(`/verLista/${id}`);
     };
 
-    console.log("ID DA LISTA: " + id)
+    const [open, setOpen] = React.useState(false);
 
     return (
         <Box width={355} height={250}
@@ -129,9 +131,12 @@ const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, p
                             borderRadius: 3
                         }}
                         startIcon={<ShareOutlinedIcon />}
+                        onClick={() => setOpen(true)}
                     />
-                ) : null
-                }
+                ) : null}
+
+                <ShareDialog open={open} onClose={() => setOpen(false)} />
+
                 <Button
                     variant="outlined"
                     sx={{

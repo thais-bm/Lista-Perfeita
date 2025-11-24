@@ -11,6 +11,7 @@ import PresenteItem from '../components/PresenteItem';
 import AddProduct from '../components/AddProduct';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AddProductContext } from '../contexts/AddProductContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const VerLista = () => {
     const { id } = useParams();
@@ -75,14 +76,14 @@ const VerLista = () => {
         carregarLista();
     }, [id]);
 
-    
+
 
     const adicionarProduto = async (produto) => {
         const token = localStorage.getItem("token");
 
         try {
             const resp = await fetch(`http://localhost:8000/giftlist/addItem/${id}`, {
-                
+
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -97,11 +98,11 @@ const VerLista = () => {
             } else {
                 const errorData = await resp.json();
                 console.error("Falha ao adicionar produto. Status:", resp.status, "Erro:", errorData);
-                alert(`Erro ao adicionar produto: ${errorData.detail || 'Verifique sua conexão e permissões.'}`);
+                toast.error(`Erro ao adicionar produto: ${errorData.detail || 'Verifique sua conexão e permissões.'}`);
             }
         } catch (err) {
             console.error("Erro de rede ao adicionar produto:", err);
-            alert("Erro de conexão ao tentar adicionar o produto.");
+            toast.error("Erro de conexão ao tentar adicionar o produto.");
         }
     };
 
@@ -109,25 +110,25 @@ const VerLista = () => {
         const token = localStorage.getItem("token");
 
         try {
-        const resp = await fetch(`http://localhost:8000/giftlist/markItem/${id}/${itemId}`, {
-            method: "POST",
-            headers: { 
-                "token": token,
-                "Content-Type": "application/json" 
-            },
-            body: JSON.stringify({ comprado_por: nomeComprador })
-        });
+            const resp = await fetch(`http://localhost:8000/giftlist/markItem/${id}/${itemId}`, {
+                method: "POST",
+                headers: {
+                    "token": token,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ comprado_por: nomeComprador })
+            });
 
             if (resp.ok) {
-                alert("Item marcado como comprado!");
+                toast.success("Item marcado como comprado!");
                 await carregarLista();
             } else {
                 const errorData = await resp.json();
-                alert(`Erro ao marcar item: ${errorData.detail || 'Falha na comunicação.'}`);
+                toast.error(`Erro ao marcar item: ${errorData.detail || 'Falha na comunicação.'}`);
             }
         } catch (err) {
             console.error("Erro ao marcar item:", err);
-            alert("Erro de rede.");
+            toast.error("Erro de rede.");
         }
     };
 
@@ -155,7 +156,7 @@ const VerLista = () => {
 
     const compartilharLista = async () => {
         const token = localStorage.getItem("token");
-        
+
         try {
             const resp = await fetch(`http://localhost:8000/giftlist/shareList/${id}`, {
                 method: "GET",
@@ -167,46 +168,46 @@ const VerLista = () => {
                 prompt("Link de Compartilhamento:", data.share_link);
             } else {
                 const errorData = await resp.json();
-                alert(`Erro ao compartilhar: ${errorData.detail || 'Falha ao gerar link.'}`);
+                toast.error(`Erro ao compartilhar: ${errorData.detail || 'Falha ao gerar link.'}`);
             }
         } catch (err) {
             console.error("Erro ao compartilhar lista:", err);
-            alert("Erro de rede ao compartilhar.");
+            toast.error("Erro de rede ao compartilhar.");
         }
     };
 
     const removerItem = async (itemId) => {
-    const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-    if (!window.confirm("Tem certeza que deseja remover este item da lista?")) {
-        return;
-    }
-
-    try {
-        const resp = await fetch(`http://localhost:8000/giftlist/removeItem/${id}/${itemId}`, {
-            method: "DELETE",
-            headers: { "token": token }
-        });
-
-        if (resp.ok) {
-            alert("Item removido com sucesso!");
-            await carregarLista();
-        } else {
-            let detail = 'Falha na comunicação ou erro desconhecido.';
-            try {
-                const errorData = await resp.json();
-                detail = errorData.detail || detail;
-            } catch (e) {
-                console.warn("Resposta de erro não é JSON. Status:", resp.status);
-                detail = `Erro HTTP ${resp.status}. Verifique as permissões.`;
-            }
-            alert(`Erro ao remover item: ${detail}`);
+        if (!window.confirm("Tem certeza que deseja remover este item da lista?")) {
+            return;
         }
-    } catch (err) {
-        console.error("Erro de rede ao remover item:", err);
-        alert("Erro de rede. Verifique se o servidor backend está ativo.");
-    }
-};
+
+        try {
+            const resp = await fetch(`http://localhost:8000/giftlist/removeItem/${id}/${itemId}`, {
+                method: "DELETE",
+                headers: { "token": token }
+            });
+
+            if (resp.ok) {
+                toast.sucess("Item removido com sucesso!");
+                await carregarLista();
+            } else {
+                let detail = 'Falha na comunicação ou erro desconhecido.';
+                try {
+                    const errorData = await resp.json();
+                    detail = errorData.detail || detail;
+                } catch (e) {
+                    console.warn("Resposta de erro não é JSON. Status:", resp.status);
+                    detail = `Erro HTTP ${resp.status}. Verifique as permissões.`;
+                }
+                toast.error(`Erro ao remover item: ${detail}`);
+            }
+        } catch (err) {
+            console.error("Erro de rede ao remover item:", err);
+            toast.error("Erro de rede. Verifique se o servidor backend está ativo.");
+        }
+    };
 
 
     if (loading) return (
@@ -229,6 +230,7 @@ const VerLista = () => {
 
     return (
         <AddProductContext.Provider value={contextValue}>
+            <ToastContainer />
             <div>
                 <Header />
                 <Box marginTop={12} />
@@ -250,26 +252,30 @@ const VerLista = () => {
                                     {lista.nome_lista}
                                 </Typography>
 
-                                <Button
-                                    variant='outlined'
-                                    onClick={compartilharLista}
-                                    color='grey'
-                                    startIcon={<ShareOutlinedIcon />}
-                                    sx={{
-                                        marginLeft: "auto",
-                                        color: 'black',
-                                        borderRadius: 4,
-                                        textTransform: 'none',
-                                    }}
-                                >
-                                    Compartilhar
-                                </Button>
+
+
+                                {lista.privacidade_lista === "Compartilhada" ? (
+                                    <Button
+                                        variant='outlined'
+                                        onClick={compartilharLista}
+                                        color='grey'
+                                        startIcon={<ShareOutlinedIcon />}
+                                        sx={{
+                                            marginLeft: "auto",
+                                            color: 'black',
+                                            borderRadius: 4,
+                                            textTransform: 'none',
+                                        }}
+                                    >
+                                        Compartilhar
+                                    </Button>
+                                ) : null}
                             </Box>
 
                             <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>
                                 {lista.descricao_lista}
                             </Typography>
-                            
+
                             <Stack direction="row" spacing={2}>
                                 <Stack direction="row" spacing={1}>
                                     <CardGiftcardIcon sx={{ fontSize: 16 }} />

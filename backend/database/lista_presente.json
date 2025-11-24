@@ -82,6 +82,16 @@
       "id_organizador": "0d403ee1-ff8b-40d4-a0f1-b35b5f0a30b9",
       "privacidade_lista": "shared",
       "url_lista": null
+    },
+    {
+      "id_lista_presente": "baa63e1f-dd67-4fe6-904f-c4bf99dab8ec",
+      "nome_lista": "Aniversario da Isa",
+      "descricao_lista": "Lista de presentes pro aniversario da Isa",
+      "ocasiao": "Aniversário",
+      "data_evento": "2025-12-10",
+      "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
+      "privacidade_lista": "shared",
+      "url_lista": null
     }
   ]
 }
