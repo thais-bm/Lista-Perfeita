@@ -182,32 +182,21 @@ async def search_products(body: BuscaRequest):
 
     return produtos
 
-"""
-@router.put("/updateLista/{list_id}")
-async def atualizar_lista_presente(list_id: str, lista_data: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, atualizar a lista com os novos dados
-    # Retornar a lista atualizada ou uma mensagem de erro
+
 @router.put("/updateList/{list_id}")
 async def atualizar_lista_presente(list_id: str, request: Request):
 
-    # 1. Verificar usuário autenticado
     id_organizador = get_organizador_id(request)
 
-    # 2. Obter dados enviados pelo React
     data = await request.json()
 
-    # 3. Buscar a lista original
     lista_original = lista_presente.get_lista_by_id(list_id)
     if not lista_original:
         raise HTTPException(status_code=404, detail="Lista não encontrada")
 
-    # 4. Verificar se pertence ao organizador
     if lista_original["id_organizador"] != id_organizador:
         raise HTTPException(status_code=403, detail="Você não tem permissão para editar esta lista")
 
-    # 5. Atualizar dados permitidos
     novos_dados = {
         "nome_lista": data.get("nome_lista", lista_original["nome_lista"]),
         "descricao_lista": data.get("descricao_lista", lista_original["descricao_lista"]),
@@ -223,31 +212,72 @@ async def atualizar_lista_presente(list_id: str, request: Request):
         "lista": lista_atualizada
     }
 
-
-
-
-
 @router.post("/addItem/{list_id}")
-async def adicionar_item_lista(list_id: str, item_data: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, adicionar o item à lista
-    # Retornar a lista atualizada ou uma mensagem de erro
+async def adicionar_item_lista(list_id: str, request: Request):
+
+    id_organizador = get_organizador_id(request)
+    data = await request.json()
+
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não pode editar esta lista")
+
+    novo_item = {
+        "id": str(uuid.uuid4()),
+        "nome": data["nome"],
+        "descricao": data.get("descricao", ""),
+        "preco": data.get("preco", 0),
+        "imagem": data.get("imagem", ""),
+        "link": data.get("link", ""),
+        "status": "disponivel"
+    }
+
+    lista_atualizada = lista_presente.adicionar_item(list_id, novo_item)
+
+    return {
+        "message": "Item adicionado",
+        "lista": lista_atualizada
+    }
 
 @router.delete("/removeItem/{list_id}/{item_id}")
 async def remover_item_lista(list_id: str, item_id: str, request: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, remover o item da lista
-    # Retornar a lista atualizada ou uma mensagem de erro
+
+    id_organizador = get_organizador_id(request)
+
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não pode editar esta lista")
+
+    lista_atualizada = lista_presente.remover_item(list_id, item_id)
+
+    return {
+        "message": "Item removido",
+        "lista": lista_atualizada
+    }
 
 @router.get("/getItems/{list_id}")
 async def obter_itens_lista(list_id: str, request: Request):
-    # Primeiro, identificar quem é o usuario chamando esse endpoint
-    # Depois, verificar se a lista pertence a esse usuario
-    # Se pertencer, buscar todos os itens da lista
-    # Retornar os itens encontrados ou uma mensagem de erro
 
+    id_organizador = get_organizador_id(request)
+
+    lista = lista_presente.get_lista_by_id(list_id)
+    if not lista:
+        raise HTTPException(status_code=404, detail="Lista não encontrada")
+
+    if lista["id_organizador"] != id_organizador:
+        raise HTTPException(status_code=403, detail="Você não pode ver os itens desta lista")
+
+    return {
+        "items": lista.get("presentes", [])
+    }
+
+"""
 @router.post("/markItem/{list_id}/{item_id}")
 async def marcar_item_comprado(list_id: str, item_id: str, request: Request):
     # Primeiro, identificar quem é o usuario chamando esse endpoint

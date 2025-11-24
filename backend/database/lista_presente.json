@@ -60,6 +60,16 @@
       "id_organizador": "14e258b8-534d-4f49-844b-5ced056c8b6e",
       "privacidade_lista": "shared",
       "url_lista": null
+    },
+    {
+      "id_lista_presente": "b964dcbf-869e-4da4-b310-c3d9617ac0bd",
+      "nome_lista": "Oi",
+      "descricao_lista": "",
+      "ocasiao": "Casamento",
+      "data_evento": "",
+      "id_organizador": "0d403ee1-ff8b-40d4-a0f1-b35b5f0a30b9",
+      "privacidade_lista": "shared",
+      "url_lista": null
     }
   ]
 }

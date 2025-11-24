@@ -10,8 +10,8 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
   const [status, setStatus] = useState(initialStatus);
   const [bought, setBought] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
+  
 
-  // Desmarcador
   const handleChecked = async () => {
     try {
       const resp = await fetch(`http://localhost:8000/giftlist/desmarcar/${listaId}/${id}`, {

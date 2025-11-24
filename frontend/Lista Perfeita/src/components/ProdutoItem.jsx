@@ -5,9 +5,24 @@ import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ConfirmAdd from './ConfirmAdd';
 
-const ProdutoItem = ({id, nome, descricao, preco, imagem, links, status: initialStatus }) => {
-    const [status, setStatus] = useState(initialStatus);
+const ProdutoItem = ({nome, descricao, preco, imagem, status: initialStatus, onAdd}) => {
     const [openDialog, setOpenDialog] = useState(false);
+
+
+    const handleConfirm = () => {
+    onAdd({
+        nome,
+        descricao,
+        preco,
+        imagem,
+        link: []
+    });
+
+    setOpenDialog(false);
+};
+
+
+
 
     return (
         <Paper
@@ -60,11 +75,7 @@ const ProdutoItem = ({id, nome, descricao, preco, imagem, links, status: initial
         <ConfirmAdd
             open={openDialog}
             onClose={() => setOpenDialog(false)}
-            onConfirm={() => {
-            console.log("Produto confirmado:", nome);
-            setOpenDialog(false); 
-        }}
-
+            onConfirm={handleConfirm}
         />
         </Paper>
     );

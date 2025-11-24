@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import ProdutoItem from "../components/ProdutoItem";
 
-const ChooseProducts = ({ open, onClose }) => {
+const ChooseProducts = ({ open, onClose,onAdd }) => {
     const [searchText, setSearchText] = useState("");
     const [resultados, setResultados] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -77,8 +77,8 @@ const ChooseProducts = ({ open, onClose }) => {
                                 descricao={item.descricao}
                                 preco={item.preco}
                                 imagem={item.imagem}
-                                links={item.link}
                                 status={item.status}
+                                onAdd={onAdd}
                             />
                         ))}
                     </Stack>
