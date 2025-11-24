@@ -1,5 +1,3 @@
-# backend/models/lista_presente.py
-
 import pydantic
 from typing import Optional, List, Dict
 from datetime import date
@@ -7,16 +5,6 @@ from enum import Enum
 import json, os, dotenv
 from pathlib import Path
 
-"""
-Titulo da lista
-Descricao
-Ocasicao
-Data do evento
-Privacidade da lista pode ser 1- Publica ou 2- Privada
-ID do organizador (quem criou a lista)
-
-
-"""
 dotenv.load_dotenv()
 db_path_str = os.getenv("LIST_FILE")
 if db_path_str is None:
@@ -44,7 +32,7 @@ class lista_presente:
         return self.__dict__
     
     def adicionar_convidado(self, convidado):
-        self.convidados.append(convidado)
+        self.convidados.append(convidado) 
     
     def definir_url_lista(self, url):
         self.url_lista = url
@@ -109,7 +97,7 @@ class lista_presente:
         novas_listas = [l for l in db["listas"] if l["id_lista_presente"] != lista_id]
 
         if len(novas_listas) == len(db["listas"]):
-            return False  # nada foi removido
+            return False 
 
         db["listas"] = novas_listas
         cls.write_db(db)
@@ -136,9 +124,8 @@ class lista_presente:
                 return True
         return False
     
-    # Adicionar presente NAO TA PEGANDO AINDA
     @classmethod
-    def adicionar_produto(cls, lista_id: str, produto: dict):
+    def adicionar_item(cls, lista_id: str, produto: dict):
         """
         Adiciona um produto (dict) à lista encontrada e persiste no DB.
         """
@@ -147,17 +134,9 @@ class lista_presente:
             if lista["id_lista_presente"] == lista_id:
                 if "presentes" not in db["listas"][i]:
                     db["listas"][i]["presentes"] = []
-                # gerar id numérico incremental se necessário
-                next_id = 1
-                if db["listas"][i]["presentes"]:
-                    try:
-                        next_id = max(p.get("id", 0) for p in db["listas"][i]["presentes"]) + 1
-                    except Exception:
-                        next_id = len(db["listas"][i]["presentes"]) + 1
-                produto["id"] = produto.get("id", next_id)
+                
                 db["listas"][i]["presentes"].append(produto)
                 cls.write_db(db)
                 return db["listas"][i]
+                
         return None
-    # Remover presente
-

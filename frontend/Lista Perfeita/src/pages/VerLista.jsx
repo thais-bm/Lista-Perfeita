@@ -9,8 +9,8 @@ import EventIcon from '@mui/icons-material/Event';
 import PersonIcon from '@mui/icons-material/Person';
 import PresenteItem from '../components/PresenteItem';
 import AddProduct from '../components/AddProduct';
-
 import { useNavigate, useParams } from 'react-router-dom';
+import { AddProductContext } from '../contexts/AddProductContext';
 
 const VerLista = () => {
     const { id } = useParams();
@@ -35,8 +35,7 @@ const VerLista = () => {
         }
     };
 
-    useEffect(() => {
-    const carregar = async () => {
+    const carregarLista = async () => {
         setLoading(true);
         try {
             const token = localStorage.getItem("token");
@@ -64,7 +63,7 @@ const VerLista = () => {
             setLista(data.lista);
             setIsDono(dono);
         } catch (err) {
-            console.error(err);
+            console.error("Erro ao carregar a lista:", err);
             setLista(null);
             setIsDono(false);
         } finally {
@@ -72,24 +71,37 @@ const VerLista = () => {
         }
     };
 
-    carregar();
-}, [id]);
+    useEffect(() => {
+        carregarLista();
+    }, [id]); 
 
     const adicionarProduto = async (produto) => {
         const token = localStorage.getItem("token");
 
-        await fetch(`http://localhost:8000/giftlist/addProduct/${id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "token": token
-            },
-            body: JSON.stringify(produto)
-        });
+        try {
+            const resp = await fetch(`http://localhost:8000/giftlist/addItem/${id}`, {
+                
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": token
+                },
+                body: JSON.stringify(produto)
+            });
+
+            if (resp.ok) {
+                console.log("Produto adicionado com sucesso. Recarregando a lista...");
+                await carregarLista();
+            } else {
+                const errorData = await resp.json();
+                console.error("Falha ao adicionar produto. Status:", resp.status, "Erro:", errorData);
+                alert(`Erro ao adicionar produto: ${errorData.detail || 'Verifique sua conexão e permissões.'}`);
+            }
+        } catch (err) {
+            console.error("Erro de rede ao adicionar produto:", err);
+            alert("Erro de conexão ao tentar adicionar o produto.");
+        }
     };
-
-
-
 
     if (loading) return (
         <Box sx={{ mt: 10, display: "flex", justifyContent: "center" }}>
@@ -104,112 +116,119 @@ const VerLista = () => {
     const comprados = presentes.filter(p => p.status === "comprado").length;
     const porcentagem = total === 0 ? 0 : Math.round((comprados / total) * 100);
 
+    const contextValue = {
+        listaId: id,
+        onAdd: adicionarProduto
+    };
+
     return (
-        <div>
-            <Header />
-            <Box marginTop={12} />
+        <AddProductContext.Provider value={contextValue}>
+            <div>
+                <Header />
+                <Box marginTop={12} />
 
-            <Container maxWidth="lg">
-                <Button
-                    color='grey'
-                    onClick={handleReturn}
-                    startIcon={<ArrowBackIcon sx={{ fontSize: 18 }} />}
-                    sx={{ fontSize: 15, textTransform: 'none', marginBottom: 2 }}
-                >
-                    Voltar para as minhas listas
-                </Button>
+                <Container maxWidth="lg">
+                    <Button
+                        color='grey'
+                        onClick={handleReturn}
+                        startIcon={<ArrowBackIcon sx={{ fontSize: 18 }} />}
+                        sx={{ fontSize: 15, textTransform: 'none', marginBottom: 2 }}
+                    >
+                        Voltar para as minhas listas
+                    </Button>
 
-                <Paper elevation={3} sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
-                    <Box padding={3}>
-                        <Box display="flex">
-                            <Typography color="black" variant="h4" fontWeight="bold">
-                                {lista.nome_lista}
+                    <Paper elevation={3} sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
+                        <Box padding={3}>
+                            <Box display="flex">
+                                <Typography color="black" variant="h4" fontWeight="bold">
+                                    {lista.nome_lista}
+                                </Typography>
+
+                                <Button
+                                    variant='outlined'
+                                    color='grey'
+                                    startIcon={<ShareOutlinedIcon />}
+                                    sx={{
+                                        marginLeft: "auto",
+                                        color: 'black',
+                                        borderRadius: 4,
+                                        textTransform: 'none',
+                                    }}
+                                >
+                                    Compartilhar
+                                </Button>
+                            </Box>
+
+                            <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>
+                                {lista.descricao_lista}
                             </Typography>
+                            
+                            <Stack direction="row" spacing={2}>
+                                <Stack direction="row" spacing={1}>
+                                    <CardGiftcardIcon sx={{ fontSize: 16 }} />
+                                    <Typography variant="body2" color="grey">{lista.ocasiao}</Typography>
+                                </Stack>
 
-                            <Button
-                                variant='outlined'
-                                color='grey'
-                                startIcon={<ShareOutlinedIcon />}
-                                sx={{
-                                    marginLeft: "auto",
-                                    color: 'black',
-                                    borderRadius: 4,
-                                    textTransform: 'none',
-                                }}
-                            >
-                                Compartilhar
-                            </Button>
+                                <Stack direction="row" spacing={1}>
+                                    <EventIcon sx={{ fontSize: 16 }} />
+                                    <Typography variant="body2" color="grey">{lista.data_evento}</Typography>
+                                </Stack>
+
+                                <Stack direction="row" spacing={1}>
+                                    <PersonIcon sx={{ fontSize: 16 }} />
+                                    <Typography variant="body2" color="grey">{lista.organizador}</Typography>
+                                </Stack>
+                            </Stack>
+
+                            <Box mt={4} backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
+                                <Stack direction="row" mt={1} justifyContent={'space-between'}>
+                                    <Typography variant="body2" color="black">Progresso da Lista</Typography>
+                                    <Typography variant="body2" color="black">{comprados} presentes comprados</Typography>
+                                </Stack>
+
+                                <LinearProgress
+                                    variant="determinate"
+                                    value={porcentagem}
+                                    sx={{
+                                        height: 10,
+                                        borderRadius: 2,
+                                        backgroundColor: '#eee',
+                                        '& .MuiLinearProgress-bar': { backgroundColor: '#000000ff' },
+                                    }}
+                                />
+
+                                <Typography variant="body2" color="black" paddingTop={1}>
+                                    {porcentagem}% completo
+                                </Typography>
+                            </Box>
                         </Box>
+                    </Paper>
+                </Container>
 
-                        <Typography variant="body2" color="grey" sx={{ paddingBottom: 3 }}>
-                            {lista.descricao_lista}
-                        </Typography>
+                <Container sx={{ mt: 4, mb: 4 }}>
+                    <Grid container spacing={2}>
+                        {presentes.map((presente) => (
+                            <Grid item xs={12} sm={6} md={4} key={presente.id}>
+                                <PresenteItem
+                                    id={presente.id}
+                                    nome={presente.nome}
+                                    descricao={presente.descricao}
+                                    preco={presente.preco}
+                                    imagem={presente.imagem}
+                                    links={presente.link}
+                                    status={presente.status}
+                                    organizador={lista.organizador}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Container>
 
-                        <Stack direction="row" spacing={2}>
-                            <Stack direction="row" spacing={1}>
-                                <CardGiftcardIcon sx={{ fontSize: 16 }} />
-                                <Typography variant="body2" color="grey">{lista.ocasiao}</Typography>
-                            </Stack>
-
-                            <Stack direction="row" spacing={1}>
-                                <EventIcon sx={{ fontSize: 16 }} />
-                                <Typography variant="body2" color="grey">{lista.data_evento}</Typography>
-                            </Stack>
-
-                            <Stack direction="row" spacing={1}>
-                                <PersonIcon sx={{ fontSize: 16 }} />
-                                <Typography variant="body2" color="grey">{lista.organizador}</Typography>
-                            </Stack>
-                        </Stack>
-
-                        <Box mt={4} backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
-                            <Stack direction="row" mt={1} justifyContent={'space-between'}>
-                                <Typography variant="body2" color="black">Progresso da Lista</Typography>
-                                <Typography variant="body2" color="black">{comprados} presentes comprados</Typography>
-                            </Stack>
-
-                            <LinearProgress
-                                variant="determinate"
-                                value={porcentagem}
-                                sx={{
-                                    height: 10,
-                                    borderRadius: 2,
-                                    backgroundColor: '#eee',
-                                    '& .MuiLinearProgress-bar': { backgroundColor: '#000000ff' },
-                                }}
-                            />
-
-                            <Typography variant="body2" color="black" paddingTop={1}>
-                                {porcentagem}% completo
-                            </Typography>
-                        </Box>
-                    </Box>
-                </Paper>
-            </Container>
-
-            <Container sx={{ mt: 4, mb: 4 }}>
-                <Grid container spacing={2}>
-                    {presentes.map((presente) => (
-                        <Grid item xs={12} sm={6} md={4} key={presente.id}>
-                            <PresenteItem
-                                id={presente.id}
-                                nome={presente.nome}
-                                descricao={presente.descricao}
-                                preco={presente.preco}
-                                imagem={presente.imagem}
-                                links={presente.link}
-                                status={presente.status}
-                                organizador={lista.organizador}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-
-            {isDono && <AddProduct onAdd={adicionarProduto}/>}
+                {isDono && <AddProduct />}
 
 
-        </div>
+            </div>
+        </AddProductContext.Provider>
     );
 };
 

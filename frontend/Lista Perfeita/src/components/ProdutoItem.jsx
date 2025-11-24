@@ -1,28 +1,29 @@
-import { React, useState } from 'react';
+import React, { useState, useContext } from 'react'; // 💡 Importar useContext
 import { Stack, Typography, Box, Paper, Button, Chip } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ConfirmAdd from './ConfirmAdd';
+import { AddProductContext } from '../contexts/AddProductContext';
 
-const ProdutoItem = ({nome, descricao, preco, imagem, status: initialStatus, onAdd}) => {
+const ProdutoItem = ({ nome, descricao, preco, imagem, status: initialStatus }) => {
     const [openDialog, setOpenDialog] = useState(false);
+    
 
+    const { listaId, onAdd } = useContext(AddProductContext);
 
     const handleConfirm = () => {
-    onAdd({
-        nome,
-        descricao,
-        preco,
-        imagem,
-        link: []
-    });
+        console.log(`Adicionando produto à lista com ID: ${listaId}`); 
+        onAdd({
+            nome,
+            descricao,
+            preco,
+            imagem,
+            link: []
+        });
 
-    setOpenDialog(false);
-};
-
-
-
+        setOpenDialog(false);
+    };
 
     return (
         <Paper

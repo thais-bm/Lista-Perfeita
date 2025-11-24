@@ -59,7 +59,27 @@
       "data_evento": "275760-03-21",
       "id_organizador": "14e258b8-534d-4f49-844b-5ced056c8b6e",
       "privacidade_lista": "shared",
-      "url_lista": null
+      "url_lista": null,
+      "presentes": [
+        {
+          "id": "68d7b9a2-b9ff-4bde-8dc8-2d7b71066240",
+          "nome": "Pré Treino Panic Adaptogen Super Concentrado 300G Abacaxi",
+          "descricao": "Pré Treino Panic Adaptogen Super Concentrado 300G Abacaxi",
+          "preco": "R$ 146,40",
+          "imagem": "https://i.zst.com.br/thumbs/45/1d/18/-1321185979.jpg",
+          "link": [],
+          "status": "disponivel"
+        },
+        {
+          "id": "0c8cbff2-2925-4673-be02-ad101ea5124e",
+          "nome": "Boutique Berenguer Unicornio",
+          "descricao": "Boutique Berenguer Unicornio",
+          "preco": "R$ 199,99",
+          "imagem": "https://i.zst.com.br/thumbs/45/30/13/1971883930.jpg",
+          "link": [],
+          "status": "disponivel"
+        }
+      ]
     },
     {
       "id_lista_presente": "b964dcbf-869e-4da4-b310-c3d9617ac0bd",
