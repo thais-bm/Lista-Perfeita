@@ -144,3 +144,32 @@ class lista_presente:
                 return db["listas"][i]
                 
         return None
+    
+    @classmethod
+    def remover_item(cls, lista_id: str, item_id: str):
+        """
+        Remove um item da lista e persiste a alteração no DB.
+        Retorna a lista atualizada ou None se a lista/item não for encontrado.
+        """
+        db = cls.read_db()
+        
+        for i, lista in enumerate(db["listas"]):
+            if lista["id_lista_presente"] == lista_id:
+                
+                # Lista de presentes atualizada (excluindo o item_id)
+                # Mantém o item apenas se o ID não corresponder ao item_id a ser removido.
+                novos_presentes = [
+                    p for p in lista.get("presentes", []) 
+                    if str(p.get("id")) != item_id
+                ]
+                
+                # Verifica se a remoção realmente ocorreu
+                if len(novos_presentes) < len(lista.get("presentes", [])):
+                    db["listas"][i]["presentes"] = novos_presentes
+                    cls.write_db(db)
+                    return db["listas"][i]
+                else:
+                    # Item não encontrado dentro da lista
+                    return lista  # Retorna a lista original, o controlador deve checar se o item foi removido.
+
+        return None # Lista não encontrada

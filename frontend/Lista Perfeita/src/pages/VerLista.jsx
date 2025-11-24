@@ -175,6 +175,39 @@ const VerLista = () => {
         }
     };
 
+    const removerItem = async (itemId) => {
+    const token = localStorage.getItem("token");
+
+    if (!window.confirm("Tem certeza que deseja remover este item da lista?")) {
+        return;
+    }
+
+    try {
+        const resp = await fetch(`http://localhost:8000/giftlist/removeItem/${id}/${itemId}`, {
+            method: "DELETE",
+            headers: { "token": token }
+        });
+
+        if (resp.ok) {
+            alert("Item removido com sucesso!");
+            await carregarLista();
+        } else {
+            let detail = 'Falha na comunicação ou erro desconhecido.';
+            try {
+                const errorData = await resp.json();
+                detail = errorData.detail || detail;
+            } catch (e) {
+                console.warn("Resposta de erro não é JSON. Status:", resp.status);
+                detail = `Erro HTTP ${resp.status}. Verifique as permissões.`;
+            }
+            alert(`Erro ao remover item: ${detail}`);
+        }
+    } catch (err) {
+        console.error("Erro de rede ao remover item:", err);
+        alert("Erro de rede. Verifique se o servidor backend está ativo.");
+    }
+};
+
 
     if (loading) return (
         <Box sx={{ mt: 10, display: "flex", justifyContent: "center" }}>
@@ -294,6 +327,7 @@ const VerLista = () => {
                                     organizador={lista.organizador}
                                     onMark={isDono ? marcarItem : null}
                                     onUnmark={isDono ? desmarcarItem : null}
+                                    onRemove={isDono ? removerItem : null}
                                 />
                             </Grid>
                         ))}

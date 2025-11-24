@@ -6,7 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckBought from './CheckBought';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark }) => {
+const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove }) => {
     const [status, setStatus] = useState(initialStatus);
     const [bought, setBought] = useState(comprado_por || ""); 
     const [openDialog, setOpenDialog] = useState(false);
@@ -26,6 +26,12 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
 
     const handleOpenDialog = () => {
         setOpenDialog(true);
+    };
+
+    const handleRemoveItem = () => {
+        if (onRemove) {
+            onRemove(id);
+        }
     };
 
     return (
@@ -88,6 +94,18 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                     </Button>
                 ))}
             </Stack>
+
+            {onRemove && (
+                <Button
+                fullWidth
+                  variant="contained"
+                    onClick={handleRemoveItem}
+                    startIcon={<DeleteOutlineIcon/>}
+                    sx={{ textTransform: 'none', padding: 0, height: 25, backgroundColor:"#cc3030ff" }}
+                >
+                    Remover
+                </Button>
+            )}
 
             {initialStatus === "comprado" && (
                 <Box
