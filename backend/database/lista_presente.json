@@ -94,32 +94,13 @@
       "url_lista": null,
       "presentes": [
         {
-          "id": "58ec2c8d-ee69-4175-bdb2-8698a5d719fc",
-          "nome": "Tênis ASICS GEL-Kayano 31 Platinum - Masculino - 41 - Marinho-Dourado",
-          "descricao": "Tênis ASICS GEL-Kayano 31 Platinum - Masculino - 41 - Marinho-Dourado",
-          "preco": "R$ 949,99",
-          "imagem": "https://i.zst.com.br/thumbs/1/15/b/-1590617950.jpg",
+          "id": "8e4f1f68-bbf3-4b3d-b257-b2fdb6019f63",
+          "nome": "Tênis Nike Renew Elevate III - Masculino - 45 - Preto-Azul",
+          "descricao": "Tênis Nike Renew Elevate III - Masculino - 45 - Preto-Azul",
+          "preco": "R$ 549,99",
+          "imagem": "https://i.zst.com.br/thumbs/1/23/34/-1590594922.jpg",
           "link": [],
           "status": "disponivel"
-        },
-        {
-          "id": "dc4b8579-20f7-4b7b-8c90-100207342613",
-          "nome": "Smartphone Samsung Galaxy Z Flip7 FE 5G 128GB 8GB RAM Tela 6.7\" AMOLED Android 16 Câmera 50MP Preto",
-          "descricao": "Smartphone Samsung Galaxy Z Flip7 FE 5G 128GB 8GB RAM Tela 6.7\" AMOLED Android 16 Câmera 50MP Preto",
-          "preco": "R$ 3.497,00",
-          "imagem": "https://i.zst.com.br/thumbs/1/29/1a/-1555270417.jpg",
-          "link": [],
-          "status": "disponivel"
-        },
-        {
-          "id": "c7b4e6ab-7722-4ef6-98cb-733d30a90b4f",
-          "nome": "Fones de Ouvido JBL True Wireless Wave Buds 2 com Cancelamento de Ruído - Preto",
-          "descricao": "Fones de Ouvido JBL True Wireless Wave Buds 2 com Cancelamento de Ruído - Preto",
-          "preco": "R$ 247,00",
-          "imagem": "https://i.zst.com.br/thumbs/1/3a/0/-1438080190.jpg",
-          "link": [],
-          "status": "comprado",
-          "comprado_por": "Linda"
         }
       ]
     }

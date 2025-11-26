@@ -79,6 +79,7 @@ const ChooseProducts = ({ open, onClose,onAdd }) => {
                                 imagem={item.imagem}
                                 status={item.status}
                                 onAdd={onAdd}
+                                links={item.link}
                             />
                         ))}
                     </Stack>

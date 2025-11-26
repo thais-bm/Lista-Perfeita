@@ -190,7 +190,7 @@ const VerLista = () => {
             });
 
             if (resp.ok) {
-                toast.sucess("Item removido com sucesso!");
+                toast.success("Item removido com sucesso!");
                 await carregarLista();
             } else {
                 let detail = 'Falha na comunicação ou erro desconhecido.';

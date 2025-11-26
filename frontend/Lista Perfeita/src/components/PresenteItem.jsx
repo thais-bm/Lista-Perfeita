@@ -5,19 +5,20 @@ import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckBought from './CheckBought';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove}) => {
+const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove }) => {
     const [status, setStatus] = useState(initialStatus);
-    const [bought, setBought] = useState(comprado_por || ""); 
+    const [bought, setBought] = useState(comprado_por || "");
     const [openDialog, setOpenDialog] = useState(false);
-    
+
     const handleConfirmBuy = (compradorNome) => {
         if (onMark) {
-            onMark(id, compradorNome); 
+            onMark(id, compradorNome);
         }
         setOpenDialog(false);
     };
-    
+
     const handleUnmarkItem = () => {
         if (onUnmark) {
             onUnmark(id);
@@ -36,13 +37,13 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
 
     return (
         <Paper elevation={3}
-          sx={{
-            borderRadius: 4,
-            p: 3,
-            width: 320,
-            backgroundColor: '#fff',
-            boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
-          }}
+            sx={{
+                borderRadius: 4,
+                p: 3,
+                width: 320,
+                backgroundColor: '#fff',
+                boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
+            }}
         >
 
             <Box sx={{
@@ -73,35 +74,45 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                 {descricao}
             </Typography>
 
-            <Stack spacing={2} mt={3} direction="row">
-                {links && links.map((link, index) => (
-                    <Button
-                        key={index}
-                        variant="text"
-                        color="rosa.dark"
-                        startIcon={<LaunchIcon color="rosa.dark" />}
-                        component="a"
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{
-                            '&:hover .MuiSvgIcon-root': { color: 'rosa.dark', },
-                        }}>
+            <Stack spacing={2} mt={3} direction="row" flexWrap="wrap">
+                {links && links.length > 0 ? (
+                    links.map((link, index) => (
+                        <Button
+                            key={index}
+                            variant="contained" // Botão preenchido para destaque
+                            color="success"     // Cor verde (padrão de compra)
+                            startIcon={<ShoppingCartIcon />}
+                            component="a"
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{
+                                textTransform: 'none',
+                                borderRadius: 2,
+                                fontWeight: 'bold',
+                                backgroundColor: '#2e7d32', // Verde personalizado se quiser
+                                '&:hover': { backgroundColor: '#1b5e20' },
+                                mb: 1 // Margem inferior caso quebre linha
+                            }}>
 
-                        <Typography variant="body2" color="black">
-                            Link {index + 1}
-                        </Typography>
-                    </Button>
-                ))}
+                            {/* Se tiver apenas 1 link, mostra só "Comprar", senão "Comprar 1", "Comprar 2" */}
+                            {links.length === 1 ? "Comprar" : `Comprar na loja ${index + 1}`}
+                        </Button>
+                    ))
+                ) : (
+                    // Caso não tenha links cadastrados
+                    <Typography variant="caption" color="grey.500">
+                        Link indisponível
+                    </Typography>
+                )}
             </Stack>
-
             {onRemove && (
                 <Button
-                fullWidth
-                  variant="contained"
+                    fullWidth
+                    variant="contained"
                     onClick={handleRemoveItem}
-                    startIcon={<DeleteOutlineIcon/>}
-                    sx={{ textTransform: 'none', padding: 0, height: 25, backgroundColor:"#cc3030ff" }}
+                    startIcon={<DeleteOutlineIcon />}
+                    sx={{ textTransform: 'none', padding: 0, height: 25, backgroundColor: "#cc3030ff" }}
                 >
                     Remover
                 </Button>
@@ -141,7 +152,7 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                             fontWeight: 'bold',
                         }}
                         startIcon={<SellOutlinedIcon />}
-                        onClick={handleOpenDialog} 
+                        onClick={handleOpenDialog}
                     >
                         Marcar como comprado
                     </Button>
@@ -169,7 +180,7 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
             <CheckBought
                 open={openDialog}
                 onClose={() => setOpenDialog(false)}
-                onConfirm={handleConfirmBuy} 
+                onConfirm={handleConfirmBuy}
                 organizer={organizador}
             />
 
