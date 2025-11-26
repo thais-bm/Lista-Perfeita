@@ -21,6 +21,8 @@ const ChooseProducts = ({ open, onClose,onAdd }) => {
                 termo: searchText
             });
 
+            console.log("Resultados da Busca (res.data):", res.data);
+
             setResultados(res.data);
 
         } catch (err) {

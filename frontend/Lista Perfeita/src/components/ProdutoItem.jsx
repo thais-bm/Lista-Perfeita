@@ -6,7 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ConfirmAdd from './ConfirmAdd';
 import { AddProductContext } from '../contexts/AddProductContext';
 
-const ProdutoItem = ({ nome, descricao, preco, imagem, status: initialStatus }) => {
+const ProdutoItem = ({ nome, descricao, preco, imagem, status: initialStatus, links }) => {
     const [openDialog, setOpenDialog] = useState(false);
     
 
@@ -19,7 +19,7 @@ const ProdutoItem = ({ nome, descricao, preco, imagem, status: initialStatus }) 
             descricao,
             preco,
             imagem,
-            link: []
+            links
         });
 
         setOpenDialog(false);

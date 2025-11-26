@@ -63,6 +63,8 @@ def buscar_zoom(termo):
                 "link": link,
                 "image": img_url
             })
+            
+            print(link)
 
         browser.close()
     return products

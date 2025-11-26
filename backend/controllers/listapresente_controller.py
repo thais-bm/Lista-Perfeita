@@ -238,9 +238,11 @@ async def adicionar_item_lista(list_id: str, request: Request):
         "descricao": data.get("descricao", ""),
         "preco": data.get("preco", 0),
         "imagem": data.get("imagem", ""),
-        "link": data.get("link", ""),
+        "link": data.get("links", []),
         "status": "disponivel"
     }
+    
+    print(novo_item)
 
     lista_atualizada = lista_presente.adicionar_item(list_id, novo_item)
 

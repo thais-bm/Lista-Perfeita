@@ -94,12 +94,25 @@
       "url_lista": null,
       "presentes": [
         {
-          "id": "8e4f1f68-bbf3-4b3d-b257-b2fdb6019f63",
-          "nome": "Tênis Nike Renew Elevate III - Masculino - 45 - Preto-Azul",
-          "descricao": "Tênis Nike Renew Elevate III - Masculino - 45 - Preto-Azul",
-          "preco": "R$ 549,99",
-          "imagem": "https://i.zst.com.br/thumbs/1/23/34/-1590594922.jpg",
-          "link": [],
+          "id": "b5359226-5cdb-46c7-b7f4-f8291d1a518c",
+          "nome": "Tênis Nike Court Vision Alta Ltr - Feminino - 35 - Rosa",
+          "descricao": "Tênis Nike Court Vision Alta Ltr - Feminino - 35 - Rosa",
+          "preco": "R$ 449,90",
+          "imagem": "https://i.zst.com.br/thumbs/1/1a/34/-1590595186.jpg",
+          "link": [
+            "https://www.zoom.com.br/lead?oid=1522949231&sortorder=-1&pagesize=-1&feed_only_mkp=true&vtex=true"
+          ],
+          "status": "disponivel"
+        },
+        {
+          "id": "1dccacfe-d97d-43f7-a995-7d5605ac83f7",
+          "nome": "Celular Samsung Galaxy S22 Plus 5G SM-S906E 128GB 8 GB",
+          "descricao": "Celular Samsung Galaxy S22 Plus 5G SM-S906E 128GB 8 GB",
+          "preco": "R$ 3.451,25",
+          "imagem": "https://i.zst.com.br/thumbs/45/3b/35/-846764119.jpg",
+          "link": [
+            "https://www.zoom.com.br/celular/smartphone-samsung-galaxy-128gb-android-camera-tripla-autofoco-hdr?_lc=88&searchterm=galaxy%20s22"
+          ],
           "status": "disponivel"
         }
       ]
