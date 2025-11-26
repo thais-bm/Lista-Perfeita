@@ -5,6 +5,7 @@ uvicorn main:app --reload
 
 iniciar frontend
 cd frontend\"Lista Perfeita"
+npm install .
 npm run dev
 
 

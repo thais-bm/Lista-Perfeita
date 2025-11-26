@@ -29,17 +29,10 @@ class lista_presente:
         self.data_evento = data_evento
         self.id_organizador = id_organizador
         self.privacidade_lista = privacidade_lista
-
         self.url_lista = None
 
     def to_dict(self):
         return self.__dict__
-    
-    def adicionar_convidado(self, convidado):
-        self.convidados.append(convidado) 
-    
-    def definir_url_lista(self, url):
-        self.url_lista = url
 
     @classmethod
     def from_dict(cls, data):
@@ -80,10 +73,6 @@ class lista_presente:
         db["listas"].append(lista)
         cls.write_db(db)
 
-    @classmethod
-    def get_listas_by_user(cls, user_id: str):
-        db = cls.read_db()
-        return [l for l in db["listas"] if l["id_organizador"] == user_id]
     
     @classmethod
     def atualizar_lista(cls, lista_id: str, novos_dados: dict):

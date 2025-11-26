@@ -135,7 +135,7 @@ const MLList = ({ id, title, subtitle, ocasion, date, totalGifts, boughtGifts, p
                     />
                 ) : null}
 
-                <ShareDialog open={open} onClose={() => setOpen(false)} />
+                <ShareDialog open={open} onClose={() => setOpen(false)} id={id} />
 
                 <Button
                     variant="outlined"

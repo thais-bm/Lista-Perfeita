@@ -13,8 +13,8 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ShareIcon from "@mui/icons-material/Share";
 import { toast, ToastContainer } from "react-toastify";
 
-const ShareDialog = ({ open, onClose }) => {
-  const giftListLink = window.location.href;
+const ShareDialog = ({ open, onClose, id }) => {
+  const giftListLink = `http://localhost:5173/verLista/${id}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(giftListLink);
