@@ -99,6 +99,40 @@
             "https://www.zoom.com.br/lead?oid=1522956994&sortorder=-1&pagesize=-1&feed_only_mkp=true&vtex=true"
           ],
           "status": "disponivel"
+        },
+        {
+          "id": "71a6f79c-09c0-42f4-9a20-a92892b99a45",
+          "nome": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "descricao": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "preco": "R$ 2.699,10",
+          "imagem": "https://i.zst.com.br/thumbs/45/35/18/-1619544328.jpg",
+          "link": [
+            "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k?_lc=88&searchterm=playstation%205"
+          ],
+          "status": "disponivel"
+        },
+        {
+          "id": "2cb1a84a-53c7-43ca-862b-1187dc9b734d",
+          "nome": "Nintendo Switch 2 256GB Bundle Mario Kart World",
+          "descricao": "Nintendo Switch 2 256GB Bundle Mario Kart World",
+          "preco": "R$ 4.199,00",
+          "imagem": "https://i.zst.com.br/thumbs/45/1f/17/-1508321776.jpg",
+          "link": [
+            "https://www.zoom.com.br/console-de-video-game/console-portatil-switch-2-com-joy-con-nintendo?_lc=88&searchterm=nintendo%20switch"
+          ],
+          "status": "comprado",
+          "comprado_por": "fulana de tal"
+        },
+        {
+          "id": "9b10793c-17ee-4bf6-bfd5-f94dac2d60c5",
+          "nome": "Box Percy Jackson E Os Olimpianos (5 Volumes) - Capa Comum - 9788580574623",
+          "descricao": "Box Percy Jackson E Os Olimpianos (5 Volumes) - Capa Comum - 9788580574623",
+          "preco": "R$ 227,18",
+          "imagem": "https://i.zst.com.br/thumbs/45/36/22/119909910.jpg",
+          "link": [
+            "https://www.zoom.com.br/livros/box-percy-jackson-e-os-olimpianos-5-volumes-capa-comum-9788580574623?_lc=88&searchterm=percy%20jackson"
+          ],
+          "status": "disponivel"
         }
       ]
     },
