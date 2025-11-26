@@ -24,6 +24,11 @@ const VerLista = () => {
 
     const handleReturn = () => navigate("/minhaLista");
 
+    const getMeusPresentes = () => {
+        const dados = localStorage.getItem("meus_presentes");
+        return dados ? JSON.parse(dados) : [];
+    }
+
     const getUserIdFromToken = () => {
         const token = localStorage.getItem("token");
         if (!token) return null;
@@ -107,50 +112,53 @@ const VerLista = () => {
     };
 
     const marcarItem = async (itemId, nomeComprador) => {
-        const token = localStorage.getItem("token");
-
         try {
-            const resp = await fetch(`http://localhost:8000/giftlist/markItem/${id}/${itemId}`, {
-                method: "POST",
-                headers: {
-                    "token": token,
-                    "Content-Type": "application/json"
-                },
+            const resp = await fetch(`http://localhost:8000/giftlist/marcar/${id}/${itemId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ comprado_por: nomeComprador })
             });
 
             if (resp.ok) {
+                // 💡 NOVO: Salvar ID no navegador de quem comprou
+                const meusPresentes = getMeusPresentes();
+                if (!meusPresentes.includes(itemId)) {
+                    meusPresentes.push(itemId);
+                    localStorage.setItem("meus_presentes", JSON.stringify(meusPresentes));
+                }
+
                 toast.success("Item marcado como comprado!");
                 await carregarLista();
             } else {
                 const errorData = await resp.json();
-                toast.error(`Erro ao marcar item: ${errorData.detail || 'Falha na comunicação.'}`);
+                toast.error(`Erro: ${errorData.detail}`);
             }
         } catch (err) {
-            console.error("Erro ao marcar item:", err);
+            console.error(err);
             toast.error("Erro de rede.");
         }
     };
 
     const desmarcarItem = async (itemId) => {
-        const token = localStorage.getItem("token");
-
         try {
-            const resp = await fetch(`http://localhost:8000/giftlist/unmarkItem/${id}/${itemId}`, {
-                method: "POST",
-                headers: { "token": token }
+            // (Sua chamada fetch existente aqui...)
+            const resp = await fetch(`http://localhost:8000/giftlist/desmarcar/${id}/${itemId}`, {
+                method: "PATCH",
             });
 
             if (resp.ok) {
+                // 💡 NOVO: Remover ID do navegador
+                const meusPresentes = getMeusPresentes();
+                const atualizados = meusPresentes.filter(pid => pid !== itemId);
+                localStorage.setItem("meus_presentes", JSON.stringify(atualizados));
+
                 alert("Item desmarcado!");
                 await carregarLista();
             } else {
-                const errorData = await resp.json();
-                alert(`Erro ao desmarcar item: ${errorData.detail || 'Falha na comunicação.'}`);
+                alert("Erro ao desmarcar.");
             }
         } catch (err) {
-            console.error("Erro ao desmarcar item:", err);
-            alert("Erro de rede.");
+            console.error(err);
         }
     };
 
@@ -227,6 +235,8 @@ const VerLista = () => {
         listaId: id,
         onAdd: adicionarProduto
     };
+
+    const meusPresentesIds = getMeusPresentes();
 
     return (
         <AddProductContext.Provider value={contextValue}>
@@ -320,24 +330,37 @@ const VerLista = () => {
 
                 <Container sx={{ mt: 4, mb: 4 }}>
                     <Grid container spacing={2}>
-                        {presentes.map((presente) => (
-                            <Grid item xs={12} sm={6} md={4} key={presente.id}>
-                                <PresenteItem
-                                    id={presente.id}
-                                    nome={presente.nome}
-                                    descricao={presente.descricao}
-                                    preco={presente.preco}
-                                    imagem={presente.imagem}
-                                    links={presente.link}
-                                    status={presente.status}
-                                    organizador={lista.organizador}
-                                    comprado_por={presente.comprado_por}
-                                    onMark={isDono ? marcarItem : null}
-                                    onUnmark={isDono ? desmarcarItem : null}
-                                    onRemove={isDono ? removerItem : null}
-                                />
-                            </Grid>
-                        ))}
+                        {presentes.map((presente) => {
+                            // 💡 LÓGICA DE PERMISSÃO:
+                            // É dono da lista? OU Foi esse navegador que marcou o item?
+                            // Nota: Converta IDs para string para garantir a comparação correta
+                            const fuiEuQueMarquei = meusPresentesIds.some(savedId => String(savedId) === String(presente.id));
+                            const podeDesmarcar = isDono || fuiEuQueMarquei;
+
+                            return (
+                                <Grid item xs={12} sm={6} md={4} key={presente.id}>
+                                    <PresenteItem
+                                        id={presente.id}
+                                        nome={presente.nome}
+                                        // ... (outras props normais)
+                                        descricao={presente.descricao}
+                                        preco={presente.preco}
+                                        imagem={presente.imagem}
+                                        links={presente.link}
+                                        status={presente.status}
+                                        organizador={lista.organizador}
+                                        comprado_por={presente.comprado_por}
+
+                                        onMark={marcarItem}
+                                        onUnmark={desmarcarItem}
+                                        onRemove={isDono ? removerItem : null}
+
+                                        // 💡 NOVA PROP: Passamos a permissão calculada
+                                        canUnmark={podeDesmarcar}
+                                    />
+                                </Grid>
+                            );
+                        })}
                     </Grid>
                 </Container>
 

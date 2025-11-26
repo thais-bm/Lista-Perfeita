@@ -102,7 +102,8 @@
           "link": [
             "https://www.zoom.com.br/lead?oid=1522949231&sortorder=-1&pagesize=-1&feed_only_mkp=true&vtex=true"
           ],
-          "status": "disponivel"
+          "status": "comprado",
+          "comprado_por": "Marcos"
         },
         {
           "id": "1dccacfe-d97d-43f7-a995-7d5605ac83f7",
@@ -113,7 +114,8 @@
           "link": [
             "https://www.zoom.com.br/celular/smartphone-samsung-galaxy-128gb-android-camera-tripla-autofoco-hdr?_lc=88&searchterm=galaxy%20s22"
           ],
-          "status": "disponivel"
+          "status": "disponível",
+          "comprado_por": ""
         }
       ]
     }

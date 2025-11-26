@@ -132,7 +132,7 @@ async def obter_lista_por_id(list_id: str, request: Request):
     return {"lista": lista}
 
 @router.patch("/marcar/{list_id}/{produto_id}")
-async def marcar_comprado(list_id: str, produto_id: int, body: dict):
+async def marcar_comprado(list_id: str, produto_id: str, body: dict): # Alterado produto_id para str
     nome = body.get("comprado_por", "").strip()
 
     lista = lista_presente.get_lista_by_id(list_id)
@@ -140,8 +140,10 @@ async def marcar_comprado(list_id: str, produto_id: int, body: dict):
         raise HTTPException(status_code=404, detail="Lista não encontrada")
 
     for presente in lista["presentes"]:
-        if presente["id"] == produto_id:
-            if presente["status"] != "disponível":
+        # Converte ambos para string para garantir a comparação (seja int ou uuid)
+        if str(presente["id"]) == str(produto_id):
+            if presente["status"] not in ["disponível", "disponivel"]:
+                # Opcional: permitir sobrescrever se for o mesmo comprador, mas por segurança bloqueamos
                 raise HTTPException(status_code=403, detail="Presente já comprado")
 
             presente["status"] = "comprado"
@@ -154,14 +156,15 @@ async def marcar_comprado(list_id: str, produto_id: int, body: dict):
     raise HTTPException(status_code=404, detail="Presente não encontrado")
 
 @router.patch("/desmarcar/{list_id}/{produto_id}")
-async def desmarcar_comprado(list_id: str, produto_id: int):
+async def desmarcar_comprado(list_id: str, produto_id: str): # Alterado produto_id para str
     lista = lista_presente.get_lista_by_id(list_id)
 
     if not lista:
         raise HTTPException(status_code=404, detail="Lista não encontrada")
 
     for presente in lista["presentes"]:
-        if presente["id"] == produto_id:
+        # Converte ambos para string para garantir a comparação
+        if str(presente["id"]) == str(produto_id):
             presente["status"] = "disponível"
             presente["comprado_por"] = ""
 
