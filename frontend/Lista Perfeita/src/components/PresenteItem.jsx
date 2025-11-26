@@ -6,7 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckBought from './CheckBought';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove }) => {
+const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove}) => {
     const [status, setStatus] = useState(initialStatus);
     const [bought, setBought] = useState(comprado_por || ""); 
     const [openDialog, setOpenDialog] = useState(false);

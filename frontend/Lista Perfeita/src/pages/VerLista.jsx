@@ -331,6 +331,7 @@ const VerLista = () => {
                                     links={presente.link}
                                     status={presente.status}
                                     organizador={lista.organizador}
+                                    comprado_por={presente.comprado_por}
                                     onMark={isDono ? marcarItem : null}
                                     onUnmark={isDono ? desmarcarItem : null}
                                     onRemove={isDono ? removerItem : null}
