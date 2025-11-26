@@ -1,57 +1,6 @@
 {
   "listas": [
     {
-      "id_lista_presente": "a6c7b4d2-48b5-4b0c-bfeb-14b0c5924e69",
-      "nome_lista": "Meu aniversario lindo",
-      "descricao_lista": "Aniversario de 99012 anos da deidade Max Verstappen",
-      "ocasiao": "Aniversário",
-      "data_evento": "2026-05-22",
-      "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
-      "privacidade_lista": "private",
-      "url_lista": null,
-      "presentes": [
-        {
-          "id": 1,
-          "nome": "Fone Bluetooth Legal",
-          "descricao": "Fones sem fio com cancelamento de ruído ativo",
-          "preco": 299.99,
-          "imagem": "https://m.media-amazon.com/images/I/51xuDWMXfRL._AC_UF1000,1000_QL80_.jpg",
-          "link": [
-            "#",
-            "##"
-          ],
-          "status": "comprado",
-          "comprado_por": "Jureg"
-        },
-        {
-          "id": 2,
-          "nome": "Smartphone XYZ",
-          "descricao": "Smartphone com câmera de alta resolução",
-          "preco": 1999.99,
-          "imagem": "https://s2-techtudo.glbimg.com/UtPQgyuHfZrGtYH77LHDjxEnM8I=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/W/m/PJ6zOcTBeXSApdBnoRIw/2016-06-29-1iphone-2g.jpg",
-          "link": [
-            "#",
-            "##"
-          ],
-          "status": "disponivel",
-          "comprado_por": ""
-        },
-        {
-          "id": 3,
-          "nome": "Computador Gamer",
-          "descricao": "Camiseta de algodão com estampa moderna",
-          "preco": 79.99,
-          "imagem": "https://cdn.dooca.store/559/products/c1_640x640+fill_ffffff.png",
-          "link": [
-            "#",
-            "##"
-          ],
-          "status": "disponível",
-          "comprado_por": ""
-        }
-      ]
-    },
-    {
       "id_lista_presente": "31cd2d05-b727-4aa8-b9b1-a538d4a06b15",
       "nome_lista": "3dadawdawda",
       "descricao_lista": "dadwadadad",
@@ -116,6 +65,52 @@
           ],
           "status": "disponível",
           "comprado_por": ""
+        },
+        {
+          "id": "9d0718a2-fb1c-4d13-af4c-632f03bd2cfe",
+          "nome": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "descricao": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "preco": "R$ 2.699,10",
+          "imagem": "https://i.zst.com.br/thumbs/45/35/18/-1619544328.jpg",
+          "link": [
+            "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k?_lc=88&searchterm=ps5"
+          ],
+          "status": "disponivel"
+        },
+        {
+          "id": "4db8411d-3424-4968-a9e2-602548aa5aa7",
+          "nome": "LEGO Set Icons 10330 McLaren MP4/4 e Ayrton Senna 693 peças",
+          "descricao": "LEGO Set Icons 10330 McLaren MP4/4 e Ayrton Senna 693 peças",
+          "preco": "R$ 425,32",
+          "imagem": "https://i.zst.com.br/thumbs/45/3e/32/-1362003871.jpg",
+          "link": [
+            "https://www.zoom.com.br/blocos-para-montar-e-lego/lego-set-icons-10330-mclaren-mp4-4-e-ayrton-senna-693-pecas?_lc=88&searchterm=mclaren"
+          ],
+          "status": "comprado",
+          "comprado_por": "Lucia"
+        }
+      ]
+    },
+    {
+      "id_lista_presente": "83de2671-a495-488b-811f-ede06d64ea5a",
+      "nome_lista": "Aniversario do meu gato: Nico",
+      "descricao_lista": "Coisas pro aniversario do meu gaot Nico",
+      "ocasiao": "Aniversário",
+      "data_evento": "2026-05-05",
+      "id_organizador": "c1234b9b-72e5-470e-a9af-e7a06cf8b3ed",
+      "privacidade_lista": "private",
+      "url_lista": null,
+      "presentes": [
+        {
+          "id": "697a6fb0-c0f2-4a62-81d9-a72c2a72f912",
+          "nome": "Tênis ASICS GEL-Kayano 31 Platinum - Masculino - 40 - Marinho-Dourado",
+          "descricao": "Tênis ASICS GEL-Kayano 31 Platinum - Masculino - 40 - Marinho-Dourado",
+          "preco": "R$ 949,99",
+          "imagem": "https://i.zst.com.br/thumbs/1/3a/b/-1590617961.jpg",
+          "link": [
+            "https://www.zoom.com.br/lead?oid=1522956994&sortorder=-1&pagesize=-1&feed_only_mkp=true&vtex=true"
+          ],
+          "status": "disponivel"
         }
       ]
     }

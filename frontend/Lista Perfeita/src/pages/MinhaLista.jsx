@@ -46,6 +46,8 @@ const MinhaLista = () => {
         fetchListas();
     }, []);
 
+    
+
     // QUANDO CLICA EM APAGAR
     const handleDeleteClick = (id) => {
         setListToDelete(id);
@@ -83,6 +85,17 @@ const MinhaLista = () => {
     const handleNavigateCreateList = () => {
         navigate("/createList");
     };
+
+    const totalPresentes = listas.reduce((acc, lista) => {
+        return acc + (lista.presentes ? lista.presentes.length : 0);
+    }, 0);
+
+    const totalComprados = listas.reduce((acc, lista) => {
+        if (!lista.presentes) return acc;
+        // Conta quantos itens têm status "comprado" nesta lista
+        const compradosNestaLista = lista.presentes.filter(p => p.status === "comprado").length;
+        return acc + compradosNestaLista;
+    }, 0);
 
     // RETURN DO COMPONENTE
     return (
@@ -128,8 +141,8 @@ const MinhaLista = () => {
             {/* BOXES RESUMO */}
             <Box display="flex" gap={3} mt={3}>
                 <MLBox title="Total de listas" number={listas.length} icon={<CardGiftcardIcon />} />
-                <MLBox title="Presentes totais" number={0} icon={<PeopleOutlineOutlinedIcon />} />
-                <MLBox title="Presentes comprados" number={0} icon={<CardGiftcardIcon />} />
+                <MLBox title="Presentes totais" number={totalPresentes} icon={<PeopleOutlineOutlinedIcon />} />
+                <MLBox title="Presentes comprados" number={totalComprados} icon={<CardGiftcardIcon />} />
             </Box>
 
             {/* LISTA DE CARTÕES */}
