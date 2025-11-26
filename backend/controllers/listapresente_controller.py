@@ -110,11 +110,17 @@ async def obter_lista_por_id(list_id: str, request: Request):
     if not lista:
         raise HTTPException(status_code=404, detail="Lista não encontrada")
 
-    # pegar id do usuário logado a partir do token
-    id_usuariologado = get_organizador_id(request)
-    is_owner = (id_usuariologado == lista["id_organizador"])
+    # Tenta pegar o usuário, mas aceita se for None (visitante)
+    try:
+        id_usuariologado = get_organizador_id(request)
+    except HTTPException:
+        id_usuariologado = None
 
-    # Verificar se a lista é privada
+    # Verifica se é dono
+    is_owner = (id_usuariologado == lista["id_organizador"]) if id_usuariologado else False
+
+    # Lógica de acesso:
+    # Se NÃO for compartilhada E (não tiver usuário OU usuário não for dono) -> Bloqueia
     if lista["privacidade_lista"] != "shared" and not is_owner:
         raise HTTPException(status_code=403, detail="Lista é privada")
     
