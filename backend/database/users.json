@@ -44,6 +44,15 @@
       "password": "$2b$12$GRUZstL17WqOHCz8YVm4kOMEyXj1BpbrROlK7DKWUfkDpsNj1RLJy",
       "created_at": "2025-11-23T18:09:07.172289",
       "updated_at": "2025-11-23T18:09:07.172295"
+    },
+    {
+      "id": "8cd45d9c-69ff-45b6-98ce-4764df6939ca",
+      "name": "Thais Carolina Braga de Magalhães",
+      "email": "admin@admin.com",
+      "cpf": "06911576261",
+      "password": "$2b$12$1td979tWxvzatwHKmfHiBewH74PyfGAJ0UXjJndm3LVR9Sj3g3rbm",
+      "created_at": "2025-11-26T13:09:09.538539",
+      "updated_at": "2025-11-26T13:09:09.538539"
     }
   ]
 }

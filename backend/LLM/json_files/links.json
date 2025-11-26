@@ -1,75 +1,147 @@
 {
-  "brainstorm": "Considerando que a pessoa gosta de livros e literatura, para um anivers\u00e1rio que pode ser uma ocasi\u00f3 de celebra\u00e7\u00e3o mais tranquila ou relaxante, sugiro: Livros de autores brasileiros como \u00c3lvaro de Carvalho ou Graciliano Ramos. Outra op\u00e7\u00e3o poderia ser um jantar ao ar livre ou um passeio ao parque com um livro \u00e9letrico. Para algo mais material, uma boneca de leitura personalizada poderia ser uma sugest\u00e3o interessante.",
+  "brainstorm": "Pessoal de 20 anos feminino que gosta de jogos e games, para amigo secreto. Poss\u00edveis ideias: console port\u00e1til, jogo indie atual, fone de alta qualidade, teclado gamer, figura colecion\u00e1vel, console cl\u00e1ssico modernizado. A pessoa pode gostar de algo que combine com seu estilo de vida, talvez algo que seja \u00fatil para jogar em qualquer lugar ou algo que traga nostalgia.",
   "searches": [
     {
-      "search query": "Livros de autores brasileiros",
-      "ai reasoning": "Considerando que a pessoa gosta de livros e literatura, para um anivers\u00e1rio que pode ser uma ocasi\u00f3 de celebra\u00c7\u00e3o mais tranquila ou relaxante, sugiro: Livros de autores brasileiros como \u00c3lvaro de Carvalho ou Graciliano Ramos.",
+      "search query": "Console port\u00e1til",
+      "ai reasoning": "Considerando que a pessoa \u00e9 do g\u00eanero feminino, tem 20 anos e gosta de jogos e games, um console port\u00e1til pode ser uma \u00f3tima escolha, permitindo que ela jogue em qualquer lugar.",
       "search results": [
         {
-          "title": "Dicion\u00e1rio Oxford Escolar. Para Est. B. De Ingl\u00eas - V\u00e1rios Autores - 9780194403566",
-          "price": "R$ 56,99",
-          "link": "https://www.zoom.com.br/livros/dicionario-oxford-escolar-para-est-b-de-ingles-varios-autores-9780194403566?_lc=88&searchterm=Livros%20de%20autores%20brasileiros",
-          "image": "https://i.zst.com.br/thumbs/45/1d/10/1458550544.jpg"
+          "title": "Console Steam Deck 256GB",
+          "price": "R$ 789,48",
+          "link": "https://www.zoom.com.br/console-de-video-game/console-portatil-256gb-valve-steam-deck?_lc=88&searchterm=Console%20port%C3%A1til",
+          "image": "https://i.zst.com.br/thumbs/45/33/f/-1382410433.jpg"
         },
         {
-          "title": "Os Melhores Contos Brasileiros de Fic\u00e7\u00e3o Cient\u00edfica - Fronteiras - V\u00e1rios Autores - 9788575324011",
-          "price": "R$ 47,89",
-          "link": "https://www.zoom.com.br/livros/os-melhores-contos-brasileiros-de-ficcao-cientifica-fronteiras-varios-autores-9788575324011?_lc=88&searchterm=Livros%20de%20autores%20brasileiros",
-          "image": "https://i.zst.com.br/thumbs/45/15/2b/1456171931.jpg"
+          "title": "Console Port\u00e1til Steam Deck OLED 512GB",
+          "price": "R$ 5.238,57",
+          "link": "https://www.zoom.com.br/console-de-video-game/console-portatil-steam-deck-512gb-valve?_lc=88&searchterm=Console%20port%C3%A1til",
+          "image": "https://i.zst.com.br/thumbs/45/0/31/-1607823980.jpg"
         },
         {
-          "title": "Guia Conciso de Autores Brasileiros - Pucheu, Alberto; Meira, Caio - 9788533301801",
-          "price": "R$ 68,53",
-          "link": "https://www.zoom.com.br/livros/guia-conciso-de-autores-brasileiros-pucheu-alberto-meira-caio-9788533301801?_lc=88&searchterm=Livros%20de%20autores%20brasileiros",
-          "image": "https://i.zst.com.br/thumbs/45/1c/31/1456133202.jpg"
+          "title": "Console Port\u00e1til R36S 128GB",
+          "price": "R$ 188,82",
+          "link": "https://www.zoom.com.br/console-de-video-game/console-portatil-r36s-128gb?_lc=88&searchterm=Console%20port%C3%A1til",
+          "image": "https://i.zst.com.br/thumbs/45/b/13/-1572677407.jpg"
         }
       ]
     },
     {
-      "search query": "Jantar ao ar livre",
-      "ai reasoning": "Para algo mais material, uma boneca de leitura personalizada poderia ser uma sugest\u00e3o interessante.",
+      "search query": "Jogo indie atual",
+      "ai reasoning": "Jogos independentes recentes s\u00e3o populares entre jovens adultos, especialmente aqueles que buscam inova\u00e7\u00e3o e hist\u00f3rias inusitadas.",
       "search results": [
         {
-          "title": "Mesa de bar ao ar livre, mesa de coquetel circular com tampo e base de metal, mesa de jantar de cozinha, mesa de centro para escrit\u00f3rio, sala de jantar e cozinha",
-          "price": "R$ 2.008,16",
-          "link": "https://www.zoom.com.br/mesa-computador-escrivaninha/mesa-de-bar-ao-ar-livre-mesa-de-coquetel-circular-com-tampo-e-base-de-metal-mesa-de-jantar-de-cozinha-mesa-de-centro-para-escritorio-sala-de-jantar-e-cozinha?_lc=88&searchterm=Jantar%20ao%20ar%20livre",
-          "image": "https://i.zst.com.br/thumbs/45/3e/35/-1459625761.jpg"
+          "title": "Jogo de tabuleiro Indie Boards and Cards Aeons End The Void",
+          "price": "R$ 439,00",
+          "link": "https://www.zoom.com.br/jogos-de-tabuleiro-board-games/jogo-de-tabuleiro-indie-boards-and-cards-aeons-end-the-void?_lc=88&searchterm=Jogo%20indie%20atual",
+          "image": "https://i.zst.com.br/thumbs/45/3e/3c/-1448487652.jpg"
         },
         {
-          "title": "Mesa de bistr\u00f4 redonda de metal para bistr\u00f4, mesa de pub para coquetel, mesa de reuni\u00e3o, pequena, mesa de jantar, mesa de reuni\u00e3o, escrit\u00f3rio, cozinha, mesa de canto ao ar livre",
-          "price": "R$ 2.183,09",
-          "link": "https://www.zoom.com.br/mesa-computador-escrivaninha/mesa-de-bistro-redonda-de-metal-para-bistro-mesa-de-pub-para-coquetel-mesa-de-reuniao-pequena-mesa-de-jantar-mesa-de-reuniao-escritorio-cozinha-mesa-de-canto-ao-ar-livre?_lc=88&searchterm=Jantar%20ao%20ar%20livre",
-          "image": "https://i.zst.com.br/thumbs/45/3e/3d/-1459595235.jpg"
+          "title": "Indie Boards and Cards - Jogo de Tabuleiro - Aeons End War Eternal - 1 Jogador - 12+",
+          "price": "R$ 357,00",
+          "link": "https://www.zoom.com.br/lead?oid=1487533085&channel=86&index=1&searchterm=Jogo%20indie%20atual",
+          "image": "https://i.zst.com.br/thumbs/51/0/2b/-1521717234.jpg"
         },
         {
-          "title": "Perlapoc Conjuntos de lou\u00e7a de palha de trigo, servi\u00e7o para 4, conjuntos de pratos e tigelas de cozinha com prato de jantar/tigela de cereal/x\u00edcara/garfo/colher, 20 pe\u00e7as para acampamento ao ar livre",
-          "price": "R$ 230,80",
-          "link": "https://www.zoom.com.br/lead?oid=1504621333&channel=86&index=2&searchterm=Jantar%20ao%20ar%20livre",
-          "image": "https://i.zst.com.br/thumbs/51/35/11/-1600892432.jpg"
+          "title": "Jogos de cartas indie tabuleiros e cartas coup the dystopian universe",
+          "price": "R$ 171,52",
+          "link": "https://www.zoom.com.br/lead?oid=1520305882&channel=86&index=2&searchterm=Jogo%20indie%20atual",
+          "image": "https://i.zst.com.br/thumbs/51/26/32/-1584533618.jpg"
         }
       ]
     },
     {
-      "search query": "Boneca de leitura personalizada",
-      "ai reasoning": "Uma op\u00e7\u00e3o poderia ser um jantar ao ar livre ou um passeio ao parque com um livro \u00e9letrico.",
+      "search query": "Fone de alta qualidade",
+      "ai reasoning": "Para melhorar a experi\u00eancia de jogos, um fone com boa qualidade de som e microfone pode ser \u00fatil.",
       "search results": [
         {
-          "title": "An\u00e3o de Natal em Boneco de Neve - Decora\u00e7\u00e3o Festiva Personalizada, bon",
-          "price": "R$ 29,48",
-          "link": "https://www.zoom.com.br/lead?oid=1432632741&channel=86&index=1&searchterm=Boneca%20de%20leitura%20personalizada",
-          "image": "https://i.zst.com.br/thumbs/51/32/30/-1512973210.jpg"
+          "title": "Fone De Ouvido Inova Som De Alta Qualidade Microfone Embutid",
+          "price": "R$ 60,66",
+          "link": "https://www.zoom.com.br/fone-de-ouvido-e-headset/fone-de-ouvido-inova-som-de-alta-qualidade-microfone-embutid?_lc=88&searchterm=Fone%20de%20alta%20qualidade",
+          "image": "https://i.zst.com.br/thumbs/45/14/15/-1378416428.jpg"
         },
         {
-          "title": "Beb\u00ea Reborn Boneca Realista Brastoy Corpo Silicone Pode Dar Banho Roup",
-          "price": "R$ 222,55",
-          "link": "https://www.zoom.com.br/bonecas/bebe-reborn-boneca-realista-brastoy-corpo-silicone-pode-dar-banho-roup?_lc=88&searchterm=Boneca%20de%20leitura%20personalizada",
-          "image": "https://i.zst.com.br/thumbs/45/8/17/-1348767149.jpg"
+          "title": "EPOS Fone de ouvido Impact 860 com microfone - alta efici\u00eancia, dupla face para maior produtividade de escrit\u00f3rio aberto, qualidade de som superior, conectividade USB-C, fone de ouvido comercial com",
+          "price": "R$ 1.218,30",
+          "link": "https://www.zoom.com.br/lead?oid=1483128605&channel=86&index=1&searchterm=Fone%20de%20alta%20qualidade",
+          "image": "https://i.zst.com.br/thumbs/51/3/12/-1513655601.jpg"
         },
         {
-          "title": "Kit Casa Boneca e M\u00f3veis Escala Barbie Emily Crem A+B - Darama",
-          "price": "R$ 1.178,13",
-          "link": "https://www.zoom.com.br/bonecas/kit-casa-boneca-e-moveis-escala-barbie-emily-crem-a-b-darama?_lc=88&searchterm=Boneca%20de%20leitura%20personalizada",
-          "image": "https://i.zst.com.br/thumbs/45/b/11/1971672740.jpg"
+          "title": "Fone de Ouvido Sem Fio Bluetooth 5.3+EDR (Ambos os Lados) Qualidade de Som de Alta Defini\u00e7\u00e3o - Power Bank - IPX5 Resistente a \u00c1gua - Qualidade PREMIUM",
+          "price": "R$ 49,90",
+          "link": "https://www.zoom.com.br/lead?oid=1150005726&channel=86&index=2&searchterm=Fone%20de%20alta%20qualidade",
+          "image": "https://i.zst.com.br/thumbs/51/22/17/-1572168550.jpg"
+        }
+      ]
+    },
+    {
+      "search query": "Teclado mec\u00e2nico",
+      "ai reasoning": "Os teclados mec\u00e2nicos s\u00e3o apreciados por jogadores por sua durabilidade e feedback t\u00e1til.",
+      "search results": [
+        {
+          "title": "Teclado Mec\u00e2nico Gamer Redragon Draconic Branco Rgb",
+          "price": "R$ 430,16",
+          "link": "https://www.zoom.com.br/teclado/teclado-mecanico-gamer-redragon-draconic-branco-rgb?_lc=88&searchterm=Teclado%20mec%C3%A2nico",
+          "image": "https://i.zst.com.br/thumbs/45/34/18/-1459877106.jpg"
+        },
+        {
+          "title": "Teclado Mecanico Gamer Fizz Rgb Laranja Preto e Cinza Switch Marrom",
+          "price": "R$ 199,20",
+          "link": "https://www.zoom.com.br/teclado/teclado-mecanico-gamer-fizz-rgb-laranja-preto-e-cinza-switch-marrom?_lc=88&searchterm=Teclado%20mec%C3%A2nico",
+          "image": "https://i.zst.com.br/thumbs/45/36/36/-1378319630.jpg"
+        },
+        {
+          "title": "Teclado mec\u00e2nico de 63 teclas dur\u00e1vel com teclas coloridas",
+          "price": "R$ 846,00",
+          "link": "https://www.zoom.com.br/teclado/teclado-mecanico-de-63-teclas-duravel-com-teclas-coloridas?_lc=88&searchterm=Teclado%20mec%C3%A2nico",
+          "image": "https://i.zst.com.br/thumbs/45/31/18/-1459982748.jpg"
+        }
+      ]
+    },
+    {
+      "search query": "Figura colecion\u00e1vel",
+      "ai reasoning": "Al\u00e9m dos jogos, talvez ela aprecie itens colecion\u00e1veis relacionados a seus jogos favoritos.",
+      "search results": [
+        {
+          "title": "POP MART Labubu Bob Esponja 3PC Figura Colecion\u00e1vel Kawaii Toy",
+          "price": "R$ 282,36",
+          "link": "https://www.zoom.com.br/miniaturas-e-colecionaveis/pop-mart-labubu-bob-esponja-3pc-figura-colecionavel-kawaii-toy?_lc=88&searchterm=Figura%20colecion%C3%A1vel",
+          "image": "https://i.zst.com.br/thumbs/45/26/15/-1348306881.jpg"
+        },
+        {
+          "title": "Boneco Colecion\u00e1vel Figura Fandom Box Taz Looney Tunes - Lider",
+          "price": "R$ 149,92",
+          "link": "https://www.zoom.com.br/bonecos/boneco-colecionavel-figura-fandom-box-taz-looney-tunes-lider?_lc=88&searchterm=Figura%20colecion%C3%A1vel",
+          "image": "https://i.zst.com.br/thumbs/45/33/f/-1460102323.jpg"
+        },
+        {
+          "title": "Funko Pop! Marvel: Inumanos - Figura Colecion\u00e1vel Maximus",
+          "price": "R$ 287,00",
+          "link": "https://www.zoom.com.br/miniaturas-e-colecionaveis/funko-pop-marvel-inumanos-figura-colecionavel-maximus?_lc=88&searchterm=Figura%20colecion%C3%A1vel",
+          "image": "https://i.zst.com.br/thumbs/45/2e/13/-1460031109.jpg"
+        }
+      ]
+    },
+    {
+      "search query": "Console cl\u00e1ssico",
+      "ai reasoning": "Incluir um console cl\u00e1ssico pode trazer nostalgia e divers\u00e3o, especialmente se ela tiver jogado nos anos 80 ou 90.",
+      "search results": [
+        {
+          "title": "Console Playstation Classic Sony",
+          "price": "R$ 735,30",
+          "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-sony-classic?_lc=88&searchterm=Console%20cl%C3%A1ssico",
+          "image": "https://i.zst.com.br/thumbs/45/27/13/764630892.jpg"
+        },
+        {
+          "title": "XUXL Consoles de Videogame, 4K 2,4G Wireless 10.000 jogos 32/64GB Retro Classic Gaming Gamepads Controlador da fam\u00edlia de TV para PS1/GBA/MD, Q274816IXR5P0O488CLRF7",
+          "price": "R$ 109,90",
+          "link": "https://www.zoom.com.br/lead?oid=516842314&channel=86&index=1&searchterm=Console%20cl%C3%A1ssico",
+          "image": "https://i.zst.com.br/thumbs/51/2c/39/-793119668.jpg"
+        },
+        {
+          "title": "V\u00eddeo Game Super Mini SFC Classic 620 Jogos 2 Controles",
+          "price": "R$ 129,90",
+          "link": "https://www.zoom.com.br/lead?oid=1500058351&channel=86&index=2&searchterm=Console%20cl%C3%A1ssico&mkp=true",
+          "image": "https://i.zst.com.br/thumbs/51/5/31/-1543862780.jpg"
         }
       ]
     }

@@ -331,9 +331,6 @@ const VerLista = () => {
                 <Container sx={{ mt: 4, mb: 4 }}>
                     <Grid container spacing={2}>
                         {presentes.map((presente) => {
-                            // 💡 LÓGICA DE PERMISSÃO:
-                            // É dono da lista? OU Foi esse navegador que marcou o item?
-                            // Nota: Converta IDs para string para garantir a comparação correta
                             const fuiEuQueMarquei = meusPresentesIds.some(savedId => String(savedId) === String(presente.id));
                             const podeDesmarcar = isDono || fuiEuQueMarquei;
 
@@ -355,7 +352,6 @@ const VerLista = () => {
                                         onUnmark={desmarcarItem}
                                         onRemove={isDono ? removerItem : null}
 
-                                        // 💡 NOVA PROP: Passamos a permissão calculada
                                         canUnmark={podeDesmarcar}
                                     />
                                 </Grid>

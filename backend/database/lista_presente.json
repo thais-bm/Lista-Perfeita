@@ -76,18 +76,6 @@
             "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k?_lc=88&searchterm=ps5"
           ],
           "status": "disponivel"
-        },
-        {
-          "id": "4db8411d-3424-4968-a9e2-602548aa5aa7",
-          "nome": "LEGO Set Icons 10330 McLaren MP4/4 e Ayrton Senna 693 peças",
-          "descricao": "LEGO Set Icons 10330 McLaren MP4/4 e Ayrton Senna 693 peças",
-          "preco": "R$ 425,32",
-          "imagem": "https://i.zst.com.br/thumbs/45/3e/32/-1362003871.jpg",
-          "link": [
-            "https://www.zoom.com.br/blocos-para-montar-e-lego/lego-set-icons-10330-mclaren-mp4-4-e-ayrton-senna-693-pecas?_lc=88&searchterm=mclaren"
-          ],
-          "status": "comprado",
-          "comprado_por": "Lucia"
         }
       ]
     },
@@ -113,6 +101,40 @@
           "status": "disponivel"
         }
       ]
+    },
+    {
+      "id_lista_presente": "30159a63-417a-441c-92d6-b44b930ae907",
+      "nome_lista": "Aniversario do Joao",
+      "descricao_lista": "Lista de aniversario do joao",
+      "ocasiao": "Aniversário",
+      "data_evento": "2029-04-01",
+      "id_organizador": "8cd45d9c-69ff-45b6-98ce-4764df6939ca",
+      "privacidade_lista": "shared",
+      "url_lista": null,
+      "presentes": [
+        {
+          "id": "bca80aec-358d-449b-8c97-2c664e90ea82",
+          "nome": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "descricao": "Playstation 5 Slim Edição Digital 825GB Bundle ASTRO BOT + Gran Turismo 7",
+          "preco": "R$ 2.699,10",
+          "imagem": "https://i.zst.com.br/thumbs/45/35/18/-1619544328.jpg",
+          "link": [
+            "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k?_lc=88&searchterm=Playstation%205"
+          ],
+          "status": "disponível",
+          "comprado_por": ""
+        }
+      ]
+    },
+    {
+      "id_lista_presente": "42d1fe8a-4a76-4bc2-8b82-0e42c1b3e579",
+      "nome_lista": "Privado",
+      "descricao_lista": "privado",
+      "ocasiao": "Dia dos Namorados",
+      "data_evento": "2100-01-12",
+      "id_organizador": "8cd45d9c-69ff-45b6-98ce-4764df6939ca",
+      "privacidade_lista": "private",
+      "url_lista": null
     }
   ]
 }
