@@ -34,6 +34,7 @@ const AddProduct = (listaId, onAdd) =>{
                     variant="outlined"
                     fullWidth
                     sx={{
+                        fontWeight:'bold',
                         background: "linear-gradient(90deg, #ea33bd 0%, #ad30e7 100%)",
                         color: "white",
                         textTransform: "none",

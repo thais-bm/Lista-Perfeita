@@ -17,7 +17,6 @@ const Header = () => {
   const navigateSignIn = () => navigate('/signin');
   const navigateLogin = () => navigate('/login');
 
-  // 🔑 checa se existe token
   const token = localStorage.getItem("token");
 
   return (
@@ -27,6 +26,7 @@ const Header = () => {
       justifyContent: 'space-between',
       position: 'absolute',
       display: 'flex',
+      alignItems: 'center',
       top: 0,
       left: 0,
       right: 0,
@@ -60,13 +60,17 @@ const Header = () => {
 
       {/* Menu central */}
       <Box  
-      position="absolute" 
-      left={600}
-      bottom={10}
-      sx={{ display: "flex", gap: 5, justifyContent: "center", alignItems: "center", flexGrow: 1 }}>
+      sx={{ 
+        display: "flex", 
+        gap: 5, 
+        justifyContent: "center", 
+        alignItems: "center", 
+        flexGrow: 1 
+      }}>
         <Button
           onClick={navigateHome}
           sx={{
+            fontWeight: 550,
             textTransform: "none",
             color: isActive('/') ? '#b8018aff' : 'black',
             '&:hover': { backgroundColor: 'transparent', color: '#c60094' },
@@ -78,6 +82,7 @@ const Header = () => {
         <Button
           onClick={navigateMinhaLista}
           sx={{
+            fontWeight: 550,
             textTransform: "none",
             color: isActive('/minhaLista') ? '#b8018aff' : 'black',
             '&:hover': { backgroundColor: 'transparent', color: '#c60094' },
@@ -89,6 +94,7 @@ const Header = () => {
         <Button
           onClick={navigateSugestion}
           sx={{
+            fontWeight: 550,
             textTransform: "none",
             color: isActive('/sugestion') ? '#b8018aff' : 'black',
             '&:hover': { backgroundColor: 'transparent', color: '#c60094' },

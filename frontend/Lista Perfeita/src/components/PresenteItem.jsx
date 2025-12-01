@@ -8,8 +8,6 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initialStatus, organizador, comprado_por, listaId, onMark, onUnmark, onRemove, canUnmark }) => {
-    const [status, setStatus] = useState(initialStatus);
-    const [bought, setBought] = useState(comprado_por || "");
     const [openDialog, setOpenDialog] = useState(false);
 
     const handleConfirmBuy = (compradorNome) => {
@@ -60,11 +58,11 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                 <img src={imagem} alt={nome} style={{ width: '100%', height: '100%', objectFit: 'contain', }} />
             </Box>
 
-            <Stack direction="row" justifyContent="space-between" alignItems="center">
-                <Typography variant="subtitle1" fontWeight="bold">
+            <Stack direction="column" justifyContent="space-between">
+                <Typography variant="body1" fontWeight="bold">
                     {nome}
                 </Typography>
-                <Typography variant="subtitle1" color="green" fontWeight="bold">
+                <Typography mt={1} variant="subtitle1" color="green" fontWeight="bold">
                     {preco}
                 </Typography>
             </Stack>
@@ -92,7 +90,10 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                                     borderRadius: 2,
                                     fontWeight: 'bold',
                                     backgroundColor: '#2e7d32',
-                                    '&:hover': { backgroundColor: '#1b5e20' },
+                                    '&:hover': {   
+                                        color: '#fff', 
+                                        backgroundColor: '#1b5e20',
+                                    },
                                     mb: 1
                                 }}>
                                 {links.length === 1 ? "Comprar" : `Comprar na loja ${index + 1}`}
@@ -106,14 +107,21 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                 </Stack>
             )}
 
-
             {onRemove && (
                 <Button
-                    fullWidth
                     variant="contained"
                     onClick={handleRemoveItem}
                     startIcon={<DeleteOutlineIcon />}
-                    sx={{ textTransform: 'none', padding: 0, height: 25, backgroundColor: "#cc3030ff" }}
+                    sx={{ 
+                        textTransform: 'none',
+                        padding: 0, 
+                        height: 35, 
+                        borderRadius: 2,
+                        fontWeight: 'bold',
+                        backgroundColor: 'error.main',
+                        width: 117,
+                        mt: 1
+                    }}
                 >
                     Remover
                 </Button>
@@ -157,8 +165,6 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                         Marcar como comprado
                     </Button>
                 ) : (
-                    // 💡 LÓGICA ALTERADA AQUI:
-                    // Só mostra o botão se canUnmark for verdadeiro
                     canUnmark ? (
                         <Button
                             fullWidth
@@ -169,6 +175,16 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                                 borderRadius: 2,
                                 textTransform: "none",
                                 fontWeight: 'bold',
+                                border: 'none', 
+                                '&:focus': {
+                                    outline: 'none',
+                                },
+                                '&:hover': {
+                                    border: 'none',
+                                   
+                                    backgroundColor: 'transparent',
+                                    opacity: 0.9, 
+                                }
                             }}
                             startIcon={<SellOutlinedIcon />}
                             onClick={handleUnmarkItem}
@@ -176,13 +192,15 @@ const BoxPresente = ({ id, nome, descricao, preco, imagem, links, status: initia
                             Desmarcar como comprado
                         </Button>
                     ) : (
-                        // Caso contrário, mostra apenas um aviso ou nada
+                       
                         <Button fullWidth disabled variant="text" sx={{ color: 'grey.500', textTransform: 'none' }}>
                             Ação restrita ao comprador
                         </Button>
                     )
                 )}
             </Box>
+
+            
 
             <CheckBought
                 open={openDialog}

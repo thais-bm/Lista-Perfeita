@@ -1,6 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
 import Header from "../components/Header";
-import HomeImage from "../components/HomeImage";
 import HomeBox from "../components/HomeBox";
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
@@ -17,8 +16,16 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const navigate = useNavigate();
     
-    const navigateSignIn = () =>{
-        navigate('/signin');
+    const token = localStorage.getItem("token");
+
+    const navigateToCreateOrSignIn = () => {
+        if (token) {
+            // Se o token existe, navega diretamente para a criação da lista
+            navigate('/createList'); 
+        } else {
+            // Se não há token, navega para a tela de login/cadastro
+            navigate('/signin');
+        }
     }
 
     return (
@@ -63,9 +70,24 @@ const Home = () => {
                 marginBottom={7}
             >
                 <Button variant='outlined' color='black'
-                    sx={{borderRadius: 2, textTransform:'none', background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", color: 'white'}}
+                    sx={{
+                        borderRadius: 2, 
+                        textTransform:'none', 
+                        background: "linear-gradient(90deg, #ea33bdff 0%, #ad30e7ff 100%)", 
+                        color: 'white',
+                        border: 'none', 
+                                '&:focus': {
+                                    outline: 'none',
+                                },
+                                '&:hover': {
+                                    border: 'none',
+                                   
+                                    backgroundColor: 'transparent',
+                                    opacity: 0.9, 
+                                }
+                    }}
                     startIcon={<FavoriteBorderOutlinedIcon />}
-                    onClick={navigateSignIn}
+                    onClick={navigateToCreateOrSignIn}
                 >
                     Criar Minha Lista
                 </Button>
@@ -73,7 +95,7 @@ const Home = () => {
                 <Button variant='outlined' color='black'
                     sx={{ borderRadius: 2,color: '#ff00bfff', textTransform:'none'}}
                     startIcon={<AutoAwesomeOutlinedIcon/>}
-                    onClick={navigateSignIn}
+                   onClick={navigateToCreateOrSignIn}
                 >
                     Ver Sugestões
                 </Button>
@@ -148,7 +170,7 @@ const Home = () => {
                         backgroundColor:'white',
                     }}
                     startIcon={<AutoAwesomeOutlinedIcon/>}
-                    onClick={navigateSignIn}
+                    onClick={navigateToCreateOrSignIn}
                 >
                     Criar lista agora
                 </Button>

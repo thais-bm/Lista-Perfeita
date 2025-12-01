@@ -126,6 +126,16 @@ const MinhaLista = () => {
                             color: "white",
                             borderRadius: 3,
                             textTransform: "none",
+                            border: 'none', 
+                                '&:focus': {
+                                    outline: 'none',
+                                },
+                                '&:hover': {
+                                    border: 'none',
+                                   
+                                    backgroundColor: 'transparent',
+                                    opacity: 0.9, 
+                                }
                         }}
                         onClick={handleNavigateCreateList}
                     >

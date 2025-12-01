@@ -1,6 +1,8 @@
 // theme.jsx
 import { createTheme } from '@mui/material/styles';
 
+const textFieldFocusColor = '#ad30e7';
+
 const theme = createTheme({
   palette: {
     rosa: {
@@ -17,6 +19,48 @@ const theme = createTheme({
       contrastText: '#fff'
     },
   },
+
+  components: {
+  
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      
+            borderColor: textFieldFocusColor,
+          },
+        },
+      },
+    },
+    MuiInputBase: {
+        styleOverrides: {
+            input: {
+                '&:focus': {
+                    caretColor: textFieldFocusColor,
+                },
+            },
+        },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          '&.Mui-focused': {
+            color: textFieldFocusColor,
+          },
+        },
+      },
+    },
+    MuiInput: {
+        styleOverrides: {
+            root: {
+                '&:after': {
+                    borderColor: textFieldFocusColor,
+                },
+            },
+        },
+    },
+  },
+
 });
 
 export default theme;

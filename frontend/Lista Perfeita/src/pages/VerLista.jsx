@@ -120,7 +120,6 @@ const VerLista = () => {
             });
 
             if (resp.ok) {
-                // 💡 NOVO: Salvar ID no navegador de quem comprou
                 const meusPresentes = getMeusPresentes();
                 if (!meusPresentes.includes(itemId)) {
                     meusPresentes.push(itemId);
@@ -141,13 +140,11 @@ const VerLista = () => {
 
     const desmarcarItem = async (itemId) => {
         try {
-            // (Sua chamada fetch existente aqui...)
             const resp = await fetch(`http://localhost:8000/giftlist/desmarcar/${id}/${itemId}`, {
                 method: "PATCH",
             });
 
             if (resp.ok) {
-                // 💡 NOVO: Remover ID do navegador
                 const meusPresentes = getMeusPresentes();
                 const atualizados = meusPresentes.filter(pid => pid !== itemId);
                 localStorage.setItem("meus_presentes", JSON.stringify(atualizados));
@@ -303,7 +300,7 @@ const VerLista = () => {
                                 </Stack>
                             </Stack>
 
-                            <Box mt={4} backgroundColor="#e8e8e8ff" padding={2} borderRadius={2}>
+                            <Box mt={4} backgroundColor="#ffe3ffff" padding={2} borderRadius={2}>
                                 <Stack direction="row" mt={1} justifyContent={'space-between'}>
                                     <Typography variant="body2" color="black">Progresso da Lista</Typography>
                                     <Typography variant="body2" color="black">{comprados} presentes comprados</Typography>
@@ -315,8 +312,8 @@ const VerLista = () => {
                                     sx={{
                                         height: 10,
                                         borderRadius: 2,
-                                        backgroundColor: '#eee',
-                                        '& .MuiLinearProgress-bar': { backgroundColor: '#000000ff' },
+                                       backgroundColor: '#eecdfcff',
+                                        '& .MuiLinearProgress-bar': { backgroundColor: '#a43badff' },
                                     }}
                                 />
 
@@ -339,7 +336,6 @@ const VerLista = () => {
                                     <PresenteItem
                                         id={presente.id}
                                         nome={presente.nome}
-                                        // ... (outras props normais)
                                         descricao={presente.descricao}
                                         preco={presente.preco}
                                         imagem={presente.imagem}

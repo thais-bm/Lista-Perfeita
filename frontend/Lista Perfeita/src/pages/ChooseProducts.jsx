@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { cloneElement, useState } from "react";
 import axios from "axios";
 import {
     Dialog, DialogContent, Typography, TextField,
-    Stack, Button, Container
+    Stack, Button, Container, Box
 } from "@mui/material";
 import ProdutoItem from "../components/ProdutoItem";
 
@@ -64,11 +64,19 @@ const ChooseProducts = ({ open, onClose,onAdd }) => {
                 </Stack>
 
                 <Container>
-                    {loading && <Typography>Carregando...</Typography>}
+                    <Box 
+                        sx={{ 
+                            display: 'flex',            
+                            justifyContent: 'center',    
+                            alignItems: 'center',      
+                        }}
+                    >
+                       {loading && <Typography>Carregando...</Typography>}
 
-                    {!loading && resultados.length === 0 && (
-                        <Typography color="grey">Nenhum produto encontrado</Typography>
-                    )}
+                        {!loading && resultados.length === 0 && (
+                        <Typography color="grey">Nenhum produto encontrado! </Typography>
+                        )}
+                    </Box>
 
                     <Stack spacing={2} alignItems="center">
                         {resultados.map((item) => (
@@ -90,6 +98,7 @@ const ChooseProducts = ({ open, onClose,onAdd }) => {
                 <Stack direction="row" spacing={3} mt={4}>
                     <Button
                         variant="outlined"
+                        color="black"
                         onClick={onClose}
                         sx={{ width: 250, textTransform: "none", color: "black" }}
                     >
